@@ -39,9 +39,8 @@ class Recursos:
         new_size = (int(width * scale), int(height * scale))
         return pygame.transform.scale(image, new_size)
 
-    def get_bg_img(self):
-        return self.bg
 
     def get_img(self, indice):
         if indice>=0 and indice<len(self.imgs):
-            return self.imgs[indice]
+            # print(self.imgs[indice])
+            return self.imgs[indice][1]

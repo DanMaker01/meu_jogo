@@ -1,6 +1,7 @@
 import pygame
 from controle import Controle
 from recursos import Recursos
+from renderer import Renderer
 
 class Jogo:
     def __init__(self, width=800, height=600):
@@ -21,6 +22,8 @@ class Jogo:
         # Gerenciadores
         self.controle = Controle()
         self.recursos = Recursos()
+        self.renderer = Renderer(self.screen, self.font, self.recursos)
+        self.renderer.draw()
         #roteiro
         #cena
         #player
@@ -31,6 +34,7 @@ class Jogo:
         self.running = True
         print("iniciou classe Jogo")
         pass 
+
 
     def handle_events(self):
         """Gerencia os eventos do jogo, como fechar a janela ou pressionar teclas."""
@@ -51,10 +55,6 @@ class Jogo:
         """Loop principal do jogo."""
         while self.running:
             self.handle_events()
-            # Limpa a tela a cada frame
-            self.screen.fill((0, 0, 0))  # Preenche a tela com a cor preta
-            # Atualiza a tela
-            pygame.display.flip()
             # Controla a taxa de frames
             self.clock.tick(60)
         
