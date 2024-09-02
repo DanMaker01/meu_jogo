@@ -29,6 +29,7 @@ class Jogo:
         
         # Coloca o Jogo no Estado: Rodando!
         self.running = True
+        print("iniciou classe Jogo")
         pass 
 
     def handle_events(self):

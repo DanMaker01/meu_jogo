@@ -3,7 +3,7 @@
 class Controle:
     def __init__(self):
         self.teclas_apertadas = []
-        print("iniciou controle.py")
+        print("iniciou classe Controle")
         pass
     
     def add_teclas_apertadas(self, tecla):

@@ -16,12 +16,14 @@ class Recursos:
         # lista_imgs_a_importar = ["audio1.mp3","audio2.mp3"]
         # self.carregar_todos_audios(lista_audios_a_importar)
         #...
+        print("iniciou classe Recursos")
         pass
 
     def carregar_todas_imagens(self, lista_a_importar):
-        for img in lista_a_importar:
-            self.imgs.append(self.scale_image(self.load_image(img),1.0))
-            print(len(self.imgs),"imagens carregados.")
+        for string_img in lista_a_importar:
+            self.imgs.append([string_img,self.scale_image(self.load_image(string_img),1.0)])
+            print("carregou imagem:",string_img)
+        print(len(self.imgs),"imagens carregados.")
         pass
     @staticmethod
     def load_image(nome,path="recursos/"):
