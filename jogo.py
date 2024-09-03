@@ -31,8 +31,9 @@ class Jogo:
         self.renderer = Renderer(self)
         # self.roteiro = Roteiro() #colocando dentro do Gerenciador Cena
         # Cena
+        cena_inicial = 1
         self.gerenciador_cena = GerenciadorCena(self)
-        self.gerenciador_cena.carregar_cena(0)
+        self.gerenciador_cena.carregar_cena(cena_inicial)
         self.gerenciador_cena.ativar_cena_atual()
         
         # player    
