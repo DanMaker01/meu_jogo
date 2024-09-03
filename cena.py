@@ -1,17 +1,20 @@
 #imports
 from roteiro import Roteiro
 from janelas import Janela
+from texto import Texto
+from opcoes import Opcoes
 
 class Cena:
     def __init__(self,  cena_formato_lista):
-        nome = cena_formato_lista[0]
         texto = cena_formato_lista[1]
         opcoes = cena_formato_lista[2]
-        imagem = cena_formato_lista[3]
+        imagem_id = cena_formato_lista[3]
 
-        self.janela_principal = None #implementar
-        self.texto = cena_formato_lista[1]
-        self.opcoes = cena_formato_lista[2]
+
+        self.janela_principal = Janela(30,70,480,320) #implementar melhor
+        self.texto = Texto(90,410,360,120, texto)
+        self.opcoes = Opcoes(540,200,230,192, opcoes)
+        self.imagem_id = imagem_id
         pass
 
     def get_janela_principal(self):
@@ -20,9 +23,11 @@ class Cena:
         return self.texto
     def get_opcoes(self):
         return self.opcoes
+
     def draw(self,jogo):
         if self.janela_principal:
             self.janela_principal.draw(jogo)
+            jogo.renderer.desenhar_imagem(self.imagem_id, self.janela_principal.x, self.janela_principal.y)
         if self.texto:
             self.texto.draw(jogo)
         if self.opcoes:
@@ -42,14 +47,14 @@ class GerenciadorCena:
     
     def carregar_cena(self, id_cena):
         #implementar
-        cena_formato_lista = self.roteiro.get_cena(id_cena) #elementos [id_cena, nome, texto, opcoes ]
-        cena_formato_lista.append(self.jogo.recursos.get_img(id_cena))
-        print(cena_formato_lista[3].getwidth())
-        # self.cena_atual = Cena(cena_formato_lista)
+        cena_formato_lista = self.roteiro.get_cena(id_cena) #elementos [nome, texto, opcoes ]
+        cena_formato_lista.append(id_cena)                  #elementos [nome, texto, opcoes, id_img]
+        self.cena_atual = Cena(cena_formato_lista)
         pass
 
     def ativar_cena_atual(self):
         if self.cena_atual:
+            print("ativou a cena")
             self.ativar_janela_principal()
             self.ativar_texto()
             self.ativar_opcoes()

@@ -2,24 +2,24 @@
 import janelas
 
 class Opcoes:
-    def __init__(self):
+    def __init__(self,x,y,lar,alt,opcoes):
         print("iniciou classe Opções")
         
-        pos_x = 540
-        pos_y = 200
-        largura = 230
-        altura = 192
+        pos_x = x
+        pos_y = y
+        largura = lar
+        altura = alt
         self.janela = janelas.Janela(pos_x, pos_y, largura, altura,cor=(0,0,0))
         
         self.visivel = True
 
         self.ativar_interacao = False
 
+        self.opcoes = opcoes         
         self.distancia_entre_opcoes = 5
         self.opcao_selecionada = 0
         self.opcao_escolhida = 0
-        self.opcoes = [] # elementos no formato: ["texto0",direcao0,janela0] , ["texto1",direcao1,janela1], ...         
-        self.janelas_opcoes = []
+        # self.janelas_opcoes = []
         pass
     
     def ativar(self):
@@ -51,7 +51,7 @@ class Opcoes:
     def selecionar_opcao(self, indice):
         self.opcao_selecionada = indice
         pass
-    def draw(self, jogo):
+    def draw(self, jogo):#implementar
         # mostrar a opção selecionada bem chamativa
         # #implementar
         # (...)
@@ -59,7 +59,7 @@ class Opcoes:
 
         if self.visivel == True:
             if self.opcoes:
-                print("print opcoes",self.opcoes)
+                # print("print opcoes",self.opcoes)
                 
             pass
         else:
