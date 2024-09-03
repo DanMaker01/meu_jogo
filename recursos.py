@@ -4,19 +4,18 @@ import pygame
 
 class Recursos:
     def __init__(self):
+        print("iniciou classe Recursos")
         #carregar todas imagens
         self.imgs = []
-        lista_imgs_a_importar = ["bg.png","1.png"]
+        lista_imgs_a_importar = ["bg.png","1.png"] # a imagem 0 é o BG, 
         self.carregar_todas_imagens(lista_imgs_a_importar)
         
-
         ##audio #implementar depois
         # pygame.mixer.init()
         # self.audios = []
         # lista_imgs_a_importar = ["audio1.mp3","audio2.mp3"]
         # self.carregar_todos_audios(lista_audios_a_importar)
         #...
-        print("iniciou classe Recursos")
         pass
 
     def carregar_todas_imagens(self, lista_a_importar):

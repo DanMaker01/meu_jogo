@@ -2,9 +2,13 @@ import pygame
 from controle import Controle
 from recursos import Recursos
 from renderer import Renderer
+from opcoes import Opcoes
+from texto import Texto
+from janelas import Janela
 
 class Jogo:
     def __init__(self, width=800, height=600):
+        print("iniciou classe Jogo")
         pygame.init()
         pygame.display.set_caption("Meu Jogo")
         
@@ -22,8 +26,22 @@ class Jogo:
         # Gerenciadores
         self.controle = Controle()
         self.recursos = Recursos()
-        self.renderer = Renderer(self.screen, self.font, self.recursos)
-        self.renderer.draw()
+        self.renderer = Renderer(self)
+
+
+        # Janela Principal
+        self.janela_principal = Janela(self, 30, 70, 480, 320, ativa=True, texto="", cor=(0, 0, 0))
+        
+        self.texto = Texto(self)
+
+        self.opcoes = Opcoes(self)
+        self.opcoes.adicionar_opcao("oi, blz?",0)
+        self.opcoes.adicionar_opcao("oioioi, blz??",0)
+        self.opcoes.adicionar_opcao("oi, blz?????????????????????????",0)
+        self.opcoes.adicionar_opcao("atacar!!!!!!!!!!!!!!!!!!!!!!!",0)
+        
+        
+
         #roteiro
         #cena
         #player
@@ -32,7 +50,6 @@ class Jogo:
         
         # Coloca o Jogo no Estado: Rodando!
         self.running = True
-        print("iniciou classe Jogo")
         pass 
 
 
@@ -47,16 +64,47 @@ class Jogo:
     def handle_keydown(self, key):
         """Função para lidar com eventos de pressionamento de teclas."""
         # Aqui você pode adicionar manipulação de eventos de teclado
-        print(f"Tecla pressionada: {pygame.key.name(key)}")
         self.controle.add_teclas_apertadas(pygame.key.name(key))
         # print(self.controle.get_teclas_apertadas())
+
+    def draw(self):
+        #implementar: adquirir todos objetos à serem desenhados e desenhar!
+        #pode ser adicionando uma lista de imagens_a_desenhar dentro do renderer
+        #ou algo do tipo.
+        # (...)
+        self.screen.fill(self.renderer.cor_neutra)  # Preenche a tela com a cor cinza
+        self.renderer.desenhar_bg()
+        # ---
+        self.janela_principal.draw()
+        self.texto.draw()
+        self.opcoes.draw()
+        #----
+        self.renderer.desenhar_hud()
+        
+        pygame.display.flip()
+        pass
+
+    def update(self):
+        self.controle.update() 
+        #...
+        pass
 
     def run(self):
         """Loop principal do jogo."""
         while self.running:
+            #loop principal
+            # ---------------------------------------------
+            # primeiro:
+            # Verifica todos eventos que o jogo recebeu
             self.handle_events()
-            # Controla a taxa de frames
-            self.clock.tick(60)
+            self.clock.tick(60) # Controla a taxa de frames
+            
+            self.draw() # desenhar tudo primeiro
+            # ---------------------------------------------
+            # depois:
+            self.update() #depois do draw
+            
+            # desenhar tudo
         
         # Encerra o Pygame ao sair do loop
         pygame.quit()
