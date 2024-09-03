@@ -51,7 +51,7 @@ class Opcoes:
     def selecionar_opcao(self, indice):
         self.opcao_selecionada = indice
         pass
-    def draw(self, jogo):#implementar
+    def draw(self, jogo):
         # mostrar a opção selecionada bem chamativa
         # #implementar
         # (...)
@@ -60,7 +60,7 @@ class Opcoes:
         if self.visivel == True:
             if self.opcoes:
                 # print("print opcoes",self.opcoes)
-                
+                pass
             pass
         else:
             pass

@@ -27,6 +27,10 @@ class Renderer:
         self.jogo.screen.blit(imagem, (x, y), (0,0,imagem.get_width(),imagem.get_height()))
         pass    
 
+    def desenhar_texto(self, texto, x, y):
+        label = self.font.render(texto, 1, self.font_color)
+        self.jogo.screen.blit(label, (x, y))
+        pass
 
 
     def desenhar_hud(self):
@@ -35,7 +39,7 @@ class Renderer:
         label = self.font.render(texto_1, 1, self.font_color)
         self.jogo.screen.blit(label, (self.margem_x, self.margem_y))
         # Texto dinâmico
-        texto_2 = "cena: "+str(self.jogo.gerenciador_cena.get_cena_atual())
+        texto_2 = "cena: "+str(self.jogo.gerenciador_cena.get_cena_atual_id())
         label = self.font.render(texto_2, 1, self.font_color)
         self.jogo.screen.blit(label, (self.margem_x, self.margem_y + self.espacamento_linhas))
         # lista de janelas para renderizar

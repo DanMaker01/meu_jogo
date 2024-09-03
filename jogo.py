@@ -32,7 +32,7 @@ class Jogo:
         # self.roteiro = Roteiro() #colocando dentro do Gerenciador Cena
         # Cena
         self.gerenciador_cena = GerenciadorCena(self)
-        self.gerenciador_cena.carregar_cena(1)
+        self.gerenciador_cena.carregar_cena(0)
         self.gerenciador_cena.ativar_cena_atual()
         
         # player    

@@ -39,15 +39,17 @@ class Controle:
             self.limpar_teclas_apertadas()
 
     def verifica_teclas(self):
-        teclas_confirma = ['space', 'enter']
+        teclas_confirma = ['space', 'return','enter']
         teclas_acima = ['up', 'w']
         teclas_abaixo = ['down', 's']
         
-        if self.teclas_apertadas in teclas_confirma:
-            return 'confirma'
-        elif self.teclas_apertadas in teclas_acima:
-            return 'acima'
-        elif self.teclas_apertadas in teclas_abaixo:
-            return 'abaixo'
-        else:
-            return 'nenhum'
+        for tecla in self.teclas_apertadas:
+
+            if tecla in teclas_confirma:
+                return 'confirma'
+            elif tecla in teclas_acima:
+                return 'acima'
+            elif tecla in teclas_abaixo:
+                return 'abaixo'
+            else:
+                return 'nenhum'

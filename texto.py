@@ -7,13 +7,16 @@ class Texto:
         self.y= y
         self.largura = lar
         self.altura = alt
-        self.cor = (0, 0, 0)
+        self.cor = (150, 150, 150)
         self.janela = janelas.Janela(self.x, self.y, self.largura, self.altura, texto="", cor=self.cor)
-        self.texto = ""
+        self.texto = texto
         # self.janela = 
 
     def draw(self,jogo):
         self.janela.draw(jogo)
+        margem_x = 10
+        margem_y = 10
+        jogo.renderer.desenhar_texto(self.texto, self.x + margem_x, self.y + margem_y)
         pass
 
     def ativar(self):

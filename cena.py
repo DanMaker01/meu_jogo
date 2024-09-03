@@ -17,6 +17,8 @@ class Cena:
         self.imagem_id = imagem_id
         pass
 
+    def get_cena_id(self):
+        return self.imagem_id
     def get_janela_principal(self):
         return self.janela_principal
     def get_texto(self):
@@ -52,6 +54,9 @@ class GerenciadorCena:
         self.cena_atual = Cena(cena_formato_lista)
         pass
 
+    def get_cena_atual_id(self):
+        if self.cena_atual:
+            return self.cena_atual.get_cena_id()
     def ativar_cena_atual(self):
         if self.cena_atual:
             print("ativou a cena")
