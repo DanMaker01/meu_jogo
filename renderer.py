@@ -35,7 +35,7 @@ class Renderer:
         label = self.font.render(texto_1, 1, self.font_color)
         self.jogo.screen.blit(label, (self.margem_x, self.margem_y))
         # Texto dinâmico
-        texto_2 = "teclas apertadas: "+str(self.jogo.controle.get_teclas_apertadas())
+        texto_2 = "cena: "+str(self.jogo.gerenciador_cena.get_cena_atual())
         label = self.font.render(texto_2, 1, self.font_color)
         self.jogo.screen.blit(label, (self.margem_x, self.margem_y + self.espacamento_linhas))
         # lista de janelas para renderizar

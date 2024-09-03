@@ -3,9 +3,9 @@
 import pygame
 
 class Janela:
-    def __init__(self,jogo, x, y, largura, altura, ativa=False, texto="", cor=(255, 255, 170)):
+    def __init__(self, x, y, largura, altura, ativa=False, texto="", cor=(255, 255, 170)):
         print("iniciou classe Janela")
-        self.jogo = jogo
+        # self.jogo = jogo
         self.x = x
         self.y = y
         self.largura = largura
@@ -18,15 +18,22 @@ class Janela:
         self.texto = texto
         pass
 
-    def draw(self):
+    def ativar(self):
+        self.ativa = True
+        pass
+    def desativar(self):
+        self.ativa = False
+        pass
+
+    def draw(self, jogo):
         #desenha um retangulo na janela
-        pygame.draw.rect(self.jogo.screen, self.cor, (self.x, self.y, self.largura, self.altura))
+        pygame.draw.rect(jogo.screen, self.cor, (self.x, self.y, self.largura, self.altura))
 
         if self.texto != "":
             #desenha um texto na janela
-            label = self.jogo.font.render(self.texto, 1, (0, 0, 0))
+            label = jogo.font.render(self.texto, 1, (0, 0, 0))
             margemx = self.largura/2 - label.get_width()/2
             margemy = self.altura/2 - label.get_height()/2
-            self.jogo.screen.blit(label, (self.x+margemx, self.y+margemy))
+            jogo.screen.blit(label, (self.x+margemx, self.y+margemy))
         
         pass

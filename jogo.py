@@ -5,6 +5,8 @@ from renderer import Renderer
 from opcoes import Opcoes
 from texto import Texto
 from janelas import Janela
+from cena import GerenciadorCena
+from roteiro import Roteiro
 
 class Jogo:
     def __init__(self, width=800, height=600):
@@ -27,24 +29,14 @@ class Jogo:
         self.controle = Controle()
         self.recursos = Recursos()
         self.renderer = Renderer(self)
-
-
-        # Janela Principal
-        self.janela_principal = Janela(self, 30, 70, 480, 320, ativa=True, texto="", cor=(0, 0, 0))
+        # self.roteiro = Roteiro() #colocando dentro do Gerenciador Cena
+        # Cena
+        self.gerenciador_cena = GerenciadorCena(self)
+        self.gerenciador_cena.carregar_cena(0)
+        self.gerenciador_cena.ativar_cena_atual()
         
-        self.texto = Texto(self)
-
-        self.opcoes = Opcoes(self)
-        self.opcoes.adicionar_opcao("oi, blz?",0)
-        self.opcoes.adicionar_opcao("oioioi, blz??",0)
-        self.opcoes.adicionar_opcao("oi, blz?????????????????????????",0)
-        self.opcoes.adicionar_opcao("atacar!!!!!!!!!!!!!!!!!!!!!!!",0)
-        
-        
-
-        #roteiro
-        #cena
-        #player
+        # player    
+    
         #animação #implementar depois
         #
         
@@ -75,9 +67,10 @@ class Jogo:
         self.screen.fill(self.renderer.cor_neutra)  # Preenche a tela com a cor cinza
         self.renderer.desenhar_bg()
         # ---
-        self.janela_principal.draw()
-        self.texto.draw()
-        self.opcoes.draw()
+        self.gerenciador_cena.draw(self)
+        # self.janela_principal.draw(self)
+        # self.texto.draw(self)
+        # self.opcoes.draw(self)
         #----
         self.renderer.desenhar_hud()
         
