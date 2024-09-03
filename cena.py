@@ -63,7 +63,7 @@ class GerenciadorCena:
             return self.cena_atual.get_cena_id()
     def ativar_cena_atual(self):
         if self.cena_atual:
-            print("ativou a cena")
+            print("Ativou a cena!")
             self.cena_atual.get_janela_principal().ativar()
             self.cena_atual.get_texto().ativar()
             self.cena_atual.get_opcoes().ativar()

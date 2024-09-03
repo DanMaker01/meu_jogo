@@ -29,7 +29,6 @@ class Opcoes:
             _altura = alt/len(self.opcoes) - margem_y
             _texto = self.opcoes[i][0]
             _cor = (255,255,255)
-            print(_x,_y,_largura,_altura, _texto)
             self.opcoes_janelas.append(Janela(_x,_y,_largura,_altura, texto=_texto, cor=_cor))
 
         self.opcao_selecionada = 0

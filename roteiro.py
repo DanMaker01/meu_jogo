@@ -43,8 +43,8 @@ class Roteiro:
     
     def gerar_roteiro(self, nome_arquivo):
         self.roteiro_organizado = self.processar_texto(self.importar_arquivo(nome_arquivo))
-        print(self.roteiro_organizado[0])
-        print(self.roteiro_organizado[1])
+        for linha in self.roteiro_organizado:
+            print("linha",self.roteiro_organizado.index(linha),":",linha)
         pass
 
     def get_cena(self, id_cena):
