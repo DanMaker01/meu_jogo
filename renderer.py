@@ -34,7 +34,6 @@ class Renderer:
 
 
     def desenhar_hud(self):
-        # 
         texto_1 = "FPS: "+str(self.jogo.clock.get_fps())
         label = self.font.render(texto_1, 1, self.font_color)
         self.jogo.screen.blit(label, (self.margem_x, self.margem_y))
@@ -42,6 +41,12 @@ class Renderer:
         texto_2 = "cena: "+str(self.jogo.gerenciador_cena.get_cena_atual_id())
         label = self.font.render(texto_2, 1, self.font_color)
         self.jogo.screen.blit(label, (self.margem_x, self.margem_y + self.espacamento_linhas))
-        # lista de janelas para renderizar
-        
+        # texto3
+        texto_3 = "qtd_opcoes "+str(self.jogo.gerenciador_cena.get_opcoes_qtd())
+        label = self.font.render(texto_3, 1, self.font_color)
+        self.jogo.screen.blit(label, (self.margem_x, self.margem_y + self.espacamento_linhas*2))
+        #texto4
+        texto_4 = "opcao_selecionada "+str(self.jogo.gerenciador_cena.get_opcao_selecionada())
+        label = self.font.render(texto_4, 1, self.font_color)
+        self.jogo.screen.blit(label, (self.margem_x, self.margem_y + self.espacamento_linhas*3))
         pass

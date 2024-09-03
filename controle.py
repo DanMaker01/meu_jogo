@@ -25,18 +25,18 @@ class Controle:
         for tecla in self.teclas_apertadas:
             lista_teclas.append(tecla)
         
-        if lista_teclas: # se houver algo na lista (de teclas apertados)
-            print("apertou:",lista_teclas)
-            result = self.verifica_teclas()
-            if result == 'confirma':
-                print("confirma")
-            elif result == 'acima':
-                print("acima")
-            elif result == 'abaixo':
-                print("abaixo")
+        # if lista_teclas: # se houver algo na lista (de teclas apertados)
+        #     # print("apertou:",lista_teclas)
+        #     result = self.verifica_teclas()
 
-
-            self.limpar_teclas_apertadas()
+        #     if result == 'confirma':
+        #         # print("confirma")
+        #     elif result == 'acima':
+        #         # print("acima")
+        #     elif result == 'abaixo':
+        #         # print("abaixo")
+        #     # self.limpar_teclas_apertadas() #precisa? implementar
+        pass
 
     def verifica_teclas(self):
         teclas_confirma = ['space', 'return','enter']

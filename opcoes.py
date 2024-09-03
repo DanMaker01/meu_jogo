@@ -20,18 +20,19 @@ class Opcoes:
         self.opcoes_janelas = []
         self.distancia_entre_opcoes = alt/len(self.opcoes)
 
+        margem_x = 2
+        margem_y = 2
         for i in range(len(self.opcoes)):
-            _x = pos_x
-            _y = pos_y + self.distancia_entre_opcoes*i
-            _largura = largura
-            _altura = alt/len(self.opcoes)
+            _x = pos_x+margem_x
+            _y = pos_y + self.distancia_entre_opcoes*i + 1/2 *margem_y
+            _largura = largura- 2*margem_x
+            _altura = alt/len(self.opcoes) - margem_y
             _texto = self.opcoes[i][0]
             _cor = (255,255,255)
             print(_x,_y,_largura,_altura, _texto)
             self.opcoes_janelas.append(Janela(_x,_y,_largura,_altura, texto=_texto, cor=_cor))
 
         self.opcao_selecionada = 0
-        self.opcao_escolhida = 0
         # self.janelas_opcoes = []
         pass
     
@@ -48,12 +49,14 @@ class Opcoes:
     def get_opcoes(self):
         return self.opcoes
 
+    def get_opcoes_qtd(self):
+        return len(self.opcoes)
 
     def set_opcao_escolhida(self, indice):
         self.opcao_escolhida = indice
         pass
-    def get_opcao_escolhida(self):
-        return self.opcao_escolhida
+    def get_opcao_selecionada(self):
+        return self.opcao_selecionada
 
     def selecionar_afrente(self):
         self.opcao_selecionada = (self.opcao_selecionada + 1) % len(self.opcoes)

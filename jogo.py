@@ -29,7 +29,6 @@ class Jogo:
         self.controle = Controle()
         self.recursos = Recursos()
         self.renderer = Renderer(self)
-        # self.roteiro = Roteiro() #colocando dentro do Gerenciador Cena
         # Cena
         cena_inicial = 1
         self.gerenciador_cena = GerenciadorCena(self)
@@ -37,9 +36,7 @@ class Jogo:
         self.gerenciador_cena.ativar_cena_atual()
         
         # player    
-    
         #animação #implementar depois
-        #
         
         # Coloca o Jogo no Estado: Rodando!
         self.running = True
@@ -67,12 +64,7 @@ class Jogo:
         # (...)
         self.screen.fill(self.renderer.cor_neutra)  # Preenche a tela com a cor cinza
         self.renderer.desenhar_bg()
-        # ---
         self.gerenciador_cena.draw(self)
-        # self.janela_principal.draw(self)
-        # self.texto.draw(self)
-        # self.opcoes.draw(self)
-        #----
         self.renderer.desenhar_hud()
         
         pygame.display.flip()
@@ -80,7 +72,9 @@ class Jogo:
 
     def update(self):
         self.controle.update() 
+        self.gerenciador_cena.update()
         #...
+        self.controle.limpar_teclas_apertadas()
         pass
 
     def run(self):

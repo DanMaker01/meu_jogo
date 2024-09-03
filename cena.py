@@ -47,6 +47,10 @@ class GerenciadorCena:
         self.possivel_interagir = False
         pass
     
+    def get_opcoes_qtd(self):
+        if self.cena_atual:
+            return self.cena_atual.get_opcoes().get_opcoes_qtd()
+        
     def carregar_cena(self, id_cena):
         #implementar
         cena_formato_lista = self.roteiro.get_cena(id_cena) #elementos [nome, texto, opcoes ]
@@ -60,33 +64,41 @@ class GerenciadorCena:
     def ativar_cena_atual(self):
         if self.cena_atual:
             print("ativou a cena")
-            self.ativar_janela_principal()
-            self.ativar_texto()
-            self.ativar_opcoes()
+            self.cena_atual.get_janela_principal().ativar()
+            self.cena_atual.get_texto().ativar()
+            self.cena_atual.get_opcoes().ativar()
             self.possivel_interagir = True
         
         pass
 
     def get_cena_atual(self):
         return self.cena_atual
-    def ativar_janela_principal(self):
-        if self.cena_atual:
-            print(self.cena_atual.get_janela_principal())
-            self.cena_atual.get_janela_principal().ativar()
-    def ativar_texto(self):
-        if self.cena_atual:
-            self.cena_atual.get_texto().ativar()
-    def ativar_opcoes(self):
-        if self.cena_atual:
-            self.cena_atual.get_opcoes().ativar()
+    
     def draw(self,jogo):
         if self.cena_atual:
             self.cena_atual.draw(jogo)
         else:
             print("não há cena ativa")
 
+    def get_opcao_selecionada(self):
+        if self.cena_atual:
+            return self.cena_atual.get_opcoes().get_opcao_selecionada()
+
     def update(self):
         if self.possivel_interagir:
+            acao_feita = self.jogo.controle.verifica_teclas()
+            if acao_feita == 'confirma':
+                print("CONFIRMA !")
+                opcao_selecionada = self.cena_atual.get_opcoes().get_opcao_selecionada()
+                opcoes = self.cena_atual.get_opcoes().get_opcoes()
+                print("opcao escolhida:", opcao_selecionada, "|| texto:", opcoes[opcao_selecionada][0], "direcao:", opcoes[opcao_selecionada][1])
+                
+            elif acao_feita == 'acima':
+                self.cena_atual.get_opcoes().selecionar_atras()
+            elif acao_feita == 'abaixo':
+                self.cena_atual.get_opcoes().selecionar_afrente()
+            else:
+                pass
+            # print("tecla apertada: ", tecla_apertada)
             
-            pass
         pass
