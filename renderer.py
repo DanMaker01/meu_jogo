@@ -23,8 +23,13 @@ class Renderer:
 
     
     def desenhar_imagem(self, indice_imagem, x, y):
+        # print("desenhar imagem", indice_imagem, x, y)
         imagem = self.jogo.recursos.get_img(indice_imagem)
-        self.jogo.screen.blit(imagem, (x, y), (0,0,imagem.get_width(),imagem.get_height()))
+        
+        if imagem:
+            self.jogo.screen.blit(imagem, (x, y), (0,0,imagem.get_width(),imagem.get_height()))
+        else:
+            print("imagem "+str(indice_imagem)+" não existe")
         pass    
 
     def desenhar_texto(self, texto, x, y):

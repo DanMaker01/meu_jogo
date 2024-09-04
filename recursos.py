@@ -7,7 +7,16 @@ class Recursos:
         print("iniciou classe Recursos")
         #carregar todas imagens
         self.imgs = []
-        lista_imgs_a_importar = ["bg.png","1.png"] # a imagem 0 é o BG, 
+        lista_imgs_a_importar = ["bg.png"] # a imagem 0 é o BG, 
+        #implementar
+
+        #carregar todas cenas numeradas
+        qtd_cenas = 13
+        for i in range(1,qtd_cenas+1):
+            lista_imgs_a_importar.append(str(i)+".png")
+        print(lista_imgs_a_importar)
+
+        #carregar tudo que estiver na lista_imgs_a_importar de uma vez só
         self.carregar_todas_imagens(lista_imgs_a_importar)
         
         ##audio #implementar depois

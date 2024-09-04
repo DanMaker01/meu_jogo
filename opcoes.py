@@ -37,7 +37,10 @@ class Opcoes:
     
     def ativar(self):
         self.janela.ativar()
-
+        pass
+    def desativar(self):
+        self.janela.desativar()
+        pass
     def adicionar_opcao(self, texto, direcao):
         self.opcoes.append([texto, direcao])
                 

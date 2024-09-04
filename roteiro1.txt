@@ -1,3 +1,14 @@
 nome@texto@op1:1@op2:2
-jao@oi, blz?@sim:2
-OAJ@zz1*9abcdefghijklm..!@haoduken:97@shoryuken:98@tatsumakisenpukyaku:99
+narrador@iniciar@sim!:2@não:1
+eu@vou atravessar a rua para trabalhar@ir pela faixa de pedestre:3
+eu@não tô vendo carro nenhum@atravessar:4
+eu@péra...@prestar mais atenção nos sons:10
+eu@ué, o carro sumiu. tô ficando doido?@dúvidas:7
+eu@eu jurava que tinha um carro vindo em alta velocidade, o que será que aconteceu?@devo estar cansado:8@será que morri?:8
+eu@...@:9
+eu@credo, vou só continuar.@só continuar:10
+eu@credo, vou só continuar.@só continuar:10
+eu@do nada um carro, está em alta velocidade mas está longe@correr e atravessar:6@voltar e esperar:11
+eu@só observo...@só observar:12
+eu@pensando bem até que não tava tão rápido@refletir sobre a física dos sólidos:13
+eu@...@terminar de pensar:2

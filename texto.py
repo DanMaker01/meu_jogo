@@ -22,3 +22,7 @@ class Texto:
     def ativar(self):
         self.janela.ativar()
         pass
+
+    def desativar(self):
+        self.janela.desativar()
+        pass
