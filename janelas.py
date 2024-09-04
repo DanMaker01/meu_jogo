@@ -4,7 +4,7 @@ import pygame
 
 class Janela:
     def __init__(self, x, y, largura, altura, ativa=False, texto="", cor=(255, 255, 170)):
-        print("iniciou classe Janela")
+        # print("iniciou classe Janela")
         # self.jogo = jogo
         self.x = x
         self.y = y
@@ -12,7 +12,7 @@ class Janela:
         self.altura = altura
         
         self.cor = cor
-        
+        self.cor_coriginal = cor
         self.ativa = ativa
 
         self.texto = texto
@@ -36,4 +36,11 @@ class Janela:
             margemy = self.altura/2 - label.get_height()/2
             jogo.screen.blit(label, (self.x+margemx, self.y+margemy))
         
+        pass
+
+    def set_cor(self, cor):
+        self.cor = cor
+        pass
+    def set_cor_original(self):
+        self.cor = self.cor_coriginal
         pass

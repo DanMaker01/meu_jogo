@@ -25,6 +25,8 @@ class Cena:
         return self.texto
     def get_opcoes(self):
         return self.opcoes
+    def get_nome_opcao(self, indice):
+        return self.opcoes.get_nome_opcao(indice)
 
     def draw(self,jogo):
         if self.janela_principal:

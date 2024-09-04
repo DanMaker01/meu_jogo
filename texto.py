@@ -1,4 +1,5 @@
 import janelas
+import jogo
 class Texto:
     def __init__(self,x,y,lar,alt, texto):
 
@@ -14,9 +15,9 @@ class Texto:
 
     def draw(self,jogo):
         self.janela.draw(jogo)
-        margem_x = 10
-        margem_y = 10
-        jogo.renderer.desenhar_texto(self.texto, self.x + margem_x, self.y + margem_y)
+        margem_x = 5
+        margem_y = 5
+        jogo.renderer.desenhar_texto(self.texto, self.x + margem_x, self.y + margem_y, 360-margem_x, 120-margem_y)
         pass
 
     def ativar(self):

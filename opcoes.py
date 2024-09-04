@@ -70,18 +70,25 @@ class Opcoes:
         self.opcao_selecionada = indice
         pass
     def draw(self, jogo):
-        # mostrar a opção selecionada bem chamativa
-        # #implementar
-        # (...)
-        self.janela.draw(jogo) #cor de fundo das opções 
-
         if self.visivel == True:
-            if self.opcoes:
-                for janela in self.opcoes_janelas:
+            self.janela.draw(jogo) #cor de fundo das opções 
+            
+            if self.opcoes: # se tiver alguma opcão
+                for janela in self.opcoes_janelas: # desenha cada opção
+                    #se é o indice da janela que está selecionada, desenha a opção em vermelho
+                    if self.opcao_selecionada == self.opcoes_janelas.index(janela):
+                        janela.set_cor((0,170,0))
+                    else:
+                        janela.set_cor_original()
                     janela.draw(jogo)
-                pass
-            pass
-        else:
+            else:
+                print("Nenhuma opção definida")
+        
+
+
+
+        else: #não está visível as opções
+    
             pass
 
     def update(self):

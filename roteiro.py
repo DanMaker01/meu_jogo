@@ -7,6 +7,7 @@ class Roteiro:
         self.local = ""
         self.roteiro_organizado = []
         self.gerar_roteiro('roteiro1.txt')
+        print(self.printar_roteiro_organizado())
         pass
 
     def get_endereco_completo(self, nome_arquivo):
@@ -58,3 +59,32 @@ class Roteiro:
             return self.roteiro_organizado
         else:
             print("não existe roteiro organizado")
+
+    def printar_roteiro_organizado(self, indice_atual=1, nivel=0, visitados=None):
+        if visitados is None:
+            visitados = set()
+
+        # Imprime o índice atual com a indentação correspondente ao nível
+        indentacao = "    " * nivel
+
+        # Verifica se o índice já foi visitado para identificar subloops
+        if indice_atual in visitados:
+            print(f"{indentacao}{indice_atual} (subloop detectado -> próximo: {indice_atual})")
+            return
+
+        print(f"{indentacao}{indice_atual}")
+
+        # Marca o índice atual como visitado
+        visitados.add(indice_atual)
+
+        # Obtenha as direções disponíveis no nó atual
+        linha_atual = self.roteiro_organizado[indice_atual]
+        direcoes_disponiveis = [opcao[1] for opcao in linha_atual[2]]
+
+        # Percorre recursivamente os filhos, se ainda não foram visitados
+        for proximo_indice in direcoes_disponiveis:
+            if proximo_indice in visitados:
+                print(f"{indentacao}    {proximo_indice} (subloop)")
+            else:
+                self.printar_roteiro_organizado(proximo_indice, nivel + 1, visitados.copy())
+    

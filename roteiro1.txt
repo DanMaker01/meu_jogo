@@ -1,14 +1,14 @@
-nome@texto@op1:1@op2:0
+nome@texto a 12 jas 1234 kasjd 123456 1234567 12345678 123456789 A BB CCC DDDD EEEEE FFFFFF 1 2 3 4 5 6 7 8 9 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa bbbbbbbbbbbbbbbbbbbbbbbbbbbbb ccccccccccccccccccccccccccccccccccccccccccccccccccccc ddddddddddddddddddddddddddddddddddddddddddddddddddddddddd eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee fffffffffffffffffffffffffffffff 1 2 3 4 5 6 7 8 9 0 a b c d e f g h i j k l m n o p q r s t u v w x y z@op1:1@op2:0
 narrador@iniciar@sim!:2@não:1
-eu@vou atravessar a rua para trabalhar@ir pela faixa de pedestre:3
-eu@não tô vendo carro nenhum@atravessar:4
-eu@péra...@prestar mais atenção nos sons:10
+eu@tô atrasado denovo pro trabalho, todo dia a mesma coisa.@ir para a faixa de pedestre:3
+eu@até que tá tranquilo, não tô vendo carro nenhum.@atravessar:4@esperar:3
+eu@...péra...@prestar mais atenção nos sons:10
 eu@ué, o carro sumiu. tô ficando doido?@dúvidas:7
-eu@eu jurava que tinha um carro vindo em alta velocidade, o que será que aconteceu?@devo estar cansado:8@será que morri?:9
-eu@...@:9
-eu@credo, vou só continuar1.@só continuar:2
-eu@credo, vou só continuar2.@só continuar:2
-eu@do nada um carro, está em alta velocidade mas está longe@correr e atravessar:6@voltar e esperar:11
+eu@eu jurava que tinha um carro vindo em alta velocidade, o que será que aconteceu?@devo estar cansado:7@será que morri?:8
+eu@pronto, próxima coisa...@:1
+eu@bom, parece que foi só imaginação mesmo.@só continuar:9
+eu@credo, vou só continuar.@só continuar:1
+eu@do nada um carro! está em alta velocidade mas está longe.@correr e atravessar:6@voltar e esperar:11
 eu@só observo...@só observar:12
-eu@pensando bem até que não tava tão rápido@refletir sobre a física dos sólidos:13
-eu@...@terminar de pensar:3
+eu@pensando bem até que não tava tão rápido.@refletir sobre a física dos sólidos:13
+eu@pronto, vamos tentar denovo@terminar de pensar:3
