@@ -35,8 +35,8 @@ class Jogo:
         self.gerenciador_cena.carregar_cena(cena_inicial)
         self.gerenciador_cena.ativar_cena_atual()
         
-        # player    
-        #animação #implementar depois
+        # player    #player tem os modificadores?
+        #animação-renderer #implementar depois
         
         # Coloca o Jogo no Estado: Rodando!
         self.running = True

@@ -53,6 +53,7 @@ class GerenciadorCena:
         
     def carregar_cena(self, id_cena):
         #implementar
+        print("carregando cena:", id_cena)
         cena_formato_lista = self.roteiro.get_cena(id_cena) #elementos [nome, texto, opcoes ]
         cena_formato_lista.append(id_cena)                  #elementos [nome, texto, opcoes, id_img]
         self.cena_atual = Cena(cena_formato_lista)
