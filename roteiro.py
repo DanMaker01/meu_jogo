@@ -2,12 +2,13 @@ from typing import Any
 
 
 class Roteiro:
-    def __init__(self):
+    def __init__(self, jogo):
         print("Iniciou classe Roteiro")
+        self.jogo = jogo
         self.local = ""
         self.roteiro_organizado = []
         self.gerar_roteiro('roteiro1.txt')
-        print(self.printar_roteiro_organizado())
+        # print(self.printar_roteiro_organizado())
         pass
 
     def get_endereco_completo(self, nome_arquivo):
@@ -60,6 +61,7 @@ class Roteiro:
         else:
             print("não existe roteiro organizado")
 
+    #implementar outro tipo de visualização
     def printar_roteiro_organizado(self, indice_atual=1, nivel=0, visitados=None):
         if visitados is None:
             visitados = set()
@@ -87,4 +89,5 @@ class Roteiro:
                 print(f"{indentacao}    {proximo_indice} (subloop)")
             else:
                 self.printar_roteiro_organizado(proximo_indice, nivel + 1, visitados.copy())
+    
     

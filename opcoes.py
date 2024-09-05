@@ -74,12 +74,16 @@ class Opcoes:
             self.janela.draw(jogo) #cor de fundo das opções 
             
             if self.opcoes: # se tiver alguma opcão
-                for janela in self.opcoes_janelas: # desenha cada opção
-                    #se é o indice da janela que está selecionada, desenha a opção em vermelho
+                for janela in self.opcoes_janelas: # desenha cada janela de opção
+                    #se é o indice da janela que está selecionada, desenha a opção em verde
                     if self.opcao_selecionada == self.opcoes_janelas.index(janela):
                         janela.set_cor((0,170,0))
                     else:
                         janela.set_cor_original()
+
+                    #se o texto da janela estiver vazio, coloca '>>'
+                    if janela.get_texto() == "":
+                        janela.set_texto(">>")
                     janela.draw(jogo)
             else:
                 print("Nenhuma opção definida")

@@ -5,7 +5,7 @@ eu@até que tá tranquilo, não tô vendo carro nenhum.@atravessar:4@esperar:3
 eu@...péra...@prestar mais atenção nos sons:10
 eu@ué, o carro sumiu. tô ficando doido?@dúvidas:7
 eu@eu jurava que tinha um carro vindo em alta velocidade, o que será que aconteceu?@devo estar cansado:7@será que morri?:8
-eu@pronto, próxima coisa...@:1
+eu@pronto, próxima coisa...@:8
 eu@bom, parece que foi só imaginação mesmo.@só continuar:9
 eu@credo, vou só continuar.@só continuar:1
 eu@do nada um carro! está em alta velocidade mas está longe.@correr e atravessar:6@voltar e esperar:11

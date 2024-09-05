@@ -44,3 +44,8 @@ class Janela:
     def set_cor_original(self):
         self.cor = self.cor_coriginal
         pass
+    def set_texto(self, texto):
+        self.texto = texto
+        pass
+    def get_texto(self):
+        return self.texto

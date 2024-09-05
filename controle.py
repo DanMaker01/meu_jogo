@@ -42,7 +42,9 @@ class Controle:
         teclas_confirma = ['space', 'return','enter']
         teclas_acima = ['up', 'w']
         teclas_abaixo = ['down', 's']
-        
+        teclas_salvar = ['f1']
+        teclas_carregar = ['f2']
+
         for tecla in self.teclas_apertadas:
 
             if tecla in teclas_confirma:
@@ -51,5 +53,9 @@ class Controle:
                 return 'acima'
             elif tecla in teclas_abaixo:
                 return 'abaixo'
+            elif tecla in teclas_salvar:
+                return 'salvar'
+            elif tecla in teclas_carregar:
+                return 'carregar'
             else:
                 return 'nenhum'

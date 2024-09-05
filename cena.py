@@ -3,6 +3,7 @@ from roteiro import Roteiro
 from janelas import Janela
 from texto import Texto
 from opcoes import Opcoes
+from historico import Historico
 
 class Cena:
     def __init__(self,  cena_formato_lista):
@@ -41,7 +42,8 @@ class Cena:
 
 class GerenciadorCena:
     def __init__(self, jogo):
-        self.roteiro = Roteiro()
+        self.roteiro = Roteiro(jogo)
+        self.historico = Historico()
         self.jogo = jogo
         
         self.cena_atual = None
@@ -52,10 +54,15 @@ class GerenciadorCena:
     def get_opcoes_qtd(self):
         if self.cena_atual:
             return self.cena_atual.get_opcoes().get_opcoes_qtd()
-        
+
     def carregar_cena(self, id_cena):
         #implementar
-        print("carregando cena:", id_cena)
+        # print("carregando cena:", id_cena)
+        if self.historico.get_ultima_cena() == id_cena:
+            pass
+        else:
+            self.historico.adicionar(id_cena) #adiciona na lista do historico
+
         cena_formato_lista = self.roteiro.get_cena(id_cena) #elementos [nome, texto, opcoes ]
         cena_formato_lista.append(id_cena)                  #elementos [nome, texto, opcoes, id_img]
         self.cena_atual = Cena(cena_formato_lista)
@@ -119,6 +126,10 @@ class GerenciadorCena:
                 self.cena_atual.get_opcoes().selecionar_atras()
             elif acao_feita == 'abaixo':
                 self.cena_atual.get_opcoes().selecionar_afrente()
+            elif acao_feita == 'salvar':
+                self.historico.salvar()
+            elif acao_feita == 'carregar':
+                self.historico.carregar()
             else:
                 #não apertou nada, só continua o loop...
                 pass

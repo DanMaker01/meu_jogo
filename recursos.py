@@ -11,13 +11,17 @@ class Recursos:
         #implementar
 
         #carregar todas cenas numeradas
+               
+
+
+        #jeito A
         qtd_cenas = 13
         for i in range(1,qtd_cenas+1):
             lista_imgs_a_importar.append(str(i)+".png")
-        print(lista_imgs_a_importar)
+        print("importar:",lista_imgs_a_importar, "TAM:",len(lista_imgs_a_importar))
 
         #carregar tudo que estiver na lista_imgs_a_importar de uma vez só
-        self.carregar_todas_imagens(lista_imgs_a_importar)
+        self.carregar_todas_imagens(lista_imgs_a_importar,)
         
         ##audio #implementar depois
         # pygame.mixer.init()
@@ -30,7 +34,11 @@ class Recursos:
     def carregar_todas_imagens(self, lista_a_importar):
         for string_img in lista_a_importar:
             self.imgs.append([string_img,self.scale_image(self.load_image(string_img),1.0)])
-            print("carregou imagem:",string_img)
+            if self.imgs[-1][1] is None:
+                print("erro ao carregar imagem:",string_img)
+            else:
+                pass
+                # print("carregou imagem:",string_img)
         print(len(self.imgs),"imagens carregados.")
         pass
     @staticmethod

@@ -30,10 +30,12 @@ class Jogo:
         self.recursos = Recursos()
         self.renderer = Renderer(self)
         # Cena
-        cena_inicial = 1
         self.gerenciador_cena = GerenciadorCena(self)
-        self.gerenciador_cena.carregar_cena(cena_inicial)
+        self.gerenciador_cena.historico.carregar()
+        ultima_cena_carregada_id = self.gerenciador_cena.historico.get_ultima_cena()
+        self.gerenciador_cena.carregar_cena(ultima_cena_carregada_id)
         self.gerenciador_cena.ativar_cena_atual()
+
         
         # player    #player tem os modificadores?
         #animação-renderer #implementar depois
