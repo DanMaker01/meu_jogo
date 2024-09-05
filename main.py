@@ -10,7 +10,7 @@
 #       texto alinhado à direita 120x160 (160 ou mais)
 #       opções alinhadas a direita 120x160 (160 ou menos)
 #
-# - fazer aparecer em ordem, janela_princpal, texto, opcoes e liberar interação
+# - fazer aparecer em ordem, janela_princpal, texto, opcoes e liberar interação @@@@@@@@
 #
 # - dividir melhor as classes e funções
 #
@@ -20,9 +20,13 @@
 #       caso você receba um modificador ele é adicionado na lista, com multiplicidade
 #       caso você receba novamente algum modificador só é acrescido seu numero no inventário
 #  
-# - completar uma história de 20 cenas
+# - completar uma história de 30 cenas
 #
-# - completar um dia (ciclo de 8 atividades)
+# - completar duas histórias de 30 cenas
+#
+# - completar três histórias de 30 cenas
+#
+# - completar um dia (ciclo de 4 atividades)
 # 
 # - fazer história usando a repetição de cenas dos dias, sentimento de repetição, monotonia 
 #
