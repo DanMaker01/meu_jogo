@@ -10,8 +10,6 @@
 #       texto alinhado à direita 120x160 (160 ou mais)
 #       opções alinhadas a direita 120x160 (160 ou menos)
 #
-# - adicionar sistema de guardar histórico, arvore de cenas, save e load
-#
 # - fazer aparecer em ordem, janela_princpal, texto, opcoes e liberar interação
 #
 # - dividir melhor as classes e funções
