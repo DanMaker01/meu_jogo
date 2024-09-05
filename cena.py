@@ -45,78 +45,48 @@ class GerenciadorCena:
         self.roteiro = Roteiro(jogo)
         self.historico = Historico()
         self.jogo = jogo
-        
         self.cena_atual = None
-
         self.possivel_interagir = False
-        pass
-    
+
     def get_opcoes_qtd(self):
-        if self.cena_atual:
-            return self.cena_atual.get_opcoes().get_opcoes_qtd()
+        return self.cena_atual.get_opcoes().get_opcoes_qtd() if self.cena_atual else 0
 
     def carregar_cena(self, id_cena):
-        #implementar
-        # print("carregando cena:", id_cena)
-        if self.historico.get_ultima_cena() == id_cena:
-            pass
-        else:
-            self.historico.adicionar(id_cena) #adiciona na lista do historico
-
-        cena_formato_lista = self.roteiro.get_cena(id_cena) #elementos [nome, texto, opcoes ]
-        cena_formato_lista.append(id_cena)                  #elementos [nome, texto, opcoes, id_img]
-        self.cena_atual = Cena(cena_formato_lista)
-        pass
+        if self.historico.get_ultima_cena() != id_cena:
+            self.historico.adicionar(id_cena)
+        self.cena_atual = Cena(self.roteiro.get_cena(id_cena) + [id_cena])
 
     def get_cena_atual_id(self):
-        if self.cena_atual:
-            return self.cena_atual.get_cena_id()
+        return self.cena_atual.get_cena_id() if self.cena_atual else None
+
     def ativar_cena_atual(self):
-        if self.cena_atual:
-            print("Ativou a cena!")
-            self.cena_atual.get_janela_principal().ativar()
-            self.cena_atual.get_texto().ativar()
-            self.cena_atual.get_opcoes().ativar()
-            self.ativar_interacao()
-        pass
-    def desativar_cena(self):
-        if self.cena_atual:
-            self.cena_atual.get_janela_principal().desativar()
-            self.cena_atual.get_texto().desativar()
-            self.cena_atual.get_opcoes().desativar()
-            self.possivel_interagir = False
-            pass
-        else:
-            print("Nenhuma cena está ativa para ser desativada")
-    def desativar_interacao(self):
-        self.possivel_interagir = False
-        pass
-    def ativar_interacao(self):
+        self.cena_atual.get_janela_principal().ativar()
+        self.cena_atual.get_texto().ativar()
+        self.cena_atual.get_opcoes().ativar()
         self.possivel_interagir = True
-        pass
+
+    def desativar_cena(self):
+        self.cena_atual.get_janela_principal().desativar()
+        self.cena_atual.get_texto().desativar()
+        self.cena_atual.get_opcoes().desativar()
+        self.possivel_interagir = False
+
     def get_cena_atual(self):
         return self.cena_atual
-    
-    def draw(self,jogo):
-        if self.cena_atual:
-            self.cena_atual.draw(jogo)
-        else:
-            print("não há cena ativa")
+
+    def draw(self, jogo):
+        self.cena_atual.draw(jogo) if self.cena_atual else print("não há cena ativa")
 
     def get_opcao_selecionada(self):
-        if self.cena_atual:
-            return self.cena_atual.get_opcoes().get_opcao_selecionada()
+        return self.cena_atual.get_opcoes().get_opcao_selecionada() if self.cena_atual else None
 
     def confirmar_opcao(self):
         print("CONFIRMA !")
-        opcao_selecionada = self.cena_atual.get_opcoes().get_opcao_selecionada()
+        opcao_selecionada = self.get_opcao_selecionada()
         opcoes = self.cena_atual.get_opcoes().get_opcoes()
         direcao_a_ir = opcoes[opcao_selecionada][1]
         self.carregar_cena(direcao_a_ir)
-        # print("opcao escolhida:", opcao_selecionada)
-        # print("texto:", opcoes[opcao_selecionada][0])
-        # print("direcao:", opcoes[opcao_selecionada][1])
-                
+
     def update(self):
         if self.possivel_interagir:
             acao_feita = self.jogo.controle.verifica_teclas()
@@ -130,8 +100,6 @@ class GerenciadorCena:
                 self.historico.salvar()
             elif acao_feita == 'carregar':
                 self.historico.carregar()
-            else:
-                #não apertou nada, só continua o loop...
-                pass
-            
+                self.carregar_cena(self.historico.get_ultima_cena())
         pass
+

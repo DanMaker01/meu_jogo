@@ -31,9 +31,7 @@ class Jogo:
         self.renderer = Renderer(self)
         # Cena
         self.gerenciador_cena = GerenciadorCena(self)
-        self.gerenciador_cena.historico.carregar()
-        ultima_cena_carregada_id = self.gerenciador_cena.historico.get_ultima_cena()
-        self.gerenciador_cena.carregar_cena(ultima_cena_carregada_id)
+        self.gerenciador_cena.carregar_cena(1)
         self.gerenciador_cena.ativar_cena_atual()
 
         
