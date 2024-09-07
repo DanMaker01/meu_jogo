@@ -35,6 +35,12 @@ class Opcoes:
         # self.janelas_opcoes = []
         pass
     
+    def iluminar(self, tempo_milisegundos= 200):
+        self.janela.iluminar(tempo_milisegundos)
+
+        for i in range(len(self.opcoes_janelas)):
+            self.opcoes_janelas[i].iluminar(tempo_milisegundos)
+        pass
     def ativar(self):
         self.janela.ativar()
         pass
@@ -96,6 +102,11 @@ class Opcoes:
             pass
 
     def update(self):
-
+        if self.janela:
+            self.janela.update()
+        
+        for opcoes in self.opcoes_janelas:
+            opcoes.update()
+            
         pass
     

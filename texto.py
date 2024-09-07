@@ -19,11 +19,17 @@ class Texto:
         margem_y = 5
         jogo.renderer.desenhar_texto(self.texto, self.x + margem_x, self.y + margem_y, 360-margem_x, 120-margem_y)
         pass
-
+    def update(self):
+        if self.janela:
+            self.janela.update()
     def ativar(self):
         self.janela.ativar()
         pass
 
     def desativar(self):
         self.janela.desativar()
+        pass
+
+    def iluminar(self, tempo_milisegundos= 200):
+        self.janela.iluminar(tempo_milisegundos)
         pass

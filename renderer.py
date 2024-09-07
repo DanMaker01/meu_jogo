@@ -112,7 +112,11 @@ class Renderer:
         self.jogo.screen.blit(label, (self.margem_x, self.margem_y + self.espacamento_linhas*2))
         
         #texto4
-        
+        #adicione o texto estático "F1 - salvar. F2 - carregar."
+    
+        texto_4 = "F1 - salvar. F2 - carregar."
+        label = self.font.render(texto_4, 1, self.font_color)
+        self.jogo.screen.blit(label, (self.margem_x, self.margem_y + self.espacamento_linhas*3))
 
         
         pass

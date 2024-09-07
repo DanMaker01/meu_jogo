@@ -16,18 +16,33 @@ class Janela:
         self.ativa = ativa
 
         self.texto = texto
+
+        self.luz = 0.0 ###  [0,1]
+        self.flag_ativa_luz = 0
+        self.luz_incremento = 0
         pass
 
+    def iluminar(self, tempo_milisegundos= 200):
+        self.flag_ativa_luz = tempo_milisegundos
+        self.luz_incremento = 1/tempo_milisegundos
+        pass
+    
     def ativar(self):
         self.ativa = True
         pass
     def desativar(self):
         self.ativa = False
+        
         pass
 
     def draw(self, jogo):
         #desenha um retangulo na janela
-        pygame.draw.rect(jogo.screen, self.cor, (self.x, self.y, self.largura, self.altura))
+        cor = (self.luz* self.cor[0],  self.luz*  self.cor[1],  self.luz*  self.cor[2])
+
+        if self.ativa:
+            pygame.draw.rect(jogo.screen, cor, (self.x, self.y, self.largura, self.altura))
+
+        
 
         if self.texto != "":
             #desenha um texto na janela
@@ -35,12 +50,21 @@ class Janela:
             margemx = self.largura/2 - label.get_width()/2
             margemy = self.altura/2 - label.get_height()/2
             jogo.screen.blit(label, (self.x+margemx, self.y+margemy))
-        
+    
+        pass
+
+    def update(self):
+        if self.flag_ativa_luz > 0:
+            self.flag_ativa_luz -= 1
+            self.luz = min(1, self.luz + self.luz_incremento)
+            # print(self.luz, self.cor)
         pass
 
     def set_cor(self, cor):
         self.cor = cor
         pass
+    def get_cor(self):
+        return self.cor
     def set_cor_original(self):
         self.cor = self.cor_coriginal
         pass
