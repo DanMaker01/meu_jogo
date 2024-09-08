@@ -29,18 +29,13 @@ class Opcoes:
             _altura = alt/len(self.opcoes) - margem_y
             _texto = self.opcoes[i][0]
             _cor = (255,255,255)
-            self.opcoes_janelas.append(Janela(_x,_y,_largura,_altura, texto=_texto, cor=_cor))
+            self.opcoes_janelas.append(Janela(_x,_y,_largura,_altura,ativa=True,texto=_texto, cor=_cor))
 
         self.opcao_selecionada = 0
         # self.janelas_opcoes = []
         pass
     
-    def iluminar(self, tempo_milisegundos= 200):
-        self.janela.iluminar(tempo_milisegundos)
 
-        for i in range(len(self.opcoes_janelas)):
-            self.opcoes_janelas[i].iluminar(tempo_milisegundos)
-        pass
     def ativar(self):
         self.janela.ativar()
         pass

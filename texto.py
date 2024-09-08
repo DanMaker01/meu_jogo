@@ -29,7 +29,3 @@ class Texto:
     def desativar(self):
         self.janela.desativar()
         pass
-
-    def iluminar(self, tempo_milisegundos= 200):
-        self.janela.iluminar(tempo_milisegundos)
-        pass

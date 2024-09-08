@@ -31,12 +31,10 @@ class Cena:
     def get_nome_opcao(self, indice):
         return self.opcoes.get_nome_opcao(indice)
 
-    def draw(self,jogo):
+    def draw(self,jogo):# implementar img
         if self.janela_principal:
-            self.janela_principal.draw(jogo)
-            if self.janela_principal.luz == 1.0:
-                jogo.renderer.desenhar_imagem(self.imagem_id, self.janela_principal.x, self.janela_principal.y)
-            
+            self.janela_principal.draw(jogo)      
+            jogo.renderer.desenhar_imagem(self.imagem_id, self.janela_principal.x, self.janela_principal.y)
         if self.texto:
             self.texto.draw(jogo)
         if self.opcoes:
@@ -62,12 +60,6 @@ class GerenciadorCena:
         self.possivel_interagir = False
 
 
-        self.flag_ativar_janela_principal = 0
-        self.flag_desativar_janela_principal = 0
-        self.flag_ativar_texto = 0
-        self.flag_desativar_texto = 0
-        self.flag_ativar_opcoes = 0
-        self.flag_desativar_opcoes = 0
 
 
     def get_opcoes_qtd(self):
@@ -77,37 +69,15 @@ class GerenciadorCena:
         if self.historico.get_ultima_cena() != id_cena:
             self.historico.adicionar(id_cena)
         self.cena_atual = Cena(self.roteiro.get_cena(id_cena) + [id_cena])
+        
 
     def get_cena_atual_id(self):
         return self.cena_atual.get_cena_id() if self.cena_atual else None
 
-    def ativar_janela_principal(self, timer_milissegundos=200):
-        self.flag_ativar_janela_principal = timer_milissegundos
-        pass
-    def desativar_janela_principal(self, timer_milissegundos=200):
-        self.flag_desativar_janela_principal = timer_milissegundos
-        pass
-
-    def ativar_texto(self, timer_milissegundos=200):
-        self.flag_ativar_texto = timer_milissegundos
-        pass
-    def desativar_texto(self, timer_milissegundos=200):
-        self.flag_desativar_texto = timer_milissegundos
-        pass
-
-    def ativar_opcoes(self, timer_milissegundos=200):
-        self.flag_ativar_opcoes = timer_milissegundos
-        pass
-    def desativar_opcoes(self, timer_milissegundos=200):
-        self.flag_desativar_opcoes = timer_milissegundos
-        pass
     def ativar_cena_atual(self):### implementar
-        self.ativar_janela_principal(1)
-        self.ativar_texto(1)
-        self.ativar_opcoes(1)
-        # self.cena_atual.get_janela_principal().ativar()
-        # self.cena_atual.get_texto().ativar()
-        # self.cena_atual.get_opcoes().ativar()
+        self.cena_atual.get_janela_principal().ativar()
+        self.cena_atual.get_texto().ativar()
+        self.cena_atual.get_opcoes().ativar()
         self.possivel_interagir = True
 
     def desativar_cena(self):
@@ -131,6 +101,7 @@ class GerenciadorCena:
         direcao_a_ir = opcoes[opcao_selecionada][1]
         print("CONFIRMA ! direção:", direcao_a_ir)
         self.carregar_cena(direcao_a_ir)
+        self.ativar_cena_atual()
 
     def update(self):
         if self.possivel_interagir:
@@ -148,44 +119,6 @@ class GerenciadorCena:
                 self.carregar_cena(self.historico.get_ultima_cena())
 
 
-        # ativar e desativar janelas, texto e opções com timer
-
-        if self.flag_ativar_janela_principal > 0:
-            self.flag_ativar_janela_principal -= 1
-            if self.flag_ativar_janela_principal <= 0:
-                print("ativou janela principal")
-                self.cena_atual.get_janela_principal().ativar()
-                self.cena_atual.get_janela_principal().iluminar(50)
-
-        if self.flag_desativar_janela_principal > 0:
-            self.flag_desativar_janela_principal -= 1
-            if self.flag_desativar_janela_principal <= 0:
-                self.cena_atual.get_janela_principal().desativar()
-
-        if self.flag_ativar_texto > 0:
-            
-            self.flag_ativar_texto -= 1
-            if self.flag_ativar_texto <= 0:
-                print("ativou texto")
-                self.cena_atual.get_texto().ativar()
-                self.cena_atual.get_texto().iluminar(60)
-
-        if self.flag_desativar_texto > 0:
-            self.flag_desativar_texto -= 1
-            if self.flag_desativar_texto <= 0:
-                self.cena_atual.get_texto().desativar()
-
-        if self.flag_ativar_opcoes > 0:
-            self.flag_ativar_opcoes -= 1
-            if self.flag_ativar_opcoes <= 0:
-                print("ativou opcoes")
-                self.cena_atual.get_opcoes().ativar()
-                self.cena_atual.get_opcoes().iluminar(70)
-
-        if self.flag_desativar_opcoes > 0:
-            self.flag_desativar_opcoes -= 1
-            if self.flag_desativar_opcoes <= 0:
-                self.cena_atual.get_opcoes().desativar()
 
 
         if self.cena_atual:
