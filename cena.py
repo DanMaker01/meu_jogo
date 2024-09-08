@@ -75,9 +75,11 @@ class GerenciadorCena:
         return self.cena_atual.get_cena_id() if self.cena_atual else None
 
     def ativar_cena_atual(self):### implementar
-        self.cena_atual.get_janela_principal().ativar()
-        self.cena_atual.get_texto().ativar()
-        self.cena_atual.get_opcoes().ativar()
+        
+        self.cena_atual.get_janela_principal().ativar(100)
+        self.cena_atual.get_texto().ativar(100)
+        self.cena_atual.get_opcoes().ativar(200)
+        
         self.possivel_interagir = True
 
     def desativar_cena(self):

@@ -29,15 +29,17 @@ class Opcoes:
             _altura = alt/len(self.opcoes) - margem_y
             _texto = self.opcoes[i][0]
             _cor = (255,255,255)
-            self.opcoes_janelas.append(Janela(_x,_y,_largura,_altura,ativa=True,texto=_texto, cor=_cor))
+            self.opcoes_janelas.append(Janela(_x,_y,_largura,_altura,texto=_texto, cor=_cor))
 
         self.opcao_selecionada = 0
         # self.janelas_opcoes = []
         pass
     
 
-    def ativar(self):
-        self.janela.ativar()
+    def ativar(self, duracao_fade=50):
+        self.janela.ativar(duracao_fade)
+        for i in range(len(self.opcoes_janelas)):
+            self.opcoes_janelas[i].ativar(duracao_fade+5*i)
         pass
     def desativar(self):
         self.janela.desativar()
@@ -71,7 +73,7 @@ class Opcoes:
         self.opcao_selecionada = indice
         pass
     def draw(self, jogo):
-        if self.visivel == True:
+        if self.janela.ativa == True:
             self.janela.draw(jogo) #cor de fundo das opções 
             
             if self.opcoes: # se tiver alguma opcão
@@ -100,8 +102,8 @@ class Opcoes:
         if self.janela:
             self.janela.update()
         
-        for opcoes in self.opcoes_janelas:
-            opcoes.update()
+        for janela_opcao in self.opcoes_janelas:
+            janela_opcao.update()
             
         pass
     

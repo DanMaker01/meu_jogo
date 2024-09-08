@@ -22,8 +22,8 @@ class Texto:
     def update(self):
         if self.janela:
             self.janela.update()
-    def ativar(self):
-        self.janela.ativar()
+    def ativar(self,duracao_fade=50):
+        self.janela.ativar(duracao_fade)
         pass
 
     def desativar(self):

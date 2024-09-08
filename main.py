@@ -10,7 +10,11 @@
 #       texto alinhado à direita 120x160 (160 ou mais)
 #       opções alinhadas a direita 120x160 (160 ou menos)
 #
-# - fazer aparecer em ordem, janela_princpal, texto, opcoes e liberar interação @@@@@@@@
+# - fazer aparecer em ordem, janela_princpal, texto, opcoes e liberar interação #implementar
+#
+# - controlar tempo, fade_in etc está ficando complicado
+#
+# - toda janela deveria comportar uma imagem? talvez precise implementar isso
 #
 # - dividir melhor as classes e funções
 #
