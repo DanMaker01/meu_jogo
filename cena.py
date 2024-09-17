@@ -7,27 +7,18 @@ class Cena:
     def __init__(self,  cena_formato_lista):
         self.cena_id = cena_formato_lista[3]
 
+        nome = cena_formato_lista[0]
         texto = cena_formato_lista[1]
         opcoes = cena_formato_lista[2]
         imagem_id = cena_formato_lista[3]
         
         self.palco = Palco(30,70,480,320, imagem_id)
-        self.texto = Texto(90,410,360,120, texto)
+        self.texto = Texto(70,440,400,120, texto, nome)
         self.opcoes = Opcoes(540,200,230,192, opcoes)
 
         # print("iniciou classe Cena, cena atual: ", self.cena_id)
         pass
 
-    def get_cena_id(self):
-        return self.cena_id
-    def get_palco(self):#mudando
-        return self.palco
-    def get_texto(self):
-        return self.texto
-    def get_opcoes(self):
-        return self.opcoes
-    def get_nome_opcao(self, indice):
-        return self.opcoes.get_nome_opcao(indice)
 
     def draw(self,jogo):# implementar classe que controla a janela principal e a imagem princiapal, PALCO
     
@@ -49,6 +40,16 @@ class Cena:
         pass
 
 
+    def get_cena_id(self):
+        return self.cena_id
+    def get_palco(self):#mudando
+        return self.palco
+    def get_texto(self):
+        return self.texto
+    def get_opcoes(self):
+        return self.opcoes
+    def get_nome_opcao(self, indice):
+        return self.opcoes.get_nome_opcao(indice)
 # ----------------------------------------------------------------------------------------------------------
 
 
@@ -107,7 +108,7 @@ class GerenciadorCena:
         self.carregar_cena(direcao_a_ir)
         self.ativar_cena_atual()
     def rotina_de_abertura(self):
-        sequencia_ativacoes = [0, 20, 100]  # Momentos para ativação dos elementos
+        sequencia_ativacoes = [0, 10, 80]  # Momentos para ativação dos elementos
         
         if self.frame_count == sequencia_ativacoes[0]:
             self.cena_atual.get_palco().ativar(0) #0 = instantaneo

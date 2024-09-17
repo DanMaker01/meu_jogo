@@ -3,15 +3,17 @@
 # tipos de modificadores:
 #   - booleanos
 #   - inteiros
-#
+#   - float?
+#   - percentual?
 
 
-# definição Modificador
 
 
 class GerenciadorMods:
     def __init__(self):
         self.dicionario_mod = {}
+
+        print("iniciou classe GerenciadorMods")
 
         pass
     
@@ -25,9 +27,11 @@ class GerenciadorMods:
     def zerar_mod(self, nome):
         self.dicionario_mod[nome] = 0
         pass
+    def remover_mod(self, nome):
+        self.dicionario_mod.pop(nome)
+        pass
     def get_mod(self, nome):
         return self.dicionario_mod[nome]
-    def print_mod(self):
+    def print_mods(self):
         print(self.dicionario_mod)
-    
-
+        pass

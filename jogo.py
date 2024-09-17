@@ -38,8 +38,20 @@ class Jogo:
         self.modificadores = GerenciadorMods()
         
         # player é onde tem os modificadores?
-        
-        
+        self.modificadores.print_mods()
+        self.modificadores.alterar_mod("batata",1)
+        self.modificadores.alterar_mod("qq",1/12)
+        self.modificadores.alterar_mod("ww",1/999)
+        self.modificadores.alterar_mod("menos",-1)
+        self.modificadores.alterar_mod("zero", 0)
+        self.modificadores.zerar_mod("qq")
+        self.modificadores.print_mods()
+        self.modificadores.remover_mod("ww")
+        self.modificadores.print_mods()
+        self.modificadores.alterar_mod("menos",-99)
+        self.modificadores.print_mods()
+        print(self.modificadores.get_mod("menos"))
+
         #animação-renderer #implementar depois
         
         # Cena
