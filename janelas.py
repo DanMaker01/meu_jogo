@@ -1,61 +1,71 @@
 import pygame
 
 class Janela:
-    def __init__(self, x, y, largura, altura, ativa=False, texto="", cor=(255, 255, 170)):
+    def __init__(self, x, y, largura, altura, ativa=False, texto="", cor=(200, 200, 200)):
         self.x = x
         self.y = y
         self.largura = largura
         self.altura = altura
-        self.ativa = ativa
-        self.cor_coriginal = cor
+        
         self.cor = cor
-        self.cor_intensidade = 0  # Começa com a janela invisível
-        self.fade_contador = 0
+        self.cor_coriginal = cor
+        self.ativa = ativa
         self.texto = texto
+        self.alpha = 0  # Transparência inicial (0 = totalmente transparente)
+        self.max_alpha = 255  # Transparência máxima (totalmente opaco)
+        self.fading_in = False  # Controle de fade-in
+        self.fade_speed = 0  # Velocidade do fade-in
 
-    def fade_in(self, duracao=50):
-        """Inicia o fade-in com uma duração específica."""
-        self.fade_contador = duracao  # Quantos frames o fade vai durar
-        self.cor_intensidade = 0  # Começa em 0 para o fade
+    def set_alpha(self, alpha):
+        self.alpha = alpha
 
-    def ativar(self,duracao_fade=50):
-        # self.ativa = True
-        self.fade_in(duracao_fade)
+    def ativar(self, duracao_fade=50, fps=1):
+        """
+        Ativa a janela e inicia o fade-in com base no valor de duracao_fade.
+        
+        :param duracao_fade: Duração do fade-in em segundos.
+        :param fps: Quadros por segundo do jogo (para calcular a velocidade de fade).
+        """
+        print("ativou janela: ", self.get_texto(), "\t duracao_fade:",duracao_fade )
+        self.ativa = True
+        self.fading_in = True  # Começar o fade-in
+        self.alpha = 0  # Iniciar com a janela totalmente transparente
+
+        # Calcula a velocidade do fade com base na duração desejada e na taxa de quadros (fps)
+        if duracao_fade == 0:
+            print("janela tem que abrir em 0 seg")
+            self.alpha = self.max_alpha
+            self.fading_in = False  # Finaliza o fade-in
+            self.ativa = True
+        else:
+            if duracao_fade < 1:
+                duracao_fade = 1
+            self.fade_speed = self.max_alpha / (duracao_fade * fps)
 
     def desativar(self):
         self.ativa = False
 
     def draw(self, jogo):
-        """Desenha a janela com a cor atual."""
-        cor = (
-            min(255, int(self.cor_intensidade * self.cor[0])),
-            min(255, int(self.cor_intensidade * self.cor[1])),
-            min(255, int(self.cor_intensidade * self.cor[2]))
-        )
+        if not self.ativa:
+            return
 
-        if self.ativa:
-            pygame.draw.rect(jogo.screen, cor, (self.x, self.y, self.largura, self.altura))
+        # Atualiza a cor com o valor de alfa (transparência)
+        cor_transparente = (*self.cor[:3], self.alpha)  # Mantém os valores RGB e adiciona alfa
+        
+        # Cria uma superfície com canal alfa
+        surface = pygame.Surface((self.largura, self.altura), pygame.SRCALPHA)
+        surface.fill(cor_transparente)  # Preenche a superfície com a cor e transparência
+        jogo.screen.blit(surface, (self.x, self.y))  # Desenha a superfície com transparência
 
         if self.texto != "":
+            # Desenha o texto no meio da janela
             label = jogo.font.render(self.texto, 1, (0, 0, 0))
             margemx = self.largura / 2 - label.get_width() / 2
             margemy = self.altura / 2 - label.get_height() / 2
             jogo.screen.blit(label, (self.x + margemx, self.y + margemy))
 
-    def update(self):
-        """Atualiza a janela, aplicando o efeito de fade-in."""
-        if self.fade_contador > 0:
-            self.fade_contador -= 1
-            # Aumenta a intensidade da cor gradualmente
-            if self.fade_contador > 0:
-                self.ativa = True
-                self.cor_intensidade = min(1, self.cor_intensidade + (1 / self.fade_contador))
-
     def set_cor(self, cor):
         self.cor = cor
-
-    def get_cor(self):
-        return self.cor
 
     def set_cor_original(self):
         self.cor = self.cor_coriginal
@@ -65,3 +75,12 @@ class Janela:
 
     def get_texto(self):
         return self.texto
+    
+    def update(self):
+        # Incrementa o alfa durante o fade-in
+        if self.fading_in and self.alpha < self.max_alpha:
+            self.alpha += self.fade_speed
+            if self.alpha >= self.max_alpha:
+                self.alpha = self.max_alpha
+                self.fading_in = False  # Finaliza o fade-in
+        pass

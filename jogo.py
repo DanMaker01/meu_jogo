@@ -96,3 +96,5 @@ class Jogo:
         
         # Encerra o Pygame ao sair do loop
         pygame.quit()
+
+    

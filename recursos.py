@@ -43,7 +43,7 @@ class Recursos:
         pass
     @staticmethod
     def load_image(nome,path="recursos/"):
-        return pygame.image.load(path+nome)
+        return pygame.image.load(path+nome).convert_alpha()
 
     @staticmethod
     def load_sound(nome,path="recursos/"):

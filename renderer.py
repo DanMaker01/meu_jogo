@@ -22,9 +22,10 @@ class Renderer:
         pass
 
     
-    def desenhar_imagem(self, indice_imagem, x, y):
+    def desenhar_imagem(self, indice_imagem, x, y, alpha=255):
         # print("desenhar imagem", indice_imagem, x, y)
         imagem = self.jogo.recursos.get_img(indice_imagem)
+        imagem.set_alpha(alpha)
         
         if imagem:
             self.jogo.screen.blit(imagem, (x, y), (0,0,imagem.get_width(),imagem.get_height()))
@@ -32,7 +33,7 @@ class Renderer:
             print("imagem "+str(indice_imagem)+" não existe")
         pass    
 
-    def desenhar_texto(self, texto, x, y, largura_max=0, altura_max=0):
+    def desenhar_texto(self, texto, x, y, largura_max=0, altura_max=0, alpha=255):
         # Se largura_max ou altura_max forem 0, define um valor muito grande para não limitar
         if largura_max == 0:
             largura_max = float('inf')
@@ -41,14 +42,20 @@ class Renderer:
 
         altura_linha = self.font.get_height()
 
+        # Superfície para o texto final com alpha
+        texto_surface = pygame.Surface((largura_max, altura_max), pygame.SRCALPHA)
+        texto_surface.fill((0, 0, 0, 0))  # Inicializa com total transparência
+
+        y_offset = 0  # Variável para deslocar o texto verticalmente
+
         while texto:
             largura_linha = 0
             linha_atual = ""
             palavras = texto.split(' ')
-            
+
             for palavra in palavras:
                 largura_palavra, _ = self.font.size(palavra)
-                
+
                 # Verifica se a palavra cabe na linha atual
                 if largura_linha + largura_palavra + (self.font.size(' ')[0] if linha_atual else 0) > largura_max:
                     # Se a linha estiver vazia e a palavra é muito larga, pode ser necessário quebrar a palavra
@@ -63,19 +70,21 @@ class Renderer:
                             else:
                                 texto = ""
                             largura_linha = self.font.size(linha_atual)[0]
-                            label = self.font.render(linha_atual, 1, self.font_color)
-                            self.jogo.screen.blit(label, (x, y))
-                            y += altura_linha
+
+                            # Renderiza a linha com a transparência
+                            label = self.font.render(linha_atual, True, self.font_color)
+                            texto_surface.blit(label, (0, y_offset))
+                            y_offset += altura_linha
                             linha_atual = ""
                         continue
 
                     # Renderiza a linha atual e move para a próxima linha
-                    label = self.font.render(linha_atual, 1, self.font_color)
-                    self.jogo.screen.blit(label, (x, y))
-                    y += altura_linha
+                    label = self.font.render(linha_atual, True, self.font_color)
+                    texto_surface.blit(label, (0, y_offset))
+                    y_offset += altura_linha
                     largura_linha = 0
                     linha_atual = ""
-                
+
                 # Adiciona a palavra à linha atual
                 if linha_atual:
                     linha_atual += " "
@@ -84,17 +93,23 @@ class Renderer:
 
             # Renderiza a última linha, caso exista
             if linha_atual:
-                label = self.font.render(linha_atual, 1, self.font_color)
-                self.jogo.screen.blit(label, (x, y))
-                y += altura_linha
+                label = self.font.render(linha_atual, True, self.font_color)
+                texto_surface.blit(label, (0, y_offset))
+                y_offset += altura_linha
 
             # Atualiza o texto restante, que será processado na próxima iteração do loop
             texto = texto[len(linha_atual) + 1:].lstrip()
 
             # Verifica se ainda há espaço para desenhar mais linhas
-            if y + altura_linha > altura_max:
-                # print("não tem espaço para desenhar mais linhas")
+            if y_offset > altura_max:
                 break
+
+        # Aplica a transparência à superfície do texto
+        texto_surface.set_alpha(alpha)
+
+        # Desenha o texto na tela, ajustando a posição
+        self.jogo.screen.blit(texto_surface, (x, y))
+
 
 
 

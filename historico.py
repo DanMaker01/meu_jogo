@@ -11,7 +11,7 @@ class Historico:
 
     def get_ultima_cena(self):
         if len(self.historico) == 0:
-            return 0
+            return None
         return self.historico[-1]
     
     def adicionar(self, id_cena):
