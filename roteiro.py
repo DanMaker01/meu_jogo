@@ -2,7 +2,7 @@ from typing import Any
 
 class Roteiro:
     def __init__(self, jogo):
-        # print("Iniciou classe Roteiro")
+        print("Iniciou classe Roteiro")
         self.jogo = jogo
         self.local = ""
         self.roteiro_organizado = []

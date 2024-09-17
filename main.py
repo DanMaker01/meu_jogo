@@ -5,6 +5,21 @@
 
 # ----------------------------------------------------------------------------
 # TO-DO
+# 
+# ------------------PRIORIDADE
+#
+# - adicionar modificadores ao escolher certas ações
+#       modificadores são adicionados numa lista quando você faz uma escolha especial
+#       os modificadores são tratados como itens, 
+#       caso você receba um modificador ele é adicionado na lista, com multiplicidade
+#       caso você receba novamente algum modificador só é acrescido seu numero no inventário
+#
+# 
+# #
+# #
+# #
+# #  
+# -------------------LEGAL MAS NÃO ESSENCIAL
 # - mudar layout da cena, 
 #       imagem principal alinhada a esquerda (320x360)
 #       texto alinhado à direita 120x160 (160 ou mais)
@@ -16,25 +31,18 @@
 # - implementar uma lista de janelas controladas pelo gerenciador de janelas, além de palco,texto,opcoes
 #       pra q?
 # 
-# - definir o que é uma Janela, se ela pode comportar texto e imagem
-#       estou tendendo a deixar a janela apenas com o básico de uma janela:
+# - definir melhor as classes, organizar funcionamento interno em uma lista com prioridades rodada numa função principal.
+#       - definir o que é uma Janela, se ela pode comportar texto e imagem
+#           estou tendendo a deixar a janela apenas com o básico de uma janela:
 #           cor-RGBA, pos(X,Y), dimensao(L,A), ativação(tempo, bool, funções), 
-#   
+#       listar quais classes precisa:
+#           retangulo
+#           gerenciador de janelas geral
+#           janela
+#              
 #
-#
-#
-# - dividir melhor as classes e funções
-#       quais precisa?
-#
-# - adicionar modificadores ao escolher certas ações
-#       modificadores são adicionados numa lista quando você faz uma escolha especial
-#       os modificadores são tratados como itens, 
-#       caso você receba um modificador ele é adicionado na lista, com multiplicidade
-#       caso você receba novamente algum modificador só é acrescido seu numero no inventário
-#  
-#
-#
-# -------------------- ACHIEVEMENTS
+
+# -------------------- FINALIZA QUANDO
 #
 # - completar uma história de 30 cenas
 #
@@ -42,11 +50,11 @@
 #
 # - completar três histórias de 30 cenas
 #
-# - completar um dia (ciclo de 4 atividades)
+# - completar quatro histórias com 30 cenas - isso equivale a um dia
 # 
-# - fazer história usando a repetição de cenas dos dias, sentimento de repetição, monotonia 
+# - fazer história principal usando a repetição dos dias, sentimento de repetição, monotonia 
 #
-# - polir o jogo
+# - polir o jogo para lançar (mesmo que com coisa faltando)
 # ----------------------------------------------------------------------------
 # ==================================================================================
 

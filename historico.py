@@ -16,7 +16,7 @@ class Historico:
     
     def adicionar(self, id_cena):
         self.historico.append(id_cena)
-        print("historico:",self.historico)
+        # print("historico:",self.historico)
         pass
 
 

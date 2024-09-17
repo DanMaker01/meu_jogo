@@ -1,4 +1,7 @@
 import janelas
+#implementar
+#borda com textura(img)
+#movimento contínuo da borda
 
 class Palco:
     def __init__(self, x, y, lar, alt, imagem_id):
