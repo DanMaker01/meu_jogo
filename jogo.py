@@ -8,7 +8,7 @@ from renderer import Renderer
 from cena import GerenciadorCena
 from roteiro import Roteiro
 from historico import Historico
-from modificadores import GerenciadorModificadores
+from modificadores import GerenciadorMods
 
 class Jogo:
     def __init__(self, width=800, height=600):
@@ -35,7 +35,7 @@ class Jogo:
         self.renderer = Renderer(self)
         self.roteiro = Roteiro()
         self.historico = Historico()
-        self.modificadores = 
+        self.modificadores = GerenciadorMods()
         
         # player é onde tem os modificadores?
         

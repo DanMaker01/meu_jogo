@@ -74,8 +74,9 @@ class Roteiro:
             return
 
         #printar o indice e o texto daquele nó
-        texto = " -> "+self.get_cena(indice_atual)[1]
-        print(f"{indentacao}{indice_atual}{texto}")
+        texto = " --> "+self.get_cena(indice_atual)[1]
+        
+        print(f"{indentacao}{indice_atual}{texto}") #aquiiiiii <------ aquiiii <-------
 
         # Marca o índice atual como visitado
         visitados.add(indice_atual)
