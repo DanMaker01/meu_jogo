@@ -12,13 +12,12 @@ class Cena:
         texto = cena_formato_lista[1]
         opcoes = cena_formato_lista[2]
         imagem_id = cena_formato_lista[3]
-
-        # self.janela_principal = Janela(30,70,480,320) #implementar melhor
+        
         self.palco = Palco(30,70,480,320, imagem_id)
         self.texto = Texto(90,410,360,120, texto)
         self.opcoes = Opcoes(540,200,230,192, opcoes)
 
-        print("iniciou classe Cena, cena atual: ", self.cena_id)
+        # print("iniciou classe Cena, cena atual: ", self.cena_id)
         pass
 
     def get_cena_id(self):
@@ -105,7 +104,7 @@ class GerenciadorCena:
         opcao_selecionada = self.get_opcao_selecionada()
         opcoes = self.cena_atual.get_opcoes().get_opcoes()
         direcao_a_ir = opcoes[opcao_selecionada][1]
-        print("CONFIRMA ! direção:", direcao_a_ir)
+        # print("CONFIRMA ! direção:", direcao_a_ir)
         self.carregar_cena(direcao_a_ir)
         self.ativar_cena_atual()
     def rotina_de_abertura(self):

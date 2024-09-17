@@ -3,12 +3,12 @@ from typing import Any
 
 class Roteiro:
     def __init__(self, jogo):
-        print("Iniciou classe Roteiro")
+        # print("Iniciou classe Roteiro")
         self.jogo = jogo
         self.local = ""
         self.roteiro_organizado = []
         self.gerar_roteiro('roteiro1.txt')
-        # print(self.printar_roteiro_organizado())
+        print(self.printar_roteiro_organizado())
         pass
 
     def get_endereco_completo(self, nome_arquivo):
@@ -45,8 +45,8 @@ class Roteiro:
     
     def gerar_roteiro(self, nome_arquivo):
         self.roteiro_organizado = self.processar_texto(self.importar_arquivo(nome_arquivo))
-        for linha in self.roteiro_organizado:
-            print("linha",self.roteiro_organizado.index(linha),":",linha)
+        # for linha in self.roteiro_organizado:
+        #     print("linha",self.roteiro_organizado.index(linha),":",linha)
         pass
 
     def get_cena(self, id_cena):

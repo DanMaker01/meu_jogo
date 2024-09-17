@@ -2,7 +2,7 @@ import janelas
 
 class Texto:
     def __init__(self, x, y, lar, alt, texto):
-        print("iniciou classe Texto")
+        # print("iniciou classe Texto")
         self.x = x
         self.y = y
         self.largura = lar

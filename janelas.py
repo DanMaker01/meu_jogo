@@ -33,10 +33,11 @@ class Janela:
         self.max_alpha = max_alpha
         # Calcula a velocidade do fade com base na duração desejada e na taxa de quadros (fps)
         if duracao_fade == 0:
-            print("janela tem que abrir em 0 seg")
-            self.alpha = self.max_alpha
-            self.fading_in = False  # Finaliza o fade-in
-            self.ativa = True
+            pass
+            # print("janela tem que abrir em 0 seg")
+            # self.alpha = self.max_alpha
+            # self.fading_in = False  # Finaliza o fade-in
+            # self.ativa = True
         else:
             if duracao_fade < 1:
                 duracao_fade = 1
@@ -58,8 +59,10 @@ class Janela:
         jogo.screen.blit(surface, (self.x, self.y))  # Desenha a superfície com transparência
 
         if self.texto != "":
+            # aqui deve ser feito igual na classe Texto, pois o self.texto pode ficar maior que a janela #implementar
             # Desenha o texto no meio da janela
             label = jogo.font.render(self.texto, 1, (0, 0, 0))
+            #centraliza na janela e desenha o texto.
             margemx = self.largura / 2 - label.get_width() / 2
             margemy = self.altura / 2 - label.get_height() / 2
             jogo.screen.blit(label, (self.x + margemx, self.y + margemy))

@@ -2,7 +2,7 @@ import janelas
 
 class Palco:
     def __init__(self, x, y, lar, alt, imagem_id):
-        print("iniciou classe Palco")
+        # print("iniciou classe Palco")
         self.x = x
         self.y = y
         self.largura = lar

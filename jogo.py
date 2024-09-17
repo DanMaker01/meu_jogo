@@ -20,7 +20,9 @@ class Jogo:
         self.screen = pygame.display.set_mode((self.WIDTH, self.HEIGHT))
         
         # Fonte para texto
-        self.font = pygame.font.SysFont(None, 20)
+        fontes_disponiveis = pygame.font.get_fonts()
+        selecionar_fonte = 0
+        self.font = pygame.font.SysFont(fontes_disponiveis[selecionar_fonte], 16)
 
         # Configuração do relógio para controlar a taxa de frames
         self.clock = pygame.time.Clock()

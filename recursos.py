@@ -1,6 +1,5 @@
 import pygame
 #adicionar testes de erro caso não impote imagens e sons direitos
-#implementar audio
 
 class Recursos:
     def __init__(self):
@@ -8,12 +7,8 @@ class Recursos:
         #carregar todas imagens
         self.imgs = []
         lista_imgs_a_importar = ["bg.png"] # a imagem 0 é o BG, 
-        #implementar
 
         #carregar todas cenas numeradas
-               
-
-
         #jeito A
         qtd_cenas = 13
         for i in range(1,qtd_cenas+1):
@@ -39,7 +34,7 @@ class Recursos:
             else:
                 pass
                 # print("carregou imagem:",string_img)
-        print(len(self.imgs),"imagens carregados.")
+        # print(len(self.imgs),"imagens carregadas.")
         pass
     @staticmethod
     def load_image(nome,path="recursos/"):

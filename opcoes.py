@@ -2,7 +2,7 @@ from janelas import Janela
 
 class Opcoes: #está meio bugado #Implementar
     def __init__(self, x, y, lar, alt, opcoes):
-        print("iniciou classe Opções")
+        # print("iniciou classe Opções")
         pos_x = x
         pos_y = y
         largura = lar
@@ -14,6 +14,7 @@ class Opcoes: #está meio bugado #Implementar
         self.opcoes_janelas = []
         self.distancia_entre_opcoes = alt / len(self.opcoes)
         self.opcao_selecionada = 0
+        self.cor_opcao_selecionada = (255, 200, 30)
 
         # Cria as janelas das opções
         margem_x = 2
@@ -33,7 +34,7 @@ class Opcoes: #está meio bugado #Implementar
         self.fading_in = False  # Controle para o efeito de fade-in
         self.fade_speed = 0  # Velocidade do fade-in
 
-    def ativar(self, duracao_fade=50):
+    def ativar(self, duracao_fade=50): #implementar #bug
         self.janela.ativar(duracao_fade)
         
         if duracao_fade > 0:
@@ -54,6 +55,45 @@ class Opcoes: #está meio bugado #Implementar
 
     def desativar(self):
         self.janela.desativar()
+
+    def draw(self, jogo): #pensar se tá certo, para deixar independete cada janela de opcao #implementar
+        if self.janela.ativa:
+            self.janela.draw(jogo)
+            
+            if self.opcoes:
+                for janela in self.opcoes_janelas:
+                    # Se o índice da janela está selecionado, desenha a opção em verde
+                    if self.opcao_selecionada == self.opcoes_janelas.index(janela):
+                        janela.set_cor(self.cor_opcao_selecionada)
+                    else:
+                        janela.set_cor_original()
+
+                    # Se o texto da janela estiver vazio, coloca '>>'
+                    if janela.get_texto() == "":
+                        janela.set_texto(">>")
+                    
+                    # Atualiza a transparência da janela de opção
+                    janela.set_alpha(self.alpha) #implementar, não há necessidade disso...
+
+                    janela.draw(jogo)
+            else:
+                print("Nenhuma opção definida")
+
+    def update(self):
+        if self.janela:
+            self.janela.update()
+        
+        for janela_opcao in self.opcoes_janelas:
+            janela_opcao.update()
+
+        # Controle de fade-in das janelas de opções
+        if self.fading_in and self.alpha < self.max_alpha:
+            self.alpha += self.fade_speed
+            if self.alpha >= self.max_alpha:
+                self.alpha = self.max_alpha  # Garante que não ultrapasse o valor máximo
+                self.fading_in = False  # Finaliza o efeito de fade-in
+
+
 
     def adicionar_opcao(self, texto, direcao):
         self.opcoes.append([texto, direcao])
@@ -81,39 +121,3 @@ class Opcoes: #está meio bugado #Implementar
 
     def selecionar_opcao(self, indice):
         self.opcao_selecionada = indice
-
-    def draw(self, jogo): #pensar se tá certo, para deixar independete cada janela de opcao
-        if self.janela.ativa:
-            self.janela.draw(jogo)
-            
-            if self.opcoes:
-                for janela in self.opcoes_janelas:
-                    # Se o índice da janela está selecionado, desenha a opção em verde
-                    if self.opcao_selecionada == self.opcoes_janelas.index(janela):
-                        janela.set_cor((0, 170, 0))
-                    else:
-                        janela.set_cor_original()
-
-                    # Se o texto da janela estiver vazio, coloca '>>'
-                    if janela.get_texto() == "":
-                        janela.set_texto(">>")
-                    
-                    # Atualiza a transparência da janela de opção
-                    janela.set_alpha(self.alpha)
-                    janela.draw(jogo)
-            else:
-                print("Nenhuma opção definida")
-
-    def update(self):
-        if self.janela:
-            self.janela.update()
-        
-        for janela_opcao in self.opcoes_janelas:
-            janela_opcao.update()
-
-        # Controle de fade-in das janelas de opções
-        if self.fading_in and self.alpha < self.max_alpha:
-            self.alpha += self.fade_speed
-            if self.alpha >= self.max_alpha:
-                self.alpha = self.max_alpha  # Garante que não ultrapasse o valor máximo
-                self.fading_in = False  # Finaliza o efeito de fade-in
