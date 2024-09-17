@@ -1,9 +1,9 @@
 from typing import Any
 
 class Roteiro:
-    def __init__(self, jogo):
+    def __init__(self):
         print("Iniciou classe Roteiro")
-        self.jogo = jogo
+        # self.jogo = jogo
         self.local = ""
         self.roteiro_organizado = []
         self.gerar_roteiro('roteiro1.txt')

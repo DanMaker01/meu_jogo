@@ -39,7 +39,12 @@
 #           retangulo
 #           gerenciador de janelas geral
 #           janela
-#              
+# 
+# - pequenas variações nas cenas de forma procedural.            
+#
+# - fazer história principal usando a repetição dos dias, onde
+# 
+# 
 #
 
 # -------------------- FINALIZA QUANDO
@@ -51,8 +56,8 @@
 # - completar três histórias de 30 cenas
 #
 # - completar quatro histórias com 30 cenas - isso equivale a um dia
-# 
-# - fazer história principal usando a repetição dos dias, sentimento de repetição, monotonia 
+#  
+# - fazer história principal, usando a repetição dos dias onde pequenas variações acontecem no cotidiano das cenas que dá uma ideia maior.
 #
 # - polir o jogo para lançar (mesmo que com coisa faltando)
 # ----------------------------------------------------------------------------

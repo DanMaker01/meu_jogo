@@ -2,11 +2,13 @@ import pygame
 from controle import Controle
 from recursos import Recursos
 from renderer import Renderer
-from opcoes import Opcoes
-from texto import Texto
-from janelas import Janela
+# from opcoes import Opcoes
+# from texto import Texto
+# from janelas import Janela
 from cena import GerenciadorCena
 from roteiro import Roteiro
+from historico import Historico
+from modificadores import GerenciadorModificadores
 
 class Jogo:
     def __init__(self, width=800, height=600):
@@ -31,17 +33,21 @@ class Jogo:
         self.controle = Controle()
         self.recursos = Recursos()
         self.renderer = Renderer(self)
+        self.roteiro = Roteiro()
+        self.historico = Historico()
+        self.modificadores = 
+        
+        # player é onde tem os modificadores?
+        
+        
+        #animação-renderer #implementar depois
+        
         # Cena
         self.gerenciador_cena = GerenciadorCena(self)
         self.gerenciador_cena.carregar_cena(1)
         self.gerenciador_cena.ativar_cena_atual()
-
         
-        # player    #player tem os modificadores?
-        #animação-renderer #implementar depois
-        
-        # Coloca o Jogo no Estado: Rodando!
-        self.running = True
+        self.running = True #iniciar loop principal
         pass 
 
 

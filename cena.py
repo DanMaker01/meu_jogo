@@ -1,9 +1,7 @@
 #imports
-from roteiro import Roteiro
 from palco import Palco
 from texto import Texto
 from opcoes import Opcoes
-from historico import Historico
 
 class Cena:
     def __init__(self,  cena_formato_lista):
@@ -56,21 +54,22 @@ class Cena:
 
 class GerenciadorCena:
     def __init__(self, jogo):
-        self.roteiro = Roteiro(jogo)
-        self.historico = Historico()
+
         self.jogo = jogo
+        self.roteiro = self.jogo.roteiro
         self.cena_atual = None
         self.possivel_interagir = False
         self.frame_count = 0  # Contador de frames
         self.ativacao_iniciada = False  # Flag para iniciar a sequência de ativação
+        # self.
         pass
 
     def get_opcoes_qtd(self):
         return self.cena_atual.get_opcoes().get_opcoes_qtd() if self.cena_atual else 0
 
     def carregar_cena(self, id_cena):
-        if self.historico.get_ultima_cena() != id_cena:
-            self.historico.adicionar(id_cena)
+        if self.jogo.historico.get_ultima_cena() != id_cena:
+            self.jogo.historico.adicionar(id_cena)
         self.cena_atual = Cena(self.roteiro.get_cena(id_cena) + [id_cena])
         
     def get_cena_atual_id(self):
@@ -142,10 +141,10 @@ class GerenciadorCena:
             elif acao_feita == 'abaixo':
                 self.cena_atual.get_opcoes().selecionar_afrente()
             elif acao_feita == 'salvar':
-                self.historico.salvar()
+                self.jogo.historico.salvar()
             elif acao_feita == 'carregar':
-                self.historico.carregar()
-                self.carregar_cena(self.historico.get_ultima_cena())
+                self.jogo.historico.carregar()
+                self.carregar_cena(self.jogo.historico.get_ultima_cena())
                 self.ativar_cena_atual()
 
         if self.cena_atual:
