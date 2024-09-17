@@ -1,6 +1,5 @@
 from typing import Any
 
-
 class Roteiro:
     def __init__(self, jogo):
         # print("Iniciou classe Roteiro")
@@ -36,7 +35,7 @@ class Roteiro:
             
             opcoes = []
             for opcao in opcoes_brutas:
-                chave, valor = opcao.split(':')
+                chave, valor = opcao.split('#')
                 opcoes.append([chave, int(valor)])
 
             resultado.append([nome, texto, opcoes])
@@ -74,7 +73,9 @@ class Roteiro:
             print(f"{indentacao}{indice_atual} (subloop detectado -> próximo: {indice_atual})")
             return
 
-        print(f"{indentacao}{indice_atual}")
+        #printar o indice e o texto daquele nó
+        texto = " -> "+self.get_cena(indice_atual)[1]
+        print(f"{indentacao}{indice_atual}{texto}")
 
         # Marca o índice atual como visitado
         visitados.add(indice_atual)
