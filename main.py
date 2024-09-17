@@ -10,11 +10,14 @@
 #       texto alinhado à direita 120x160 (160 ou mais)
 #       opções alinhadas a direita 120x160 (160 ou menos)
 #
-# - fazer aparecer em ordem, janela_princpal, texto, opcoes e liberar interação #implementar, para isso preciso refazer a class janela
+# - corrigir os bugs do alpha para o Palco
 #
-# - controlar tempo, fade_in etc está ficando complicado
+# - implementar uma lista de janelas controladas pelo gerenciador de janelas, além de palco,texto,opcoes. pra q?
 #
-# - toda janela deveria comportar uma imagem? talvez precise implementar isso
+# 
+#
+#
+#
 #
 # - dividir melhor as classes e funções
 #

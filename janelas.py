@@ -26,7 +26,7 @@ class Janela:
         :param duracao_fade: Duração do fade-in em segundos.
         :param fps: Quadros por segundo do jogo (para calcular a velocidade de fade).
         """
-        print("ativou janela: ", self.get_texto(), "\t duracao_fade:",duracao_fade )
+        # print("ativou janela: ", self.get_texto(), "\t duracao_fade:",duracao_fade )
         self.ativa = True
         self.fading_in = True  # Começar o fade-in
         self.alpha = 0  # Iniciar com a janela totalmente transparente

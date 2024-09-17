@@ -36,10 +36,11 @@ class Opcoes:
     def ativar(self, duracao_fade=50):
         self.janela.ativar(duracao_fade)
         for i in range(len(self.opcoes_janelas)):
-            self.opcoes_janelas[i].ativar(duracao_fade + 4000 * i)
+            self.opcoes_janelas[i].ativar(duracao_fade + 10000 * i) #implementar, cada uma aparecer num tempo
         
         if duracao_fade < 1:
             duracao_fade = 1
+            
         # Calcula a velocidade do fade-in baseada na duração
         self.fade_speed = self.max_alpha / duracao_fade
         
