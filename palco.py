@@ -52,7 +52,7 @@ class Palco:
         :param fps: Quadros por segundo, usado para calcular a velocidade do fade.
         """
         # Ativa a janela e o fade-in da imagem
-        # self.janela.ativar(duracao_fade)
+        self.janela.ativar(duracao_fade)
         if duracao_fade > 0:
 
             if duracao_fade == 0:

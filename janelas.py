@@ -19,7 +19,7 @@ class Janela:
     def set_alpha(self, alpha):
         self.alpha = alpha
 
-    def ativar(self, duracao_fade=50, fps=1):
+    def ativar(self, duracao_fade=50, fps=1, max_alpha=255):
         """
         Ativa a janela e inicia o fade-in com base no valor de duracao_fade.
         
@@ -30,7 +30,7 @@ class Janela:
         self.ativa = True
         self.fading_in = True  # Começar o fade-in
         self.alpha = 0  # Iniciar com a janela totalmente transparente
-
+        self.max_alpha = max_alpha
         # Calcula a velocidade do fade com base na duração desejada e na taxa de quadros (fps)
         if duracao_fade == 0:
             print("janela tem que abrir em 0 seg")

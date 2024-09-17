@@ -7,7 +7,7 @@ class Texto:
         self.y = y
         self.largura = lar
         self.altura = alt
-        self.cor = (150, 150, 150)
+        self.cor = ( 200, 200,200)
         self.janela = janelas.Janela(self.x, self.y, self.largura, self.altura, texto="", cor=self.cor)
         self.texto = texto
         self.alpha = 0  # Transparência inicial para o fade-in
@@ -25,6 +25,7 @@ class Texto:
         # Desenha o texto na tela com a mesma transparência (alpha)
         margem_x = 5
         margem_y = 5
+        # print(self.texto)
         jogo.renderer.desenhar_texto(self.texto, self.x + margem_x, self.y + margem_y, 360 - margem_x, 120 - margem_y, self.alpha)
 
     def update(self):
@@ -46,7 +47,7 @@ class Texto:
         :param fps: Quadros por segundo, usado para calcular a velocidade do fade.
         """
         # Ativa a janela e o fade-in do texto
-        self.janela.ativar(duracao_fade)
+        self.janela.ativar(duracao_fade, max_alpha=128)
         
         if duracao_fade < 1:
             duracao_fade = 1

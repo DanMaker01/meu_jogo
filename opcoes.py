@@ -1,6 +1,6 @@
 from janelas import Janela
 
-class Opcoes:
+class Opcoes: #está meio bugado #Implementar
     def __init__(self, x, y, lar, alt, opcoes):
         print("iniciou classe Opções")
         pos_x = x
@@ -35,17 +35,22 @@ class Opcoes:
 
     def ativar(self, duracao_fade=50):
         self.janela.ativar(duracao_fade)
-        for i in range(len(self.opcoes_janelas)):
-            self.opcoes_janelas[i].ativar(duracao_fade + 10000 * i) #implementar, cada uma aparecer num tempo
         
-        if duracao_fade < 1:
-            duracao_fade = 1
+        if duracao_fade > 0:
+
+            if duracao_fade == 0:
+                duracao_fade = 1
+            for i in range(len(self.opcoes_janelas)):
+                self.opcoes_janelas[i].ativar(duracao_fade + 1000 * i, max_alpha=128) #implementar, cada uma aparecer num tempo
+
+            # Calcula a velocidade do fade-in baseada na duração
+            self.fade_speed = self.max_alpha / duracao_fade
             
-        # Calcula a velocidade do fade-in baseada na duração
-        self.fade_speed = self.max_alpha / duracao_fade
-        
-        self.fading_in = True  # Inicia o fade-in
-        self.alpha = 0  # Inicia com transparência total (invisível)
+            self.fading_in = True  # Inicia o fade-in
+            self.alpha = 0  # Inicia com transparência total (invisível)
+        else:
+            self.alpha = self.max_alpha
+            self.fading_in = False
 
     def desativar(self):
         self.janela.desativar()

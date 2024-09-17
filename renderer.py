@@ -42,12 +42,6 @@ class Renderer:
 
         altura_linha = self.font.get_height()
 
-        # Superfície para o texto final com alpha
-        texto_surface = pygame.Surface((largura_max, altura_max), pygame.SRCALPHA)
-        texto_surface.fill((0, 0, 0, 0))  # Inicializa com total transparência
-
-        y_offset = 0  # Variável para deslocar o texto verticalmente
-
         while texto:
             largura_linha = 0
             linha_atual = ""
@@ -73,15 +67,25 @@ class Renderer:
 
                             # Renderiza a linha com a transparência
                             label = self.font.render(linha_atual, True, self.font_color)
-                            texto_surface.blit(label, (0, y_offset))
-                            y_offset += altura_linha
+
+                            # Cria uma superfície para o texto que suporta transparência
+                            texto_surface = pygame.Surface(label.get_size(), pygame.SRCALPHA)
+                            texto_surface.blit(label, (0, 0))
+                            texto_surface.set_alpha(alpha)  # Define o valor de alpha
+
+                            self.jogo.screen.blit(texto_surface, (x, y))
+                            y += altura_linha
                             linha_atual = ""
                         continue
 
                     # Renderiza a linha atual e move para a próxima linha
                     label = self.font.render(linha_atual, True, self.font_color)
-                    texto_surface.blit(label, (0, y_offset))
-                    y_offset += altura_linha
+                    texto_surface = pygame.Surface(label.get_size(), pygame.SRCALPHA)
+                    texto_surface.blit(label, (0, 0))
+                    texto_surface.set_alpha(alpha)
+                    
+                    self.jogo.screen.blit(texto_surface, (x, y))
+                    y += altura_linha
                     largura_linha = 0
                     linha_atual = ""
 
@@ -94,24 +98,19 @@ class Renderer:
             # Renderiza a última linha, caso exista
             if linha_atual:
                 label = self.font.render(linha_atual, True, self.font_color)
-                texto_surface.blit(label, (0, y_offset))
-                y_offset += altura_linha
+                texto_surface = pygame.Surface(label.get_size(), pygame.SRCALPHA)
+                texto_surface.blit(label, (0, 0))
+                texto_surface.set_alpha(alpha)
+                
+                self.jogo.screen.blit(texto_surface, (x, y))
+                y += altura_linha
 
             # Atualiza o texto restante, que será processado na próxima iteração do loop
             texto = texto[len(linha_atual) + 1:].lstrip()
 
             # Verifica se ainda há espaço para desenhar mais linhas
-            if y_offset > altura_max:
+            if y + altura_linha > altura_max:
                 break
-
-        # Aplica a transparência à superfície do texto
-        texto_surface.set_alpha(alpha)
-
-        # Desenha o texto na tela, ajustando a posição
-        self.jogo.screen.blit(texto_surface, (x, y))
-
-
-
 
     def desenhar_hud(self):
         texto_1 = "FPS: "+str(self.jogo.clock.get_fps())
