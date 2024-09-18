@@ -39,23 +39,79 @@ class Roteiro:
             opcoes = []
 
             for opcao in partes[2:]:
-                opcao_valor_condicao = opcao.split('#')
-                opcao_nome = opcao_valor_condicao[0]
-                valor = int(opcao_valor_condicao[1])
-                condicao = None
+                txt_dir_cond_inv = opcao.split('#')
+                for i in range(len(txt_dir_cond_inv), 4):
+                    txt_dir_cond_inv.append(None)
+                # print("txt_dir_cond_inv:", txt_dir_cond_inv)
+                opcao_nome = txt_dir_cond_inv[0]
+                valor = int(txt_dir_cond_inv[1])
+
+                # if txt_dir_cond_inv[0]:
+                # else:
+                #     opcao_nome = None
+
+                # if txt_dir_cond_inv[1]:
+                # else:
+                #     valor = None
                 
-                if len(opcao_valor_condicao) == 3:
-                    condicao_completa = opcao_valor_condicao[2]
+                if txt_dir_cond_inv[2] and txt_dir_cond_inv[2] != '': #caso seja nulo ignore
+                    condicao = txt_dir_cond_inv[2]
+                else:
+                    condicao = None
+                
+                if txt_dir_cond_inv[3] and txt_dir_cond_inv[3] != '':
+                    inventario = txt_dir_cond_inv[3]
+                else:
+                    inventario = None
+                
+                # print("txt_dir_cond_inv:", txt_dir_cond_inv)
+                if condicao:
                     padrao_condicao = r"([a-zA-Z_]+)([><=!]+)(\d+\.?\d*)"
-                    match = re.match(padrao_condicao, condicao_completa)
+                    match = re.match(padrao_condicao, condicao)
                     if match:
                         condicao = [match.group(1), match.group(2), float(match.group(3))]
-                
-                opcoes.append([opcao_nome, valor, condicao])
 
+                if inventario:
+                    padrao_inventario = r"([a-zA-Z_]+)([+-]+)(\d+\.?\d*)"
+                    match = re.match(padrao_inventario, inventario)
+                    if match:
+                        inventario = [match.group(1), match.group(2), float(match.group(3))
+                                      ]
+                opcoes.append([opcao_nome, valor, condicao, inventario])
             resultado.append([nome, texto, opcoes])
 
         return resultado
+    # def processar_texto(self, texto_importado_bruto: str) -> list:
+    #     if not texto_importado_bruto:
+    #         print("erro ao processar o texto")
+    #         return []
+        
+    #     linhas = texto_importado_bruto.strip().split('\n')
+    #     resultado = []
+
+    #     for linha in linhas:
+    #         partes = linha.split('@')
+    #         nome, texto = partes[0], partes[1]
+    #         opcoes = []
+
+    #         for opcao in partes[2:]:
+    #             opcao_valor_condicao = opcao.split('#')
+    #             opcao_nome = opcao_valor_condicao[0]
+    #             valor = int(opcao_valor_condicao[1])
+    #             condicao = None
+                
+    #             if len(opcao_valor_condicao) == 3:
+    #                 condicao_completa = opcao_valor_condicao[2]
+    #                 padrao_condicao = r"([a-zA-Z_]+)([><=!]+)(\d+\.?\d*)"
+    #                 match = re.match(padrao_condicao, condicao_completa)
+    #                 if match:
+    #                     condicao = [match.group(1), match.group(2), float(match.group(3))]
+                
+    #             opcoes.append([opcao_nome, valor, condicao])
+
+    #         resultado.append([nome, texto, opcoes])
+
+    #     return resultado
 
     def gerar_roteiro(self, nome_arquivo: str):
         texto_importado = self.importar_arquivo(nome_arquivo)

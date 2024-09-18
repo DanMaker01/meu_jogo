@@ -12,6 +12,9 @@ class GerenciadorMods:
         else:
             self.mods[nome] = valor_
         return
+    def definir_mod(self, nome, valor_):
+        self.mods[nome] = valor_
+        pass
     def zerar_mod(self, nome):
         self.mods[nome] = 0
         pass
@@ -23,3 +26,16 @@ class GerenciadorMods:
     
     def get_mods(self):
         return self.mods
+    
+    def interpretar_item(self, item): #      +,-,*,/,=
+        nome, simb, val = item
+        if simb in ['+', '-']:
+            self.alterar_mod(nome, val)
+        elif simb in ['*', '/']:
+            # self.remover_mod(nome)
+            print("#implementar")
+        elif simb == '=':
+            self.definir_mod(nome, val)
+        else:
+            print("erro ao interpretar item:", item)
+            pass

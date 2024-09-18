@@ -19,6 +19,7 @@ class Opcoes: #está meio bugado #Implementar
         self.opcoes = opcoes
         self.opcoes_reais = []
         for opcao in self.opcoes:
+            print("opcao:",opcao)
             if opcao[2]:                             # se a opção tem condição
                 if self.condicao_cumprida(opcao[2]): # verifica se a condição foi cumprida
                     self.opcoes_reais.append(opcao)
@@ -27,7 +28,7 @@ class Opcoes: #está meio bugado #Implementar
             else:
                 self.opcoes_reais.append(opcao) # a opção não tem requisição, logo é cumprida automaticamente
 
-        print("opcoes:",self.opcoes)
+        # print("opcoes:",self.opcoes)
         
         self.opcoes_janelas = []
 
@@ -55,6 +56,7 @@ class Opcoes: #está meio bugado #Implementar
         self.fade_speed = 0  # Velocidade do fade-in
         pass
     def condicao_cumprida(self, condicao):
+        # print("condicao:", condicao)
         nome_mod, condicional, valor = condicao
 
         # Verifica se o modificador existe

@@ -103,8 +103,14 @@ class GerenciadorCena:
 
     def confirmar_opcao(self):
         opcao_selecionada = self.get_opcao_selecionada()
-        opcoes = self.cena_atual.get_opcoes().get_opcoes()
-        direcao_a_ir = opcoes[opcao_selecionada][1]
+        lista_opcoes = self.cena_atual.get_opcoes().get_opcoes()
+        
+        #verifica se ganha item ao escolher esta opção
+        item_operacao_valor = lista_opcoes[opcao_selecionada][3]
+        if item_operacao_valor != None: # se tem item como premio
+            self.jogo.modificadores.interpretar_item(item_operacao_valor)
+
+        direcao_a_ir = lista_opcoes[opcao_selecionada][1]
         # print("CONFIRMA ! direção:", direcao_a_ir)
         self.carregar_cena(direcao_a_ir)
         self.ativar_cena_atual()
