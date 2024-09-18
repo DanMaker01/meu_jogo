@@ -45,7 +45,8 @@ class Jogo:
         
         self.modificadores.alterar_mod("vida",1)
         self.modificadores.alterar_mod("moeda de prata",10)
-        self.modificadores.alterar_mod("batata",1.200)
+        self.modificadores.alterar_mod("batata (kg)",1.473)
+        self.modificadores.alterar_mod("dor",0)
         #animação-renderer #implementar depois
         
         # Cena
