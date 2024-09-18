@@ -2,9 +2,7 @@
 class GerenciadorMods:
     def __init__(self):
         self.mods = {}
-
         # print("iniciou classe GerenciadorMods")
-
         pass
     
     def alterar_mod(self, nome, valor_):

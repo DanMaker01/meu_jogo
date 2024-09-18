@@ -1,20 +1,29 @@
 import re
 from typing import Any
-
-class Roteiro:
-    def __init__(self, nome_arquivo_roteiro='roteiro1.txt'):
-        # print("Iniciou classe Roteiro")
-        self.local = ""
-        self.roteiro_organizado = []
-        self.gerar_roteiro(nome_arquivo_roteiro)
+class Arquivo:
+    def __init__(self, local: str = ""):
+        self.local = local
 
     def get_endereco_completo(self, nome_arquivo: str) -> str:
         return self.local + nome_arquivo
 
     def importar_arquivo(self, nome_arquivo: str) -> str:
-        endereco_completo = self.get_endereco_completo(nome_arquivo)
-        with open(endereco_completo, 'r', encoding='utf-8') as file:
+        with open(self.get_endereco_completo(nome_arquivo), 'r', encoding='utf-8') as file:
             return file.read()
+        
+class Roteiro:
+    def __init__(self, nome_arquivo_roteiro='roteiro1.txt'):
+        # print("Iniciou classe Roteiro")
+        self.arquivo = Arquivo()
+        self.local = ""
+        self.roteiro_organizado = []
+        self.gerar_roteiro(nome_arquivo_roteiro)
+
+    def get_endereco_completo(self, nome_arquivo: str) -> str:
+        return self.arquivo.get_endereco_completo(nome_arquivo)
+
+    def importar_arquivo(self, nome_arquivo: str) -> str:
+        return self.arquivo.importar_arquivo(nome_arquivo)
 
     def processar_texto(self, texto_importado_bruto: str) -> list:
         if not texto_importado_bruto:
