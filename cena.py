@@ -135,19 +135,24 @@ class GerenciadorCena:
 
         # Processa as ações do jogador
         if self.possivel_interagir:
-            acao_feita = self.jogo.controle.verifica_teclas()
-            if acao_feita == 'confirma':
-                self.confirmar_opcao()
-            elif acao_feita == 'acima':
-                self.cena_atual.get_opcoes().selecionar_atras()
-            elif acao_feita == 'abaixo':
-                self.cena_atual.get_opcoes().selecionar_afrente()
-            elif acao_feita == 'salvar':
-                self.jogo.historico.salvar()
-            elif acao_feita == 'carregar':
-                self.jogo.historico.carregar()
-                self.carregar_cena(self.jogo.historico.get_ultima_cena())
-                self.ativar_cena_atual()
+            self.verifica_acoes_jogador()
 
         if self.cena_atual:
             self.cena_atual.update()
+        pass
+    
+    def verifica_acoes_jogador(self):
+        acao_feita = self.jogo.controle.verifica_teclas()
+        if acao_feita == 'confirma':
+            self.confirmar_opcao()
+        elif acao_feita == 'acima':
+            self.cena_atual.get_opcoes().selecionar_atras()
+        elif acao_feita == 'abaixo':
+            self.cena_atual.get_opcoes().selecionar_afrente()
+        elif acao_feita == 'salvar':
+            self.jogo.historico.salvar()
+        elif acao_feita == 'carregar':
+            self.jogo.historico.carregar()
+            self.carregar_cena(self.jogo.historico.get_ultima_cena())
+            self.ativar_cena_atual()
+        pass

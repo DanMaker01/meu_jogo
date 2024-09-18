@@ -23,7 +23,7 @@ class Jogo:
         
         # Fonte para texto
         fontes_disponiveis = pygame.font.get_fonts()
-        selecionar_fonte = 0
+        selecionar_fonte = 0 # a fonte 0 normalmente é Arial
         self.font = pygame.font.SysFont(fontes_disponiveis[selecionar_fonte], 16)
         
         # Configuração do relógio para controlar a taxa de frames
@@ -84,7 +84,7 @@ class Jogo:
         pygame.display.flip()
         pass
 
-    def update(self):
+    def update(self): #implementar
         self.controle.update() 
         self.gerenciador_cena.update()
         #...
