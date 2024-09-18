@@ -43,9 +43,9 @@ class Jogo:
         
         # # player é onde tem os modificadores?
         
-        self.modificadores.alterar_mod("batata",1)
-        self.modificadores.alterar_mod("batata",0.5)
-        self.modificadores.alterar_mod("moeda de ouro",3)
+        self.modificadores.alterar_mod("vida",1)
+        self.modificadores.alterar_mod("moeda de prata",10)
+        self.modificadores.alterar_mod("batata",1.200)
         #animação-renderer #implementar depois
         
         # Cena

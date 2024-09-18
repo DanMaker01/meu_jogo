@@ -27,7 +27,8 @@ class Opcoes: #está meio bugado #Implementar
             else:
                 self.opcoes_reais.append(opcao) # a opção não tem requisição, logo é cumprida automaticamente
 
-        print(self.opcoes)
+        print("opcoes:",self.opcoes)
+        
         self.opcoes_janelas = []
 
         #
@@ -57,7 +58,7 @@ class Opcoes: #está meio bugado #Implementar
         nome_mod, condicional, valor = condicao
 
         # Verifica se o modificador existe
-        valor_mod = self.jogo.modificadores.get_inventario().get(nome_mod, None)
+        valor_mod = self.jogo.modificadores.get_mods().get(nome_mod, None)
         
         if valor_mod is not None:  # Se o modificador existe
             if condicional == ">":

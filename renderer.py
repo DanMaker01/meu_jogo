@@ -125,7 +125,7 @@ class Renderer:
         self.jogo.screen.blit(label, (self.margem_x, self.margem_y + self.espacamento_linhas))
         
         # Listar mods
-        modificadores = self.jogo.modificadores.get_inventario()
+        modificadores = self.jogo.modificadores.get_mods()
         linha_atual = 0
         espaco_linhas = self.espacamento_linhas
         margem_x = 540

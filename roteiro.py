@@ -2,11 +2,11 @@ import re
 from typing import Any
 
 class Roteiro:
-    def __init__(self):
-        print("Iniciou classe Roteiro")
+    def __init__(self, nome_arquivo_roteiro='roteiro1.txt'):
+        # print("Iniciou classe Roteiro")
         self.local = ""
         self.roteiro_organizado = []
-        self.gerar_roteiro('roteiro1.txt')
+        self.gerar_roteiro(nome_arquivo_roteiro)
 
     def get_endereco_completo(self, nome_arquivo: str) -> str:
         return self.local + nome_arquivo
@@ -18,7 +18,7 @@ class Roteiro:
 
     def processar_texto(self, texto_importado_bruto: str) -> list:
         if not texto_importado_bruto:
-            print("não importou direito")
+            print("erro ao processar o texto")
             return []
         
         linhas = texto_importado_bruto.strip().split('\n')
