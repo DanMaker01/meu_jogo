@@ -6,7 +6,7 @@ class Historico:
     def __init__(self):
         self.nome_arquivo = "historico.txt"
         self.historico = []
-
+        print("iniciou classe Historico")
         pass
 
     def get_ultima_cena(self):
@@ -19,7 +19,10 @@ class Historico:
         # print("historico:",self.historico)
         pass
 
-
+    def is_historico_vazio(self):
+        if len(self.historico) == 0:
+            return True
+        return False
     def salvar(self):
         """
         Salva o historico em um arquivo.

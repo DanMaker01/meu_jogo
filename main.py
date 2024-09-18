@@ -14,7 +14,8 @@
 #       caso você receba um modificador ele é adicionado na lista, com multiplicidade
 #       caso você receba novamente algum modificador só é acrescido seu numero no inventário
 #
-# 
+# - save e load devem tratar os modificadores também
+#       talvez deva ter uma classe que controle os modificadores e o roteiro ao msm tempo
 # #
 # #
 # #

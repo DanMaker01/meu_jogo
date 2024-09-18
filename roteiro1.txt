@@ -3,12 +3,12 @@ narrador@iniciar?@sim :)#2@não :(#1@hackear jogo (se dias>=2)#0#dias>=2
 eu@tô atrasado denovo pro trabalho, todo dia a mesma coisa.@ir para a faixa de pedestre#3
 eu@até que tá tranquilo, não tô vendo carro nenhum.@esperar#3@atravessar#4
 eu@...péra!@prestar mais atenção nos sons#10
-eu@ué, o carro sumiu. tô ficando doido?@dúvidas#7
-eu@eu jurava que tinha um carro vindo em alta velocidade, o que será que aconteceu?@devo estar cansado#7@será que morri?#8@talvez estava tão rápido que já passou#8
+eu@ué, o carro sumiu. tô ficando doido?@dúvidas#6
+eu@eu jurava que tinha um carro vindo em alta velocidade, o que será que aconteceu?@devo estar cansado#7@será que morri?#8@talvez estava tão rápido que já passou#9
 eu@pronto, próxima coisa...@#8
 eu@bom, parece que foi só imaginação mesmo.@só continuar#9
 eu@credo, vou só continuar.@só continuar#1##dias+1
-eu@do nada um carro! está em alta velocidade mas está longe.@correr e atravessar#6@voltar e esperar#11
+eu@do nada um carro! está em alta velocidade mas está longe.@correr e atravessar#5@voltar e esperar#11
 eu@só observo...@só observar#12
 eu@pensando bem até que não tava tão rápido.@refletir sobre a física dos sólidos#13
 eu@pronto, vamos tentar denovo@terminar de pensar#3
