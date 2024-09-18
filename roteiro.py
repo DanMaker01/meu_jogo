@@ -1,95 +1,86 @@
+import re
 from typing import Any
 
 class Roteiro:
     def __init__(self):
         print("Iniciou classe Roteiro")
-        # self.jogo = jogo
         self.local = ""
         self.roteiro_organizado = []
         self.gerar_roteiro('roteiro1.txt')
-        print(self.printar_roteiro_organizado())
-        pass
 
-    def get_endereco_completo(self, nome_arquivo):
+    def get_endereco_completo(self, nome_arquivo: str) -> str:
         return self.local + nome_arquivo
 
-    def importar_arquivo(self, nome_arquivo):
+    def importar_arquivo(self, nome_arquivo: str) -> str:
         endereco_completo = self.get_endereco_completo(nome_arquivo)
         with open(endereco_completo, 'r', encoding='utf-8') as file:
-            texto_importado_bruto = file.read()
-        return texto_importado_bruto
-    
-    def processar_texto(self, texto_importado_bruto):
+            return file.read()
+
+    def processar_texto(self, texto_importado_bruto: str) -> list:
         if not texto_importado_bruto:
             print("não importou direito")
-            pass
+            return []
         
         linhas = texto_importado_bruto.strip().split('\n')
         resultado = []
 
         for linha in linhas:
             partes = linha.split('@')
-            nome = partes[0]
-            texto = partes[1]
-            opcoes_brutas = partes[2:]
-            
+            nome, texto = partes[0], partes[1]
             opcoes = []
-            for opcao in opcoes_brutas:
-                chave, valor = opcao.split('#')
-                opcoes.append([chave, int(valor)])
+
+            for opcao in partes[2:]:
+                opcao_valor_condicao = opcao.split('#')
+                opcao_nome = opcao_valor_condicao[0]
+                valor = int(opcao_valor_condicao[1])
+                condicao = None
+                
+                if len(opcao_valor_condicao) == 3:
+                    condicao_completa = opcao_valor_condicao[2]
+                    padrao_condicao = r"([a-zA-Z_]+)([><=!]+)(\d+\.?\d*)"
+                    match = re.match(padrao_condicao, condicao_completa)
+                    if match:
+                        condicao = [match.group(1), match.group(2), float(match.group(3))]
+                
+                opcoes.append([opcao_nome, valor, condicao])
 
             resultado.append([nome, texto, opcoes])
 
         return resultado
-    
-    def gerar_roteiro(self, nome_arquivo):
-        self.roteiro_organizado = self.processar_texto(self.importar_arquivo(nome_arquivo))
-        # for linha in self.roteiro_organizado:
-        #     print("linha",self.roteiro_organizado.index(linha),":",linha)
-        pass
 
-    def get_cena(self, id_cena):
-        if self.roteiro_organizado:
-            return self.roteiro_organizado[id_cena]
-        else:
+    def gerar_roteiro(self, nome_arquivo: str):
+        texto_importado = self.importar_arquivo(nome_arquivo)
+        self.roteiro_organizado = self.processar_texto(texto_importado)
+
+    def get_cena(self, id_cena: int) -> Any:
+        if not self.roteiro_organizado:
             print("não existe roteiro organizado")
+            return None
+        return self.roteiro_organizado[id_cena]
 
-    def get_roteiro_organizado(self):
-        if self.roteiro_organizado:
-            return self.roteiro_organizado
-        else:
+    def get_roteiro_organizado(self) -> list:
+        if not self.roteiro_organizado:
             print("não existe roteiro organizado")
+        return self.roteiro_organizado
 
-    #implementar outro tipo de visualização
-    def printar_roteiro_organizado(self, indice_atual=1, nivel=0, visitados=None):
+    def printar_roteiro_organizado(self, indice_atual: int = 1, nivel: int = 0, visitados: set = None):
         if visitados is None:
             visitados = set()
 
-        # Imprime o índice atual com a indentação correspondente ao nível
         indentacao = "    " * nivel
 
-        # Verifica se o índice já foi visitado para identificar subloops
         if indice_atual in visitados:
             print(f"{indentacao}{indice_atual} (subloop detectado -> próximo: {indice_atual})")
             return
 
-        #printar o indice e o texto daquele nó
-        texto = " --> "+self.get_cena(indice_atual)[1]
-        
-        print(f"{indentacao}{indice_atual}{texto}") #aquiiiiii <------ aquiiii <-------
-
-        # Marca o índice atual como visitado
+        texto = " --> " + self.get_cena(indice_atual)[1]
+        print(f"{indentacao}{indice_atual}{texto}")
         visitados.add(indice_atual)
 
-        # Obtenha as direções disponíveis no nó atual
-        linha_atual = self.roteiro_organizado[indice_atual]
-        direcoes_disponiveis = [opcao[1] for opcao in linha_atual[2]]
+        direcoes_disponiveis = [opcao[1] for opcao in self.get_cena(indice_atual)[2]]
 
-        # Percorre recursivamente os filhos, se ainda não foram visitados
         for proximo_indice in direcoes_disponiveis:
             if proximo_indice in visitados:
                 print(f"{indentacao}    {proximo_indice} (subloop)")
             else:
                 self.printar_roteiro_organizado(proximo_indice, nivel + 1, visitados.copy())
-    
-    

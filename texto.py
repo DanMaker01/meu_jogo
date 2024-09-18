@@ -1,19 +1,26 @@
 from janelas import Janela
+import pygame
 
 class Texto:
-    def __init__(self, x, y, lar, alt, texto, nome, posicao_nome="supesq"):
+    def __init__(self, x, y, lar, alt, texto, nome, jogo, posicao_nome="supesq"):
         self.x = x
         self.y = y
         self.largura = lar
         self.altura = alt
         self.cor = (200, 200, 200)
-
+        self.jogo = jogo
         # Janela de texto
         self.janela = Janela(self.x, self.y, self.largura, self.altura, texto="", cor=self.cor)
 
-        # Janela de nome
-        self.dimensoes_nome = (100, 24)
+        # Fonte e cálculo da largura do nome
+        self.fonte_nome = self.jogo.font  # fonte do nome
+        self.largura_nome = self.calcular_largura_nome(nome)
+        self.dimensoes_nome = (self.largura_nome, 24)  # Altura fixa para a janela do nome
+
+        # Posição relativa da janela do nome
         self.pos_relativa_nome = self.calcular_posicao_nome(posicao_nome)
+
+        # Janela de nome
         self.janela_nome = Janela(self.x + self.pos_relativa_nome[0], 
                                   self.y + self.pos_relativa_nome[1],
                                   self.dimensoes_nome[0], 
@@ -34,6 +41,13 @@ class Texto:
         self.margem_y = 5
         self.margem_x_nome = 5
         self.margem_y_nome = 2
+
+    def calcular_largura_nome(self, nome):
+        """
+        Calcula a largura do nome usando a fonte definida.
+        """
+        largura_nome, _ = self.fonte_nome.size(nome)
+        return largura_nome + 10  # Adiciona um pequeno espaço de margem para a largura
 
     def calcular_posicao_nome(self, posicao_nome):
         """

@@ -25,7 +25,7 @@ class Jogo:
         fontes_disponiveis = pygame.font.get_fonts()
         selecionar_fonte = 0
         self.font = pygame.font.SysFont(fontes_disponiveis[selecionar_fonte], 16)
-
+        
         # Configuração do relógio para controlar a taxa de frames
         self.clock = pygame.time.Clock()
 
@@ -37,21 +37,15 @@ class Jogo:
         self.historico = Historico()
         self.modificadores = GerenciadorMods()
         
-        # player é onde tem os modificadores?
-        self.modificadores.print_mods()
-        self.modificadores.alterar_mod("batata",1)
-        self.modificadores.alterar_mod("qq",1/12)
-        self.modificadores.alterar_mod("ww",1/999)
-        self.modificadores.alterar_mod("menos",-1)
-        self.modificadores.alterar_mod("zero", 0)
-        self.modificadores.zerar_mod("qq")
-        self.modificadores.print_mods()
-        self.modificadores.remover_mod("ww")
-        self.modificadores.print_mods()
-        self.modificadores.alterar_mod("menos",-99)
-        self.modificadores.print_mods()
-        print(self.modificadores.get_mod("menos"))
+        #teste roteiro
+        # print("roteiro org[1]",self.roteiro.get_roteiro_organizado()[1]
 
+        
+        # # player é onde tem os modificadores?
+        
+        self.modificadores.alterar_mod("batata",1)
+        self.modificadores.alterar_mod("batata",0.5)
+        self.modificadores.alterar_mod("moeda de ouro",3)
         #animação-renderer #implementar depois
         
         # Cena

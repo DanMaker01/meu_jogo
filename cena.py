@@ -4,8 +4,9 @@ from texto import Texto
 from opcoes import Opcoes
 
 class Cena:
-    def __init__(self,  cena_formato_lista):
+    def __init__(self,  jogo, cena_formato_lista):
         self.cena_id = cena_formato_lista[3]
+        self.jogo = jogo
 
         nome = cena_formato_lista[0]
         texto = cena_formato_lista[1]
@@ -13,8 +14,8 @@ class Cena:
         imagem_id = cena_formato_lista[3]
         
         self.palco = Palco(30,70,480,320, imagem_id)
-        self.texto = Texto(70,440,400,120, texto, nome)
-        self.opcoes = Opcoes(540,200,230,192, opcoes)
+        self.texto = Texto(70,440,400,120, texto, nome, jogo)
+        self.opcoes = Opcoes(540,200,230,192, opcoes, jogo)
 
         # print("iniciou classe Cena, cena atual: ", self.cena_id)
         pass
@@ -71,7 +72,7 @@ class GerenciadorCena:
     def carregar_cena(self, id_cena):
         if self.jogo.historico.get_ultima_cena() != id_cena:
             self.jogo.historico.adicionar(id_cena)
-        self.cena_atual = Cena(self.roteiro.get_cena(id_cena) + [id_cena])
+        self.cena_atual = Cena(self.jogo, self.roteiro.get_cena(id_cena) + [id_cena])
         
     def get_cena_atual_id(self):
         return self.cena_atual.get_cena_id() if self.cena_atual else None

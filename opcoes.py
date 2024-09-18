@@ -1,30 +1,49 @@
 from janelas import Janela
 
+#implementar
+# o tamanho da janela deve ser de acordo com as opcoes sem requisito e opções com requisito cumprido
+
 class Opcoes: #está meio bugado #Implementar
-    def __init__(self, x, y, lar, alt, opcoes):
+    def __init__(self, x, y, lar, alt, opcoes, jogo):
         # print("iniciou classe Opções")
         pos_x = x
         pos_y = y
         largura = lar
         altura = alt
         _cor = (200, 200, 200)
+
+        self.jogo = jogo
+        # self.font_nome = font_nome #implementar, para que o menu se adapte ao tamanho do texto e qtd de opçoes
         self.janela = Janela(pos_x, pos_y, largura, altura, cor=_cor)
         self.ativar_interacao = False
         self.opcoes = opcoes
+        self.opcoes_reais = []
+        for opcao in self.opcoes:
+            if opcao[2]:                             # se a opção tem condição
+                if self.condicao_cumprida(opcao[2]): # verifica se a condição foi cumprida
+                    self.opcoes_reais.append(opcao)
+                else:
+                    pass   
+            else:
+                self.opcoes_reais.append(opcao) # a opção não tem requisição, logo é cumprida automaticamente
+
+        print(self.opcoes)
         self.opcoes_janelas = []
-        self.distancia_entre_opcoes = alt / len(self.opcoes)
+
+        #
+        self.distancia_entre_opcoes = alt / len(self.opcoes_reais)
         self.opcao_selecionada = 0
         self.cor_opcao_selecionada = (255, 200, 30)
 
         # Cria as janelas das opções
         margem_x = 2
         margem_y = 2
-        for i in range(len(self.opcoes)):
+        for i in range(len(self.opcoes_reais)):
             _x = pos_x + margem_x
             _y = pos_y + self.distancia_entre_opcoes * i + 0.5 * margem_y
             _largura = largura - 2 * margem_x
-            _altura = alt / len(self.opcoes) - margem_y
-            _texto = self.opcoes[i][0]
+            _altura = alt / len(self.opcoes_reais) - margem_y
+            _texto = self.opcoes_reais[i][0]
             _cor = (255, 255, 255)
             janela_i = Janela(_x, _y, _largura, _altura, texto=_texto, cor=_cor)
             self.opcoes_janelas.append(janela_i)
@@ -33,6 +52,29 @@ class Opcoes: #está meio bugado #Implementar
         self.max_alpha = 255  # Transparência máxima
         self.fading_in = False  # Controle para o efeito de fade-in
         self.fade_speed = 0  # Velocidade do fade-in
+        pass
+    def condicao_cumprida(self, condicao):
+        nome_mod, condicional, valor = condicao
+
+        # Verifica se o modificador existe
+        valor_mod = self.jogo.modificadores.get_inventario().get(nome_mod, None)
+        
+        if valor_mod is not None:  # Se o modificador existe
+            if condicional == ">":
+                return valor_mod > valor
+            elif condicional == "<":
+                return valor_mod < valor
+            elif condicional == ">=":
+                return valor_mod >= valor
+            elif condicional == "<=":
+                return valor_mod <= valor
+            elif condicional == "==":
+                return valor_mod == valor
+            elif condicional == "!=":
+                return valor_mod != valor
+            else:
+                return None  # Condicional inválida
+        return None  # Modificador não encontrado
 
     def ativar(self, duracao_fade=50): #implementar #bug
         self.janela.ativar(duracao_fade)
@@ -56,11 +98,12 @@ class Opcoes: #está meio bugado #Implementar
     def desativar(self):
         self.janela.desativar()
 
+
     def draw(self, jogo): #pensar se tá certo, para deixar independete cada janela de opcao #implementar
         if self.janela.ativa:
             self.janela.draw(jogo)
             
-            if self.opcoes:
+            if self.opcoes_reais:
                 for janela in self.opcoes_janelas:
                     # Se o índice da janela está selecionado, desenha a opção em verde
                     if self.opcao_selecionada == self.opcoes_janelas.index(janela):
@@ -103,10 +146,7 @@ class Opcoes: #está meio bugado #Implementar
         
     def get_opcoes(self):
         return self.opcoes
-
-    def get_opcoes_qtd(self):
-        return len(self.opcoes)
-
+    
     def set_opcao_escolhida(self, indice):
         self.opcao_escolhida = indice
 
@@ -114,10 +154,10 @@ class Opcoes: #está meio bugado #Implementar
         return self.opcao_selecionada
 
     def selecionar_afrente(self):
-        self.opcao_selecionada = (self.opcao_selecionada + 1) % len(self.opcoes)
+        self.opcao_selecionada = (self.opcao_selecionada + 1) % len(self.opcoes_reais)
 
     def selecionar_atras(self):
-        self.opcao_selecionada = (self.opcao_selecionada - 1) % len(self.opcoes)
+        self.opcao_selecionada = (self.opcao_selecionada - 1) % len(self.opcoes_reais)
 
     def selecionar_opcao(self, indice):
         self.opcao_selecionada = indice

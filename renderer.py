@@ -112,25 +112,30 @@ class Renderer:
             if y + altura_linha > altura_max:
                 break
 
+    
     def desenhar_hud(self):
+        # FPS
         texto_1 = f"FPS: {self.jogo.clock.get_fps():.2f}"
         label = self.font.render(texto_1, 1, self.font_color)
         self.jogo.screen.blit(label, (self.margem_x, self.margem_y))
-        # Texto dinâmico
-        texto_2 = "cena: "+str(self.jogo.gerenciador_cena.get_cena_atual_id())
+        
+        # Cena atual
+        texto_2 = "cena: " + str(self.jogo.gerenciador_cena.get_cena_atual_id())
         label = self.font.render(texto_2, 1, self.font_color)
         self.jogo.screen.blit(label, (self.margem_x, self.margem_y + self.espacamento_linhas))
-        # # texto3
-        # texto_3 = "qtd_opcoes "+str(self.jogo.gerenciador_cena.get_opcoes_qtd())
-        # label = self.font.render(texto_3, 1, self.font_color)
-        # self.jogo.screen.blit(label, (self.margem_x, self.margem_y + self.espacamento_linhas*2))
         
-        #texto4
-        #adicione o texto estático "F1 - salvar. F2 - carregar."
-    
+        # Listar mods
+        modificadores = self.jogo.modificadores.get_inventario()
+        linha_atual = 0
+        espaco_linhas = self.espacamento_linhas
+        margem_x = 540
+        for mod in modificadores:
+            texto_3 = f"{mod}"
+            label = self.font.render(texto_3+": "+str(modificadores[mod]), 1, self.font_color)
+            self.jogo.screen.blit(label, (margem_x, linha_atual))
+            linha_atual += espaco_linhas
+
+        # Comandos
         texto_4 = "F1 - salvar. F2 - carregar."
         label = self.font.render(texto_4, 1, self.font_color)
-        self.jogo.screen.blit(label, (self.margem_x, self.margem_y + self.espacamento_linhas*2))
-
-        
-        pass
+        self.jogo.screen.blit(label, (self.margem_x, self.margem_y + self.espacamento_linhas * 2))

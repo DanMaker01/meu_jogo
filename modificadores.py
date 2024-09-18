@@ -11,7 +11,7 @@
 
 class GerenciadorMods:
     def __init__(self):
-        self.dicionario_mod = {}
+        self.inventario = {}
 
         print("iniciou classe GerenciadorMods")
 
@@ -19,19 +19,21 @@ class GerenciadorMods:
     
     def alterar_mod(self, nome, valor_):
         #verifica se há o nome na lista self.modificadores, se existe, incrementa o valor
-        if nome in self.dicionario_mod:
-            self.dicionario_mod[nome] = self.dicionario_mod[nome] + valor_
+        if nome in self.inventario:
+            self.inventario[nome] = self.inventario[nome] + valor_
         else:
-            self.dicionario_mod[nome] = valor_
+            self.inventario[nome] = valor_
         return
     def zerar_mod(self, nome):
-        self.dicionario_mod[nome] = 0
+        self.inventario[nome] = 0
         pass
     def remover_mod(self, nome):
-        self.dicionario_mod.pop(nome)
+        self.inventario.pop(nome)
         pass
     def get_mod(self, nome):
-        return self.dicionario_mod[nome]
+        return self.inventario[nome]
     def print_mods(self):
-        print(self.dicionario_mod)
+        print(self.inventario)
         pass
+    def get_inventario(self):
+        return self.inventario
