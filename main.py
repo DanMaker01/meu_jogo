@@ -8,15 +8,16 @@
 # 
 # ------------------PRIORIDADE
 #
-#
 #  
 # - definir estrutura de historia principal, como será 1 dia.
 # 
 # - desenhar no papel como vai ser uma história de 30 cenas
 # 
+#
 #   
 # -------------------LEGAL MAS NÃO ESSENCIAL
 #
+# - sistema de pressão de tempo para escolhas
 # - criar classe animação
 #       lista_sprites = []
 #       frame_atual = 0
@@ -25,9 +26,10 @@
 # - criar classe sprite
 #       img
 #       translação, escala, rotação 
-#       dimensão
-#       alpha
+#       origem
 #       cor
+#       alpha
+#
 # - criar classe gerenciadorAnimação
 #       camadas = [] 
 #       camada_add_sprite(camada, sprite)

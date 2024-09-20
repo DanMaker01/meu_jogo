@@ -59,3 +59,5 @@ class Animacao:
     
     def get_sprite_atual(self)->Sprite: 
         return self.sprites[self.frame_atual]
+    
+
