@@ -115,22 +115,24 @@ class GerenciadorCena:
         self.carregar_cena(direcao_a_ir)
         self.ativar_cena_atual()
     def rotina_de_abertura(self):
-        sequencia_ativacoes = [0, 10, 80]  # Momentos para ativação dos elementos
+        sequencia_ativacoes = [0, 10, 70, 80]  # Momentos para ativação dos elementos
         
         if self.frame_count == sequencia_ativacoes[0]:
             self.cena_atual.get_palco().ativar(0) #0 = instantaneo
             
-        # Ativa o texto após 150 frames
+        # Ativa o texto após 10 frames
         if self.frame_count == sequencia_ativacoes[1]:
             self.cena_atual.get_texto().ativar()
             
-        # Ativa as opções após 250 frames
+        # Ativa as opções após 80 frames
         if self.frame_count == sequencia_ativacoes[2]:
             self.cena_atual.get_opcoes().ativar()
             
+        # Ativa as opções após 110 frames
+        if self.frame_count == sequencia_ativacoes[3]:
             self.possivel_interagir = True  # Permite interações após ativação completa
             self.ativacao_iniciada = False  # Finaliza a sequência de ativação
-
+            
         self.frame_count += 1  # Incrementa o contador de frames
         pass
 
@@ -139,26 +141,30 @@ class GerenciadorCena:
         if self.ativacao_iniciada:
             self.rotina_de_abertura() #sequencia de ativação do palco, texto e opções, em ordem.
 
-        # Processa as ações do jogador
-        if self.possivel_interagir:
-            self.verifica_acoes_jogador()
+        # # Processa as ações do jogador
+        # if self.possivel_interagir:
+        #     self.verifica_acoes_jogador()
 
         if self.cena_atual:
             self.cena_atual.update()
         pass
     
-    def verifica_acoes_jogador(self):
-        acao_feita = self.jogo.controle.verifica_teclas()
-        if acao_feita == 'confirma':
-            self.confirmar_opcao()
-        elif acao_feita == 'acima':
-            self.cena_atual.get_opcoes().selecionar_atras()
-        elif acao_feita == 'abaixo':
-            self.cena_atual.get_opcoes().selecionar_afrente()
-        elif acao_feita == 'salvar':
-            self.jogo.historico.salvar()
-        elif acao_feita == 'carregar':
-            self.jogo.historico.carregar()
-            self.carregar_cena(self.jogo.historico.get_ultima_cena())
-            self.ativar_cena_atual()
-        pass
+    def is_possivel_interagir(self):
+        return self.possivel_interagir
+    
+    # def verifica_acoes_jogador(self): #implementar: ações são decididas pelo Jogo e não pelo GerenciadorCena
+
+    #     acao_feita = self.jogo.controle.verifica_teclas()
+    #     if acao_feita == 'confirma':
+    #         self.confirmar_opcao()
+    #     elif acao_feita == 'acima':
+    #         self.cena_atual.get_opcoes().selecionar_atras()
+    #     elif acao_feita == 'abaixo':
+    #         self.cena_atual.get_opcoes().selecionar_afrente()
+    #     elif acao_feita == 'salvar':
+    #         self.jogo.historico.salvar()
+    #     elif acao_feita == 'carregar':
+    #         self.jogo.historico.carregar()
+    #         self.carregar_cena(self.jogo.historico.get_ultima_cena())
+    #         self.ativar_cena_atual()
+    #     pass

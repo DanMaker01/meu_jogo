@@ -8,19 +8,49 @@
 # 
 # ------------------PRIORIDADE
 #
-# - adicionar modificadores ao escolher certas ações
-#       modificadores são adicionados numa lista quando você faz uma escolha especial
-#       os modificadores são tratados como itens, 
-#       caso você receba um modificador ele é adicionado na lista, com multiplicidade
-#       caso você receba novamente algum modificador só é acrescido seu numero no inventário
 #
-# - save e load devem tratar os modificadores também
-#       talvez deva ter uma classe que controle os modificadores e o roteiro ao msm tempo
-# #
-# #
-# #
-# #  
+#  
+# - definir estrutura de historia principal, como será 1 dia.
+# 
+# - desenhar no papel como vai ser uma história de 30 cenas
+# 
+#   
 # -------------------LEGAL MAS NÃO ESSENCIAL
+#
+# - criar classe animação
+#       lista_sprites = []
+#       frame_atual = 0
+#       animado = True
+#
+# - criar classe sprite
+#       img
+#       translação, escala, rotação 
+#       dimensão
+#       alpha
+#       cor
+# - criar classe gerenciadorAnimação
+#       camadas = [] 
+#       camada_add_sprite(camada, sprite)
+#       camada_rem_sprite(camada, sprite)
+#       camadas_desenhar_todas()
+#       camada_desenhar()
+#       update
+#       
+#       
+# - mostrar parcialmente uma opção se você tiver parte dos requisitos
+# 
+# - adicionar lista de condições
+# - adicionar lista de itens quando escolher uma opção
+#
+#
+# - montar time de
+#       eu
+#       você
+#       zoboomafoo
+#
+# - ao sair do jogo, abrir janela perguntando se vc quer salvar
+#
+# 
 # - mudar layout da cena, 
 #       imagem principal alinhada a esquerda (320x360)
 #       texto alinhado à direita 120x160 (160 ou mais)
@@ -43,11 +73,9 @@
 # 
 # - pequenas variações nas cenas de forma procedural.            
 #
-# - fazer história principal usando a repetição dos dias, onde
-# 
+#
 # 
 #
-
 # -------------------- FINALIZA QUANDO
 #
 # - completar uma história de 30 cenas

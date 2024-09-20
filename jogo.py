@@ -9,10 +9,11 @@ from cena import GerenciadorCena
 from roteiro import Roteiro
 from historico import Historico
 from modificadores import GerenciadorMods
+from memoria import Memoria
 
 class Jogo:
     def __init__(self, width=800, height=600):
-        print("iniciou classe Jogo")
+        # print("iniciou classe Jogo")
         pygame.init()
         pygame.display.set_caption("Meu Jogo")
         
@@ -36,6 +37,7 @@ class Jogo:
         self.roteiro = Roteiro()
         self.historico = Historico()
         self.modificadores = GerenciadorMods()
+        self.memoria = Memoria(self, 'save1.dat')
         
         #teste roteiro
         # print("roteiro org[1]",self.roteiro.get_roteiro_organizado()[1]
@@ -63,6 +65,7 @@ class Jogo:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.running = False
+                print("saindo do jogo...")
             elif event.type == pygame.KEYDOWN:
                 self.handle_keydown(event.key)
 
@@ -87,9 +90,28 @@ class Jogo:
 
     def update(self): #implementar
         self.controle.update() 
-        self.gerenciador_cena.update()
+        if self.gerenciador_cena.is_possivel_interagir():
+            self.verifica_acao_jogador()
         #...
+        self.gerenciador_cena.update()
         self.controle.limpar_teclas_apertadas()
+        pass
+
+    def verifica_acao_jogador(self):
+        #
+        acao_feita = self.controle.verifica_teclas()
+        if acao_feita == 'confirma':
+            self.gerenciador_cena.confirmar_opcao()
+        elif acao_feita == 'acima':
+            self.gerenciador_cena.cena_atual.get_opcoes().selecionar_atras()
+        elif acao_feita == 'abaixo':
+            self.gerenciador_cena.cena_atual.get_opcoes().selecionar_afrente()
+        elif acao_feita == 'salvar':
+            self.memoria.salvar()
+        elif acao_feita == 'carregar':
+            self.memoria.carregar()
+            self.gerenciador_cena.carregar_cena(self.historico.get_ultima_cena())
+            self.gerenciador_cena.ativar_cena_atual()
         pass
 
     def run(self):
@@ -111,5 +133,3 @@ class Jogo:
         
         # Encerra o Pygame ao sair do loop
         pygame.quit()
-
-    

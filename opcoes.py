@@ -19,7 +19,7 @@ class Opcoes: #está meio bugado #Implementar
         self.opcoes = opcoes
         self.opcoes_reais = []
         for opcao in self.opcoes:
-            print("opcao:",opcao)
+            # print("opcao:",opcao)
             if opcao[2]:                             # se a opção tem condição
                 if self.condicao_cumprida(opcao[2]): # verifica se a condição foi cumprida
                     self.opcoes_reais.append(opcao)

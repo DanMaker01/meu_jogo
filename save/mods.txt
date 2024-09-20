@@ -1,0 +1,5 @@
+vida:1
+moeda de prata:10
+batata (kg):1.473
+dor:0
+dias:1.0
