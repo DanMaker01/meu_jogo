@@ -8,16 +8,35 @@
 # 
 # ------------------PRIORIDADE
 #
+# - barra de tempo, primeiro em vaores depois em sprites
 #  
-# - definir estrutura de historia principal, como será 1 dia.
+# - definir classe Sprite melhor
+#
 # 
+# 
+#
+#
+#
+#
 # - desenhar no papel como vai ser uma história de 30 cenas
-# 
+# - definir estrutura de historia principal, como será 1 dia.
+#
+#
+#
+#
+#
+#
+#
+#
+#
 #
 #   
 # -------------------LEGAL MAS NÃO ESSENCIAL
 #
 # - sistema de pressão de tempo para escolhas
+#
+#
+#
 # - criar classe animação
 #       lista_sprites = []
 #       frame_atual = 0

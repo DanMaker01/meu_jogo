@@ -19,8 +19,6 @@ class Cena:
 
         # print("iniciou classe Cena, cena atual: ", self.cena_id)
         pass
-
-
     def draw(self,jogo):# implementar classe que controla a janela principal e a imagem princiapal, PALCO
     
         if self.palco:
@@ -39,11 +37,9 @@ class Cena:
         if self.opcoes:
             self.opcoes.update()
         pass
-
-
     def get_cena_id(self):
         return self.cena_id
-    def get_palco(self):#mudando
+    def get_palco(self):
         return self.palco
     def get_texto(self):
         return self.texto
@@ -58,21 +54,19 @@ class GerenciadorCena:
     def __init__(self, jogo):
 
         self.jogo = jogo
-        self.roteiro = self.jogo.roteiro
         self.cena_atual = None
         self.possivel_interagir = False
-        self.frame_count = 0  # Contador de frames
+        self.frame_count = 0            # Contador de frames
         self.ativacao_iniciada = False  # Flag para iniciar a sequência de ativação
         # self.
         pass
-
     def get_opcoes_qtd(self):
         return self.cena_atual.get_opcoes().get_opcoes_qtd() if self.cena_atual else 0
 
     def carregar_cena(self, id_cena):
         if self.jogo.historico.get_ultima_cena() != id_cena:
             self.jogo.historico.adicionar(id_cena)
-        self.cena_atual = Cena(self.jogo, self.roteiro.get_cena(id_cena) + [id_cena])
+        self.cena_atual = Cena(self.jogo, self.jogo.roteiro.get_cena(id_cena) + [id_cena])
         
     def get_cena_atual_id(self):
         return self.cena_atual.get_cena_id() if self.cena_atual else None
@@ -112,8 +106,8 @@ class GerenciadorCena:
 
         direcao_a_ir = lista_opcoes[opcao_selecionada][1]
         # print("CONFIRMA ! direção:", direcao_a_ir)
-        self.carregar_cena(direcao_a_ir)
-        self.ativar_cena_atual()
+        self.carregar_cena(direcao_a_ir)    #carrega a proxima cena
+        self.ativar_cena_atual()            # Ativa a proxima cena
     def rotina_de_abertura(self):
         sequencia_ativacoes = [0, 10, 70, 80]  # Momentos para ativação dos elementos
         
@@ -151,20 +145,3 @@ class GerenciadorCena:
     
     def is_possivel_interagir(self):
         return self.possivel_interagir
-    
-    # def verifica_acoes_jogador(self): #implementar: ações são decididas pelo Jogo e não pelo GerenciadorCena
-
-    #     acao_feita = self.jogo.controle.verifica_teclas()
-    #     if acao_feita == 'confirma':
-    #         self.confirmar_opcao()
-    #     elif acao_feita == 'acima':
-    #         self.cena_atual.get_opcoes().selecionar_atras()
-    #     elif acao_feita == 'abaixo':
-    #         self.cena_atual.get_opcoes().selecionar_afrente()
-    #     elif acao_feita == 'salvar':
-    #         self.jogo.historico.salvar()
-    #     elif acao_feita == 'carregar':
-    #         self.jogo.historico.carregar()
-    #         self.carregar_cena(self.jogo.historico.get_ultima_cena())
-    #         self.ativar_cena_atual()
-    #     pass
