@@ -21,7 +21,7 @@ class Pressao:
                             lar-2*self.margem_x, alt - 2*self.margem_y, 
                             texto="", cor=_cor_barra, alpha=255)
 
-        self.tempo = 1
+        self.tempo = -1
         self.tempo_total = 0
         
         self.ativo = False
@@ -42,7 +42,7 @@ class Pressao:
         self.tempo = 0
         pass
     def checar_se_tempo_acabou(self):
-        if self.tempo <= 0: return True
+        if self.tempo == 0: return True
         else: return False
     #--------------------------------------------------------------------------
     def draw(self, jogo):
@@ -63,7 +63,7 @@ class Pressao:
             if self.tempo_ativo:
 
                 self.avancar_tempo()
-                print("tempo:", self.tempo)
+                # print("tempo:", self.tempo)
 
                 if self.checar_se_tempo_acabou():
                     self.desativar_tempo()
@@ -79,12 +79,12 @@ class Pressao:
             
             
     def ativar_tempo(self, tempo=200):
-        print("ativando tempo")
+        # print("ativando tempo")
         self.tempo_total = tempo
         self.resetar_tempo()
 
         self.tempo_ativo = True
-
+        print("pressão: tempo ativado:", self.tempo_total)
 
         pass
     def desativar_tempo(self):
@@ -92,7 +92,7 @@ class Pressao:
         self.zerar_tempo()
         pass
     def ativar(self):
-        print("ativar pressao")
+        # print("ativar pressao")
         self.ativo = True
         # self.ativar_tempo(tempo)
         self.janela.ativar(duracao_fade=1)

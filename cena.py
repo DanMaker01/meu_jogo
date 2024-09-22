@@ -136,7 +136,14 @@ class GerenciadorCena:
         # Ativa as opções após 80 frames
         if self.frame_count == sequencia_ativacoes[3]:
             self.cena_atual.get_pressao().ativar()
-            self.cena_atual.get_pressao().ativar_tempo(250)
+            
+            tempo_de_texto = self.cena_atual.get_texto().get_qtd_letras_texto() * fator_tempo_cada_letra
+            tempo_de_opcoes = 0
+            fator_tempo_cada_letra = 7
+            for opcao in self.cena_atual.get_opcoes().get_opcoes():
+                tempo_de_opcoes += len(opcao[0]) * fator_tempo_cada_letra
+
+            self.cena_atual.get_pressao().ativar_tempo(tempo_de_texto+tempo_de_opcoes)
             self.possivel_interagir = True  # Permite interações após ativação completa
             self.ativacao_iniciada = False  # Finaliza a sequência de ativação
             

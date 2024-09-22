@@ -33,7 +33,8 @@
 #   
 # -------------------LEGAL MAS NÃO ESSENCIAL
 #
-# - sistema de pressão de tempo para escolhas
+# - fazer alterações profundas no roteiro, como definir melhor os efeitos de animação, velocidade da Pressão
+# - modificar o roteiro para definir mais coisas, como a velocidade
 #
 #
 #

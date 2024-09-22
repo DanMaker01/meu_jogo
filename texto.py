@@ -11,6 +11,7 @@ class Texto:
         self.jogo = jogo
         # Janela de texto
         self.janela = Janela(self.x, self.y, self.largura, self.altura, texto="", cor=self.cor)
+        self.texto = texto
 
         # Fonte e cálculo da largura do nome
         self.fonte_nome = self.jogo.font  # fonte do nome
@@ -27,7 +28,6 @@ class Texto:
                                   self.dimensoes_nome[1], 
                                   texto="", cor=self.cor)
 
-        self.texto = texto
         self.nome = nome
 
         # Animação
@@ -41,7 +41,9 @@ class Texto:
         self.margem_y = 5
         self.margem_x_nome = 5
         self.margem_y_nome = 2
-
+    def get_qtd_letras_texto(self):
+        return len(self.texto)
+    
     def calcular_largura_nome(self, nome):
         """
         Calcula a largura do nome usando a fonte definida.

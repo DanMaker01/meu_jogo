@@ -3,6 +3,9 @@ from janelas import Janela
 #implementar
 # o tamanho da janela deve ser de acordo com as opcoes sem requisito e opções com requisito cumprido
 # ao mexer com a lista de opções, sempre usar a lista real, cuidado com escolher opcoes não liberadas
+
+# opcao = (texto, direcao, condicao, item)
+
 class Opcoes: #está meio bugado #Implementar
     def __init__(self, x, y, lar, alt, opcoes, jogo, _cor=(100, 100, 100)):
         # print("iniciou classe Opções")
