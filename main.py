@@ -120,7 +120,7 @@ from jogo import Jogo
 
 # Define a posição (x, y) da janela no windows
 canto_ou_centro = 'canto' # inicia janela centralizado ou no canto superior-esquerdo
-x = 0
+x = 64
 y = 32
 
 if canto_ou_centro == 'centro':

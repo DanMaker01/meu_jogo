@@ -2,15 +2,14 @@ from janelas import Janela
 
 #implementar
 # o tamanho da janela deve ser de acordo com as opcoes sem requisito e opções com requisito cumprido
-
+# ao mexer com a lista de opções, sempre usar a lista real, cuidado com escolher opcoes não liberadas
 class Opcoes: #está meio bugado #Implementar
-    def __init__(self, x, y, lar, alt, opcoes, jogo):
+    def __init__(self, x, y, lar, alt, opcoes, jogo, _cor=(100, 100, 100)):
         # print("iniciou classe Opções")
         pos_x = x
         pos_y = y
         largura = lar
         altura = alt
-        _cor = (200, 200, 200)
 
         self.jogo = jogo
         # self.font_nome = font_nome #implementar, para que o menu se adapte ao tamanho do texto e qtd de opçoes
@@ -22,11 +21,11 @@ class Opcoes: #está meio bugado #Implementar
             # print("opcao:",opcao)
             if opcao[2]:                             # se a opção tem condição
                 if self.condicao_cumprida(opcao[2]): # verifica se a condição foi cumprida
-                    self.opcoes_reais.append(opcao)
+                    self.opcoes_reais.append(opcao) # se a condição foi cumprida, esta opção vai ser representada realmente
                 else:
                     pass   
-            else:
-                self.opcoes_reais.append(opcao) # a opção não tem requisição, logo é cumprida automaticamente
+            else: # a opção não tem requisição, logo é cumprida automaticamente
+                self.opcoes_reais.append(opcao) 
 
         # print("opcoes:",self.opcoes)
         
@@ -35,7 +34,7 @@ class Opcoes: #está meio bugado #Implementar
         #
         self.distancia_entre_opcoes = alt / len(self.opcoes_reais)
         self.opcao_selecionada = 0
-        self.cor_opcao_selecionada = (255, 200, 30)
+        self.cor_opcao_selecionada = (255, 220, 30)
 
         # Cria as janelas das opções
         margem_x = 2
@@ -150,8 +149,8 @@ class Opcoes: #está meio bugado #Implementar
     def get_opcoes(self):
         return self.opcoes
     
-    def set_opcao_escolhida(self, indice):
-        self.opcao_escolhida = indice
+    def set_opcao_selecionada(self, indice):
+        self.opcao_selecionada = indice
 
     def get_opcao_selecionada(self):
         return self.opcao_selecionada
@@ -164,3 +163,6 @@ class Opcoes: #está meio bugado #Implementar
 
     def selecionar_opcao(self, indice):
         self.opcao_selecionada = indice
+
+    def get_qtd_opcoes_reais(self):
+        return len(self.opcoes_reais)

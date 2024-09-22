@@ -1,7 +1,9 @@
 #imports
+import random
 from palco import Palco
 from texto import Texto
 from opcoes import Opcoes
+from pressao import Pressao
 
 class Cena:
     def __init__(self,  jogo, cena_formato_lista):
@@ -16,10 +18,11 @@ class Cena:
         self.palco = Palco(30,70,480,320, imagem_id)
         self.texto = Texto(70,440,400,120, texto, nome, jogo)
         self.opcoes = Opcoes(540,200,230,192, opcoes, jogo)
+        self.pressao = Pressao(540,400,230,16)
 
         # print("iniciou classe Cena, cena atual: ", self.cena_id)
         pass
-    def draw(self,jogo):# implementar classe que controla a janela principal e a imagem princiapal, PALCO
+    def draw(self,jogo):
     
         if self.palco:
             self.palco.draw(jogo) 
@@ -27,6 +30,8 @@ class Cena:
             self.texto.draw(jogo)
         if self.opcoes:
             self.opcoes.draw(jogo)
+        if self.pressao:
+            self.pressao.draw(jogo)
         # print(self.get_palco())
 
     def update(self):
@@ -36,6 +41,9 @@ class Cena:
             self.texto.update()
         if self.opcoes:
             self.opcoes.update()
+        if self.pressao:
+            self.pressao.update()
+        
         pass
     def get_cena_id(self):
         return self.cena_id
@@ -45,6 +53,8 @@ class Cena:
         return self.texto
     def get_opcoes(self):
         return self.opcoes
+    def get_pressao(self):
+        return self.pressao
     def get_nome_opcao(self, indice):
         return self.opcoes.get_nome_opcao(indice)
 # ----------------------------------------------------------------------------------------------------------
@@ -107,23 +117,26 @@ class GerenciadorCena:
         direcao_a_ir = lista_opcoes[opcao_selecionada][1]
         # print("CONFIRMA ! direção:", direcao_a_ir)
         self.carregar_cena(direcao_a_ir)    #carrega a proxima cena
-        self.ativar_cena_atual()            # Ativa a proxima cena
+        # self.ativar_cena_atual()            # Ativa a proxima cena
     def rotina_de_abertura(self):
         sequencia_ativacoes = [0, 10, 70, 80]  # Momentos para ativação dos elementos
-        
+        #ativa o texto apos 0 frames
         if self.frame_count == sequencia_ativacoes[0]:
-            self.cena_atual.get_palco().ativar(0) #0 = instantaneo
+            self.cena_atual.get_palco().ativar(0) #0 = instantaneo (sem fade)
             
         # Ativa o texto após 10 frames
         if self.frame_count == sequencia_ativacoes[1]:
             self.cena_atual.get_texto().ativar()
             
-        # Ativa as opções após 80 frames
+        # Ativa as opções após 70 frames
         if self.frame_count == sequencia_ativacoes[2]:
+            #ativar tudo
             self.cena_atual.get_opcoes().ativar()
             
-        # Ativa as opções após 110 frames
+        # Ativa as opções após 80 frames
         if self.frame_count == sequencia_ativacoes[3]:
+            self.cena_atual.get_pressao().ativar()
+            self.cena_atual.get_pressao().ativar_tempo(250)
             self.possivel_interagir = True  # Permite interações após ativação completa
             self.ativacao_iniciada = False  # Finaliza a sequência de ativação
             
@@ -140,6 +153,16 @@ class GerenciadorCena:
         #     self.verifica_acoes_jogador()
 
         if self.cena_atual:
+            
+            if self.cena_atual.get_pressao().checar_se_tempo_acabou():
+
+                id_opcao_aleatoria = random.randrange(0, self.get_cena_atual().get_opcoes().get_qtd_opcoes_reais())
+
+                print("opcao selecionada:",id_opcao_aleatoria)
+                self.cena_atual.get_opcoes().set_opcao_selecionada(id_opcao_aleatoria)
+                self.confirmar_opcao()
+                self.ativar_cena_atual()
+
             self.cena_atual.update()
         pass
     

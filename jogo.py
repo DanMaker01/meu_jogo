@@ -10,6 +10,7 @@ from roteiro import Roteiro
 from historico import Historico
 from modificadores import GerenciadorMods
 from memoria import Memoria
+# from pressao import Pressao
 
 class Jogo:
     def __init__(self, width=800, height=600):
@@ -38,13 +39,12 @@ class Jogo:
         self.historico = Historico()
         self.modificadores = GerenciadorMods()
         self.memoria = Memoria(self, 'save1.dat')
+        # self.pressao = Pressao()
         
         #teste roteiro
         # print("roteiro org[1]",self.roteiro.get_roteiro_organizado()[1]
 
-        
         # # player é onde tem os modificadores?
-        
         self.modificadores.alterar_mod("vida",1)
         self.modificadores.alterar_mod("moeda de prata",10)
         self.modificadores.alterar_mod("batata (kg)",1.473)
@@ -55,6 +55,7 @@ class Jogo:
         self.gerenciador_cena = GerenciadorCena(self)
         self.gerenciador_cena.carregar_cena(1)
         self.gerenciador_cena.ativar_cena_atual()
+        
         
         self.running = True #iniciar loop principal
         pass 
@@ -89,9 +90,13 @@ class Jogo:
         pass
 
     def update(self): #implementar
-        self.controle.update() 
+        self.controle.update()
+         
+        
         if self.gerenciador_cena.is_possivel_interagir():
+            # self.pressao.update()
             self.verifica_acao_jogador()
+        
         #...
         self.gerenciador_cena.update()
         self.controle.limpar_teclas_apertadas()
@@ -102,13 +107,14 @@ class Jogo:
         acao_feita = self.controle.verifica_teclas()
         if acao_feita == 'confirma':
             self.gerenciador_cena.confirmar_opcao()
+            self.gerenciador_cena.ativar_cena_atual()
         elif acao_feita == 'acima':
             self.gerenciador_cena.cena_atual.get_opcoes().selecionar_atras()
         elif acao_feita == 'abaixo':
             self.gerenciador_cena.cena_atual.get_opcoes().selecionar_afrente()
         elif acao_feita == 'salvar':
             self.memoria.salvar()
-        elif acao_feita == 'carregar':
+        elif acao_feita == 'carregar':#implementar a Pressão
             self.memoria.carregar()
             self.gerenciador_cena.carregar_cena(self.historico.get_ultima_cena())
             self.gerenciador_cena.ativar_cena_atual()
