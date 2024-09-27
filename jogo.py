@@ -108,6 +108,7 @@ class Jogo:
         if acao_feita == 'confirma':
             self.gerenciador_cena.confirmar_opcao()
             self.gerenciador_cena.ativar_cena_atual()
+            
         elif acao_feita == 'acima':
             self.gerenciador_cena.cena_atual.get_opcoes().selecionar_atras()
         elif acao_feita == 'abaixo':

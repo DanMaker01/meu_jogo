@@ -4,59 +4,64 @@
 # ----------------------------------------------------------------------------
 
 # ----------------------------------------------------------------------------
-# TO-DO
-# 
+# a fazer:
+# ----------------------------------------------------------------------------
 # ------------------PRIORIDADE
 #
-# - barra de tempo, primeiro em vaores depois em sprites
-#  
-# - definir classe Sprite melhor
-#
-# 
-# 
-#
-#
-#
-#
 # - desenhar no papel como vai ser uma história de 30 cenas
+#  
+#
 # - definir estrutura de historia principal, como será 1 dia.
+# 
+# 
 #
 #
 #
 #
 #
 #
-#
-#
-#
-#
-#   
-# -------------------LEGAL MAS NÃO ESSENCIAL
-#
-# - fazer alterações profundas no roteiro, como definir melhor os efeitos de animação, velocidade da Pressão
-# - modificar o roteiro para definir mais coisas, como a velocidade
-#
-#
-#
-# - criar classe animação
-#       lista_sprites = []
-#       frame_atual = 0
-#       animado = True
-#
-# - criar classe sprite
-#       img
+# - definir classe Sprite melhor, diferenciar de Animação
+#       imagem
 #       translação, escala, rotação 
 #       origem
 #       cor
 #       alpha
 #
-# - criar classe gerenciadorAnimação
-#       camadas = [] 
-#       camada_add_sprite(camada, sprite)
-#       camada_rem_sprite(camada, sprite)
+# - criar classe animação, diferenciar de sprite
+#       lista_sprites = []
+#       frame_atual = 0
+#       animado = True
+#       frame_avancar()
+#       desenhar()
+#
+# - criar classe gerenciadorAnimação (saber trabalhar com BG)
+#       camadas = []
+#       
+#       tempo_atual
+#       
+#       tempo_avancar() 
+#       camada_add_anima(camada, anima)
+#       camada_rem_anima(camada, anima)
 #       camadas_desenhar_todas()
 #       camada_desenhar()
 #       update
+#       camadas_desenhar_todas()
+#   
+# -------------------LEGAL MAS NÃO ESSENCIAL
+#
+# - fazer alterações profundas no roteiro, como definir melhor os efeitos de animação
+#
+# - modificar o roteiro.txt para definir mais coisas, como:
+#       velocidade (???), 
+#       animação, 
+#       sprites, 
+#       talvez valha criar anima.txt para controlar as posições dos sprites, acho que vale hein:
+#           pontos positivos:
+#               - estrutura bem definida, cada cena terá um id em anima.txt, em cada um destes vai ter N animações com  
+#
+#
+# - tentar criar uma classe que cuide de eventos de tempo sequenciais, como em GerenciadorCena
+#
 #       
 #       
 # - mostrar parcialmente uma opção se você tiver parte dos requisitos

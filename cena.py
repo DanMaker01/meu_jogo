@@ -137,8 +137,8 @@ class GerenciadorCena:
         if self.frame_count == sequencia_ativacoes[3]:
             self.cena_atual.get_pressao().ativar()
             
-            fator_tempo_cada_letra = 7
-
+            fator_tempo_cada_letra = 10 #tava 7 achei rápido, coloquei 10
+    
             tempo_de_texto = self.cena_atual.get_texto().get_qtd_letras_texto() * fator_tempo_cada_letra
             
             tempo_de_opcoes = 0

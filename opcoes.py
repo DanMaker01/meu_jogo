@@ -4,6 +4,9 @@ from janelas import Janela
 # o tamanho da janela deve ser de acordo com as opcoes sem requisito e opções com requisito cumprido
 # ao mexer com a lista de opções, sempre usar a lista real, cuidado com escolher opcoes não liberadas
 
+
+# - ao escolher uma opção, na função "selecionar opção" deve haver um efeito de Cor e/ou Escala entre as cenas, pode ter uma pausa
+
 # opcao = (texto, direcao, condicao, item)
 
 class Opcoes: #está meio bugado #Implementar

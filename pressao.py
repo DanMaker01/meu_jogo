@@ -1,5 +1,14 @@
-from janelas import Janela
+# revisar a classe, parece que está boa. Daria pra fazer:
+# - definir melhor as classes
+# - verificar a interação com os outros modulos
+# - criar funções auxiliares, criar subfunções internas
+# - 
+# implementar
+# 
 
+
+
+from janelas import Janela
 
 class Pressao:
     def __init__(self, x,y,lar, alt):
@@ -47,7 +56,7 @@ class Pressao:
     #--------------------------------------------------------------------------
     def draw(self, jogo):
         if self.ativo:
-            # print("desenha janelas da pressão")
+            # print("desenha janelas da pressão")""
             self.janela.draw(jogo)
             self.barra.draw(jogo)
         pass
