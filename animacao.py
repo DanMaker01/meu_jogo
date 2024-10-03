@@ -1,4 +1,5 @@
 
+#implementar
 
 #sprite
 class Sprite: #definir melhor o que é um sprite #implementar
@@ -9,8 +10,10 @@ class Sprite: #definir melhor o que é um sprite #implementar
         self.y = y
         self.largura = largura
         self.altura = altura
-        self.rot_x = 0
-        self.rot_y = 0
+        # self.alfa = 255
+        # self.transformacoes = [] #transformações aplicadas
+        # self.rot_x = 0
+        # self.rot_y = 0
         pass
 
     def draw(self, jogo):

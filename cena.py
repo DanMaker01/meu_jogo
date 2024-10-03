@@ -138,7 +138,7 @@ class GerenciadorCena:
             self.cena_atual.get_pressao().ativar()
             
             fator_tempo_cada_letra = 10 #tava 7 achei rápido, coloquei 10
-    
+
             tempo_de_texto = self.cena_atual.get_texto().get_qtd_letras_texto() * fator_tempo_cada_letra
             
             tempo_de_opcoes = 0
@@ -148,8 +148,11 @@ class GerenciadorCena:
             self.cena_atual.get_pressao().ativar_tempo(tempo_de_texto+tempo_de_opcoes)
             self.possivel_interagir = True  # Permite interações após ativação completa
             self.ativacao_iniciada = False  # Finaliza a sequência de ativação
-            
+        
+        # dt = self.jogo.clock.tick(60)
+        # dt = clock.tick()
         self.frame_count += 1  # Incrementa o contador de frames
+        # print(self.frame_count)
         pass
 
     def update(self):

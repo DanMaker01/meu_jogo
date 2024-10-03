@@ -1,6 +1,6 @@
 # revisar a classe, parece que está boa. Daria pra fazer:
 # - definir melhor as classes
-# - verificar a interação com os outros modulos
+# - verificar a interação com os outros modulos (exemplo: )
 # - criar funções auxiliares, criar subfunções internas
 # - 
 # implementar

@@ -21,32 +21,37 @@
 #
 #
 # - definir classe Sprite melhor, diferenciar de Animação
-#       imagem
+#       imagem[]
 #       translação, escala, rotação 
 #       origem
 #       cor
 #       alpha
 #
 # - criar classe animação, diferenciar de sprite
-#       lista_sprites = []
-#       frame_atual = 0
+#       importar_sprites
+#       importar_transformacoes
 #       animado = True
+#       
+#       lista_sprites = []              (os elementos são sprite_i )
+#       lista_transformacoes = []       (os elementos são [s,r,t] )
+#       
+#       frame_atual = 0
 #       frame_avancar()
 #       desenhar()
 #
 # - criar classe gerenciadorAnimação (saber trabalhar com BG)
-#       camadas = []
+#       ativado = True
+#       lista_camadas = [] (em cada camada, suas animações)
 #       
 #       tempo_atual
-#       
 #       tempo_avancar() 
+#       
 #       camada_add_anima(camada, anima)
 #       camada_rem_anima(camada, anima)
-#       camadas_desenhar_todas()
 #       camada_desenhar()
-#       update
 #       camadas_desenhar_todas()
-#   
+#       update
+#       
 # -------------------LEGAL MAS NÃO ESSENCIAL
 #
 # - fazer alterações profundas no roteiro, como definir melhor os efeitos de animação
@@ -101,7 +106,7 @@
 # - pequenas variações nas cenas de forma procedural.            
 #
 #
-# 
+# - interface para Mouse
 #
 # -------------------- FINALIZA QUANDO
 #

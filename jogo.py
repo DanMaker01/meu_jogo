@@ -91,6 +91,7 @@ class Jogo:
 
     def update(self): #implementar
         self.controle.update()
+        # self.clock.tick(30)
          
         
         if self.gerenciador_cena.is_possivel_interagir():
