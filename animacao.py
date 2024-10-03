@@ -10,9 +10,9 @@
 # .
 # .
 # .
-# nome_ultimo, qtd_sprites, retangulo_recorte, [indices, posicoes, escalas, rotacoes, alfas]
 #--------------------------------------------------------------------------------------
 # Exemplo:
+# nome_ultimo, qtd_sprites, retangulo_recorte, [indices, posicoes, escalas, rotacoes, alfas]
 #--------------------------------------------------------------------------------------
 # 1
 # bg1, 1, [x,y,L,A], [[],[pos_1],[],[],[]]
@@ -25,7 +25,7 @@
 #--------------------------------------------------------------------------------------
 # obs: a ordem da lista de imagem diz quem aparece atrás e quem aparece na frente.
 #--------------------------------------------------------------------------------------
-
+#
 #sprite
 class Sprite: #definir melhor o que é um sprite #implementar
     def __init__(self, imagens_id, x, y, largura, altura):
