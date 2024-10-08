@@ -53,6 +53,8 @@
 #       update
 #       
 # -------------------LEGAL MAS NÃO ESSENCIAL
+
+# - editor de roteiro separado, integrando img_cena, texto, opções, variáveis, que salve e load roteiros
 #
 # - fazer alterações profundas no roteiro, como definir melhor os efeitos de animação
 #
