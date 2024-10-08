@@ -1,6 +1,6 @@
 Título:
 
-Daemon - Anomia Social
+Anomia Social
 
 -----------------------------------------
 
