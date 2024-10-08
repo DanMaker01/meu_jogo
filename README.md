@@ -1,6 +1,6 @@
 Título:
 
-Anomia Social
+ - Anomia Social
 
 -----------------------------------------
 
@@ -14,4 +14,4 @@ Requisitos:
 
 Rodar:
 
-python main.py
+ - python main.py
