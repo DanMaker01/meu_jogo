@@ -74,7 +74,7 @@ class GerenciadorCena:
         return self.cena_atual.get_opcoes().get_opcoes_qtd() if self.cena_atual else 0
 
     def carregar_cena(self, id_cena):
-        id_cena = id_cena-1
+        id_cena = id_cena-1 #correção de indice, para começar de 1 ao invés de 0
         if self.jogo.historico.get_ultima_cena() != id_cena:
             self.jogo.historico.adicionar(id_cena)
         self.cena_atual = Cena(self.jogo, self.jogo.roteiro.get_cena(id_cena) + [id_cena])

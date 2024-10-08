@@ -16,7 +16,7 @@ class Jogo:
     def __init__(self, width=800, height=600):
         # print("iniciou classe Jogo")
         pygame.init()
-        pygame.display.set_caption("Meu Jogo - Daemon - Anomia")
+        pygame.display.set_caption("Anomia Social")
         
         # Configurações da janela visível na tela
         self.WIDTH = width
