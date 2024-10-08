@@ -1,10 +1,17 @@
-------------------------
-NOME:
+Título:
+
 Daemon - Anomia Social
-------------------------
-REQUISITOS:
-pip install pygame
-------------------------
-RODAR:
+
+-----------------------------------------
+
+Requisitos:
+
+ - Python 3 (ou maior)
+
+ - Biblioteca pygame (pip install pygame)
+
+-----------------------------------------
+
+Rodar:
+
 python main.py
-------------------------
