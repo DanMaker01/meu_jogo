@@ -37,6 +37,8 @@ class Roteiro:
         linhas = texto_importado_bruto.strip().split('\n')
         resultado = []
 
+        # linhas = linhas[1:] #ignorar a primeira linha
+
         for linha in linhas:
             partes = linha.split('@')
             nome, texto = partes[0], partes[1]
@@ -85,6 +87,7 @@ class Roteiro:
             resultado.append([nome, texto, opcoes])
 
         return resultado
+    
     # def processar_texto(self, texto_importado_bruto: str) -> list:
     #     if not texto_importado_bruto:
     #         print("erro ao processar o texto")

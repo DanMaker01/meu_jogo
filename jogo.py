@@ -53,7 +53,8 @@ class Jogo:
         
         # Cena
         self.gerenciador_cena = GerenciadorCena(self)
-        self.gerenciador_cena.carregar_cena(1)
+        # self.gerenciador_cena.carregar_cena(1)
+        self.gerenciador_cena.carregar_cena(2)
         self.gerenciador_cena.ativar_cena_atual()
         
         
