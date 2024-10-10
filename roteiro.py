@@ -159,49 +159,52 @@ class Roteiro:
 
 
     def printar_grafo(self, nome_arquivo: str):
-        # Cria o elemento raiz <graphml>
-        graphml = ET.Element('graphml', xmlns="http://graphml.graphdrawing.org/xmlns")
 
-        # Define o elemento <graph> que conterá os nós e arestas
-        graph = ET.SubElement(graphml, 'graph', edgedefault="directed")
+        # # Cria o elemento raiz <graphml>
+        # graphml = ET.Element('graphml', xmlns="http://graphml.graphdrawing.org/xmlns")
 
-        # Para manter controle dos nós já criados
-        visitados = set()
+        # # Define o elemento <graph> que conterá os nós e arestas
+        # graph = ET.SubElement(graphml, 'graph', edgedefault="directed")
 
-        # Pilha para processar cenas de forma iterativa
-        stack = [1]  # Começa na primeira cena (supondo que seja 1)
+        # # Para manter controle dos nós já criados
+        # visitados = set()
 
-        while stack:
-            indice_atual = stack.pop()
+        # # Pilha para processar cenas de forma iterativa
+        # stack = [1]  # Começa na primeira cena (supondo que seja 1)
 
-            # Se o nó já foi processado, não o recria, mas continua criando arestas
-            if indice_atual not in visitados:
-                visitados.add(indice_atual)
+        # while stack:
+        #     indice_atual = stack.pop()
 
-                # Adiciona o nó <node> para a cena atual
-                node = ET.SubElement(graph, 'node', id=str(indice_atual))
-                data_node = ET.SubElement(node, 'data', key="d1")
-                data_node.text = self.get_cena(indice_atual)[1]  # Texto da cena
+        #     # Se o nó já foi processado, não o recria, mas continua criando arestas
+        #     if indice_atual not in visitados:
+        #         visitados.add(indice_atual)
 
-            # Adiciona arestas para as opções de transição (mesmo para nós já visitados)
-            for opcao in self.get_cena(indice_atual)[2]:
-                proximo_indice = opcao[1]  # Índice do próximo nó
+        #         # Adiciona o nó <node> para a cena atual
+        #         node = ET.SubElement(graph, 'node', id=str(indice_atual))
+        #         data_node = ET.SubElement(node, 'data', key="d1")
+        #         data_node.text = self.get_cena(indice_atual)[1]  # Texto da cena
 
-                # Cria uma aresta <edge> da cena atual para a próxima cena
-                edge = ET.SubElement(graph, 'edge', source=str(indice_atual), target=str(proximo_indice))
+        #     # Adiciona arestas para as opções de transição (mesmo para nós já visitados)
+        #     for opcao in self.get_cena(indice_atual)[2]:
+        #         proximo_indice = opcao[1]  # Índice do próximo nó
+
+        #         # Cria uma aresta <edge> da cena atual para a próxima cena
+        #         edge = ET.SubElement(graph, 'edge', source=str(indice_atual), target=str(proximo_indice))
                 
-                # Adiciona o nome da opção como dado na aresta
-                data_edge = ET.SubElement(edge, 'data', key="d2")
-                data_edge.text = opcao[0]  # Nome da opção
+        #         # Adiciona o nome da opção como dado na aresta
+        #         data_edge = ET.SubElement(edge, 'data', key="d2")
+        #         data_edge.text = opcao[0]  # Nome da opção
 
-                # Adiciona o próximo índice à pilha para continuar processando
-                if proximo_indice not in visitados:
-                    stack.append(proximo_indice)
+        #         # Adiciona o próximo índice à pilha para continuar processando
+        #         if proximo_indice not in visitados:
+        #             stack.append(proximo_indice)
 
-        # Converte a estrutura XML para uma string
-        tree = ET.ElementTree(graphml)
+        # # Converte a estrutura XML para uma string
+        # tree = ET.ElementTree(graphml)
 
-        # Escreve a string XML em um arquivo .graphml
-        tree.write(nome_arquivo, encoding='utf-8', xml_declaration=True)
+        # # Escreve a string XML em um arquivo .graphml
+        # tree.write(nome_arquivo, encoding='utf-8', xml_declaration=True)
 
-        print(f"Grafo salvo no arquivo {nome_arquivo}")
+        # print(f"Grafo salvo no arquivo {nome_arquivo}")
+
+        pass

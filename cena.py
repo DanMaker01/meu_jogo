@@ -46,7 +46,7 @@ class Cena:
         
         pass
     def get_cena_id(self):
-        return self.cena_id
+        return self.cena_id+1
     def get_palco(self):
         return self.palco
     def get_texto(self):
@@ -74,6 +74,7 @@ class GerenciadorCena:
         return self.cena_atual.get_opcoes().get_opcoes_qtd() if self.cena_atual else 0
 
     def carregar_cena(self, id_cena):
+        print("carregando cena:", id_cena)
         id_cena = id_cena-1 #correção de indice, para começar de 1 ao invés de 0
         if self.jogo.historico.get_ultima_cena() != id_cena:
             self.jogo.historico.adicionar(id_cena)
@@ -171,7 +172,7 @@ class GerenciadorCena:
 
                 id_opcao_aleatoria = random.randrange(0, self.get_cena_atual().get_opcoes().get_qtd_opcoes_reais())
 
-                print("opcao selecionada:",id_opcao_aleatoria)
+                print("opcao selecionada aleatoriamente:",id_opcao_aleatoria)
                 self.cena_atual.get_opcoes().set_opcao_selecionada(id_opcao_aleatoria)
                 self.confirmar_opcao()
                 self.ativar_cena_atual()

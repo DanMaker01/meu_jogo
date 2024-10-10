@@ -79,7 +79,7 @@ class Pressao:
                     # self.zerar_tempo()
                     self.desativar()
                     
-                    print("tempo acabou!!!!!!!!!!!")
+                    # print("tempo acabou!!!!!!!!!!!")
 
         
 

@@ -13,7 +13,7 @@ class Renderer:
         self.font_color = (0,0,0) #cin
         self.margem_x = 10
         self.margem_y = 10
-        self.espacamento_linhas = 20
+        self.espacamento_linhas = 16
         pass
     
     def desenhar_bg(self):
@@ -25,9 +25,9 @@ class Renderer:
     def desenhar_imagem(self, indice_imagem, x, y, alpha=255):
         # print("desenhar imagem", indice_imagem, x, y)
         imagem = self.jogo.recursos.get_img(indice_imagem)
-        imagem.set_alpha(alpha)
         
         if imagem:
+            imagem.set_alpha(alpha)
             self.jogo.screen.blit(imagem, (x, y), (0,0,imagem.get_width(),imagem.get_height()))
         else:
             print("imagem "+str(indice_imagem)+" não existe")
@@ -115,7 +115,7 @@ class Renderer:
     
     def desenhar_hud(self):
         # FPS
-        texto_1 = f"FPS: {self.jogo.clock.get_fps():.2f}"
+        texto_1 = f"FPS: {self.jogo.clock.get_fps():.0f}"
         label = self.font.render(texto_1, 1, self.font_color)
         self.jogo.screen.blit(label, (self.margem_x, self.margem_y))
         
@@ -129,10 +129,11 @@ class Renderer:
         linha_atual = 0
         espaco_linhas = self.espacamento_linhas
         margem_x = 540
+        margem_y = self.margem_y
         for mod in modificadores:
             texto_3 = f"{mod}"
             label = self.font.render(texto_3+": "+str(modificadores[mod]), 1, self.font_color)
-            self.jogo.screen.blit(label, (margem_x, linha_atual))
+            self.jogo.screen.blit(label, (margem_x, linha_atual+margem_y))
             linha_atual += espaco_linhas
 
         # Comandos
