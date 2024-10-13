@@ -8,13 +8,16 @@
 # ----------------------------------------------------------------------------
 # ------------------PRIORIDADE
 #
-# - desenhar no papel como vai ser uma história de 30 cenas
+# - ajustar os indices do roteiro (começando em 1), com o indice das imagens, da cena, do histórico, etc
 #  
+# - desenhar no papel como vai ser uma história de 30 cenas
 #
 # - definir estrutura de historia principal, como será 1 dia.
+#       - 1a atividade: ir para o trabalho
+#       - 2a atividade: fazer o trabalho
+#       - 3a atividade: voltar para casa
+#       - 4a atividade: dormir(?)
 # 
-# 
-#
 #
 #
 #
