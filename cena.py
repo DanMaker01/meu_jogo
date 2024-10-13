@@ -13,8 +13,8 @@ class Cena:
         nome = cena_formato_lista[0]
         texto = cena_formato_lista[1]
         opcoes = cena_formato_lista[2]
-        imagem_id = cena_formato_lista[3]
-        
+        imagem_id = cena_formato_lista[3]+1
+        print("iniciou cena. imagem_id:",imagem_id)
         self.palco = Palco(30,70,480,320, imagem_id)
         self.texto = Texto(70,440,400,120, texto, nome, jogo)
         self.opcoes = Opcoes(540,200,230,192, opcoes, jogo)
@@ -73,9 +73,9 @@ class GerenciadorCena:
     def get_opcoes_qtd(self):
         return self.cena_atual.get_opcoes().get_opcoes_qtd() if self.cena_atual else 0
 
-    def carregar_cena(self, id_cena):
-        print("carregando cena:", id_cena)
-        id_cena = id_cena-1 #correção de indice, para começar de 1 ao invés de 0
+    def carregar_cena(self, id_cena):### #implementar, arrumar o índice
+        print("carregando cena:", id_cena+1)
+        id_cena = id_cena #correção de indice, para começar de 1 ao invés de 0
         if self.jogo.historico.get_ultima_cena() != id_cena:
             self.jogo.historico.adicionar(id_cena)
         self.cena_atual = Cena(self.jogo, self.jogo.roteiro.get_cena(id_cena) + [id_cena])
@@ -118,7 +118,7 @@ class GerenciadorCena:
 
         direcao_a_ir = lista_opcoes[opcao_selecionada][1]
         # print("CONFIRMA ! direção:", direcao_a_ir)
-        self.carregar_cena(direcao_a_ir)    #carrega a proxima cena
+        self.carregar_cena(direcao_a_ir-1)    #carrega a proxima cena
         # self.ativar_cena_atual()            # Ativa a proxima cena
     def rotina_de_abertura(self):
         sequencia_ativacoes = [0, 10, 70, 80]  # Momentos para ativação dos elementos

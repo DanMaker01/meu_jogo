@@ -16,7 +16,7 @@ class Recursos:
         print("importar:",lista_imgs_a_importar, "TAM:",len(lista_imgs_a_importar))
 
         #carregar tudo que estiver na lista_imgs_a_importar de uma vez só
-        self.carregar_todas_imagens(lista_imgs_a_importar,)
+        self.carregar_todas_imagens(lista_imgs_a_importar)
         
         ##audio #implementar depois
         # pygame.mixer.init()

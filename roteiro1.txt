@@ -1,15 +1,14 @@
-nome @texto 1 2 3 4 5 6 7 8 9 0 a b c d e f g h i j k l m n o p q r s t u v w x y z @iniciar#2 @+vida#1##vida+1
-Narrador @iniciar? @sim :)#3 @não :(#2 @hackear jogo (se dias>=2)#1#dias>=2
-eu @tô atrasado denovo pro trabalho, todo dia a mesma coisa... @caminhar#4
-eu @me dá um ódio isso, tenho que estar no trabalho as 7h00, já são 7h12. @pensar#5 @acelerar passo#6
-eu @mas se eu correr agora, eu vou estar atrasado e ainda chegar suado @até que faz sentido...#6
-eu @pelo menos eu moro perto @pensar#7
-eu @porém isso é ainda pior, eu moro perto e ainda consigo me atrasar @continuar#8
-eu @vou continuar @só continuar#9
-eu @...@ir para a faixa de pedestre#10 @ficar parado#9
-eu @será que dá pra atravessar?@olhar a rua#11
-eu @parece que está tranquilo @atravessar#12 @esperar#11
-eu @do nada um carro! está em alta velocidade mas está longe. @correr e atravessar#13 @voltar e esperar#11
-eu @CORREEEE@continuar correndo#14
-eu @pensando bem até que não tava tão rápido. @refletir sobre a física dos sólidos#15
-eu @pronto, virar o dia@fechar o dia#1
+Narrador @iniciar? @sim :)#2 @não :(#1 @hackear jogo (se dias>=2)#0#dias>=2
+eu @tô atrasado denovo pro trabalho, todo dia a mesma coisa... @caminhar#3
+eu @me dá um ódio isso, tenho que estar no trabalho as 7h00, já são 7h12. @pensar#4 @acelerar passo#5
+eu @mas se eu correr agora, eu vou estar atrasado e ainda chegar suado @até que faz sentido...#5
+eu @pelo menos eu moro perto @pensar#6
+eu @porém isso é ainda pior, eu moro perto e ainda consigo me atrasar @continuar#7
+eu @vou continuar @só continuar#8
+eu @...@ir para a faixa de pedestre#9 @ficar parado#8
+eu @será que dá pra atravessar?@olhar a rua#10
+eu @parece que está tranquilo @atravessar#11 @esperar#10
+eu @do nada um carro! está em alta velocidade mas está longe. @correr e atravessar#12 @voltar e esperar#10
+eu @CORREEEE@continuar correndo#13
+eu @pensando bem até que não tava tão rápido. @refletir sobre a física dos sólidos#14
+eu @pronto, virar o dia@fechar o dia#0

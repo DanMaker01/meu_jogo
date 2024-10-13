@@ -9,8 +9,11 @@
 # ------------------PRIORIDADE
 #
 # - ajustar os indices do roteiro (começando em 1), com o indice das imagens, da cena, do histórico, etc
+#       - carregar_cena()
 #  
 # - desenhar no papel como vai ser uma história de 30 cenas
+#       - se forem 4x de 30 cenas = 120 cenas num dia
+#       - se forem 5 dias são 5x 120 = 600 cenas 
 #
 # - definir estrutura de historia principal, como será 1 dia.
 #       - 1a atividade: ir para o trabalho

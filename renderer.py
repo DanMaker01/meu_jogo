@@ -25,6 +25,7 @@ class Renderer:
     def desenhar_imagem(self, indice_imagem, x, y, alpha=255):
         # print("desenhar imagem", indice_imagem, x, y)
         imagem = self.jogo.recursos.get_img(indice_imagem)
+        # print("desenhar imagem id:", indice_imagem, x, y)
         
         if imagem:
             imagem.set_alpha(alpha)
