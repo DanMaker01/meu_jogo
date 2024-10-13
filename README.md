@@ -14,4 +14,8 @@ Requisitos:
 
 Rodar:
 
- - python main.py
+    Linux:
+        - python main.py
+
+    Windows:
+        - ---play.bat 
