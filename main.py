@@ -8,12 +8,12 @@
 # ----------------------------------------------------------------------------
 # ------------------PRIORIDADE
 #
-# - ajustar os indices do roteiro (começando em 1), com o indice das imagens, da cena, do histórico, etc
-#       - carregar_cena()
-#  
-# - desenhar no papel como vai ser uma história de 30 cenas
-#       - se forem 4x de 30 cenas = 120 cenas num dia
-#       - se forem 5 dias são 5x 120 = 600 cenas 
+#
+# - desenhar no papel como vai ser uma história de 20 cenas
+#       - se forem 4x de 20 cenas = 80 cenas num dia
+#       - se forem 5 dias são 5x 80 = 400 cenas 
+#
+#
 #
 # - definir estrutura de historia principal, como será 1 dia.
 #       - 1a atividade: ir para o trabalho
@@ -22,7 +22,20 @@
 #       - 4a atividade: dormir(?)
 # 
 #
+# - fazer um hub da cidade onde dá pra escolher o lugar que vc vai
+#       ir pro trabalho
+#       ir para casa
+#       + 1 lugar(?)
 #
+#
+# 
+# 
+# 
+# 
+# 
+#
+#
+# -------------------LEGAL MAS NÃO ESSENCIAL
 #
 #
 #
@@ -58,10 +71,6 @@
 #       camadas_desenhar_todas()
 #       update
 #       
-# -------------------LEGAL MAS NÃO ESSENCIAL
-
-# - editor de roteiro separado, integrando img_cena, texto, opções, variáveis, que salve e load roteiros
-#
 # - fazer alterações profundas no roteiro, como definir melhor os efeitos de animação
 #
 # - modificar o roteiro.txt para definir mais coisas, como:
@@ -73,20 +82,25 @@
 #               - estrutura bem definida, cada cena terá um id em anima.txt, em cada um destes vai ter N animações com  
 #
 #
+#
 # - tentar criar uma classe que cuide de eventos de tempo sequenciais, como em GerenciadorCena
+#
+# - editor de roteiro separado, integrando img_cena, texto, opções, variáveis, que salve e load roteiros
+#
+# - mostrar parcialmente uma opção se você tiver parte dos requisitos
 #
 #       
 #       
-# - mostrar parcialmente uma opção se você tiver parte dos requisitos
 # 
-# - adicionar lista de condições
-# - adicionar lista de itens quando escolher uma opção
+# - adicionar lista de condições(?)                             << acho que já está finalizado
+# - adicionar lista de itens quando escolher uma opção(?)       << acho que já está finalizado
 #
 #
 # - montar time de
-#       eu
-#       você
-#       zoboomafoo
+#       SOLO!           EQUIPE!
+#       eu              eu
+#                       você
+#                       zoboomafoo
 #
 # - ao sair do jogo, abrir janela perguntando se vc quer salvar
 #
@@ -96,8 +110,6 @@
 #       texto alinhado à direita 120x160 (160 ou mais)
 #       opções alinhadas a direita 120x160 (160 ou menos)
 #       deixar com 3 opções de layout
-#
-# - corrigir os bugs do alpha para o Palco
 #
 # - implementar uma lista de janelas controladas pelo gerenciador de janelas, além de palco,texto,opcoes
 #       pra q?
@@ -113,18 +125,20 @@
 # 
 # - pequenas variações nas cenas de forma procedural.            
 #
-#
 # - interface para Mouse
+#
+#
+# - corrigir os bugs do alpha para o Palco
 #
 # -------------------- FINALIZA QUANDO
 #
-# - completar uma história de 30 cenas
+# - completar uma história de 20 cenas
 #
-# - completar duas histórias de 30 cenas
+# - completar duas histórias de 20 cenas
 #
-# - completar três histórias de 30 cenas
+# - completar três histórias de 20 cenas
 #
-# - completar quatro histórias com 30 cenas - isso equivale a um dia
+# - completar quatro histórias com 20 cenas - isso equivale a um dia
 #  
 # - fazer história principal, usando a repetição dos dias onde pequenas variações acontecem no cotidiano das cenas que dá uma ideia maior.
 #

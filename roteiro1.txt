@@ -4,11 +4,12 @@ eu @me dá um ódio isso, tenho que estar no trabalho as 7h00, já são 7h12. @p
 eu @mas se eu correr agora, eu vou estar atrasado e ainda chegar suado @até que faz sentido...#5
 eu @pelo menos eu moro perto @pensar#6
 eu @porém isso é ainda pior, eu moro perto e ainda consigo me atrasar @continuar#7
-eu @vou continuar @só continuar#8
+eu @amanhã eu vou acordar mais cedo @auto afirmar#8
 eu @...@ir para a faixa de pedestre#9 @ficar parado#8
 eu @será que dá pra atravessar?@olhar a rua#10
 eu @parece que está tranquilo @atravessar#11 @esperar#10
 eu @do nada um carro! está em alta velocidade mas está longe. @correr e atravessar#12 @voltar e esperar#10
 eu @CORREEEE@continuar correndo#13
-eu @pensando bem até que não tava tão rápido. @refletir sobre a física dos sólidos#14
-eu @pronto, virar o dia@fechar o dia#0
+eu @pensando bem até que não tava tão rápido. @refletir sobre o que poderia acontecer#14
+narrador @e ficou feliz por não ter acontecido nada @fechar o dia#1##dias+1
+[CENA ZERO] @texto - esta cena deve ser a ultima do roteiro, porém tem indice 0 @op1:ir para cena 1#1 @op2: +vida#0##vida+1
