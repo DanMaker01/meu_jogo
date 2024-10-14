@@ -14,7 +14,7 @@ from memoria import Memoria
 
 class Jogo:
     def __init__(self, width=800, height=600):
-        # print("iniciou classe Jogo")
+        print("iniciou classe Jogo")
         pygame.init()
         pygame.display.set_caption("Anomia Social")
         

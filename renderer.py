@@ -14,6 +14,7 @@ class Renderer:
         self.margem_x = 10
         self.margem_y = 10
         self.espacamento_linhas = 16
+        print("iniciou classe Renderer")
         pass
     
     def desenhar_bg(self):

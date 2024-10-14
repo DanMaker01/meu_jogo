@@ -16,7 +16,7 @@ class Arquivo:
         
 class Roteiro:
     def __init__(self, nome_arquivo_roteiro='roteiro1.txt'):
-        # print("Iniciou classe Roteiro")
+        print("Iniciou classe Roteiro")
         self.arquivo = Arquivo()
         self.local = ""
         self.roteiro_organizado = []

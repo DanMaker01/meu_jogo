@@ -3,6 +3,7 @@ import pygame
 
 class Texto:
     def __init__(self, x, y, lar, alt, texto, nome, jogo, posicao_nome="supesq"):
+        # print("iniciou classe Texto")
         self.x = x
         self.y = y
         self.largura = lar

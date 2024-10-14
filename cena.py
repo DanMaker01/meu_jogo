@@ -14,7 +14,7 @@ class Cena:
         texto = cena_formato_lista[1]
         opcoes = cena_formato_lista[2]
         imagem_id = cena_formato_lista[3]+1
-        print("iniciou cena. imagem_id:",imagem_id)
+        # print("iniciou cena. imagem_id:",imagem_id)
         self.palco = Palco(30,70,480,320, imagem_id)
         self.texto = Texto(70,440,400,120, texto, nome, jogo)
         self.opcoes = Opcoes(540,200,230,192, opcoes, jogo)
@@ -62,7 +62,7 @@ class Cena:
 
 class GerenciadorCena:
     def __init__(self, jogo):
-
+        print("iniciou classe GerenciadorCena")
         self.jogo = jogo
         self.cena_atual = None
         self.possivel_interagir = False
