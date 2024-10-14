@@ -10,7 +10,7 @@ class Recursos:
 
         #carregar todas cenas numeradas
         #jeito A
-        qtd_cenas = 15
+        qtd_cenas = 20
         for i in range(1,qtd_cenas+1):
             lista_imgs_a_importar.append(str(i)+".png")
         print("importar:",lista_imgs_a_importar, "TAM:",len(lista_imgs_a_importar))

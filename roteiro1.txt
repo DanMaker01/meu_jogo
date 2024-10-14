@@ -1,15 +1,21 @@
 Narrador @iniciar? @sim :)#2 @não :(#1 @hackear jogo (se dias>=2)#0#dias>=2
-eu @tô atrasado denovo pro trabalho, todo dia a mesma coisa... @caminhar#3
-eu @me dá um ódio isso, tenho que estar no trabalho as 7h00, já são 7h12. @pensar#4 @acelerar passo#5
-eu @mas se eu correr agora, eu vou estar atrasado e ainda chegar suado @até que faz sentido...#5
-eu @pelo menos eu moro perto @pensar#6
-eu @porém isso é ainda pior, eu moro perto e ainda consigo me atrasar @continuar#7
-eu @amanhã eu vou acordar mais cedo @auto afirmar#8
-eu @...@ir para a faixa de pedestre#9 @ficar parado#8
-eu @será que dá pra atravessar?@olhar a rua#10
-eu @parece que está tranquilo @atravessar#11 @esperar#10
-eu @do nada um carro! está em alta velocidade mas está longe. @correr e atravessar#12 @voltar e esperar#10
-eu @CORREEEE@continuar correndo#13
-eu @pensando bem até que não tava tão rápido. @refletir sobre o que poderia acontecer#14
-narrador @e ficou feliz por não ter acontecido nada @fechar o dia#1##dias+1
-[CENA ZERO] @texto - esta cena deve ser a ultima do roteiro, porém tem indice 0 @op1:ir para cena 1#1 @op2: +vida#0##vida+1
+Pessoa @tô atrasado denovo pro trabalho, todo dia a mesma coisa... @caminhar para o trabalho#3
+Pessoa @me dá um ódio isso, tenho que estar no trabalho as 7h00, já são 7h13. @pensar#4 @acelerar passo#7
+Pessoa @mas se eu correr agora, eu vou estar atrasado e ainda chegar suado @até que faz sentido...#5
+Pessoa @pelo menos eu moro perto @pensar#6
+Pessoa @porém isso é ainda pior, eu moro perto e ainda consigo me atrasar, complicado... @continuar#7
+Pessoa @já sei, amanhã eu vou acordar mais cedo @parar de pensar e seguir#8
+Pessoa @...@ir para a faixa de pedestre#9 @ficar parado#8
+Pessoa @será que dá pra atravessar?@olhar a rua#10
+Pessoa @parece que está tranquilo @atravessar#11 @esperar#10
+Pessoa @do nada um carro! está em alta velocidade mas está longe. @correr e atravessar#12 @voltar e esperar#13
+Pessoa @CORREEEE@continuar correndo#15
+Pessoa @pensando bem até que não tava tão rápido. @pensar:dava pra ter atravessado#14
+Narrador @e ficou feliz por estar seguro @verificar se vem carro#10
+Pessoa @vai vai vai @finalizar travessia#16
+Pessoa @ufa, até que fiquei com uma boa distância do carro @se sentir bem#17
+Pessoa @droga, não posso perder tempo me sentindo bem, tenho que trabalhar @Acelerar o passo#18
+Narrador @assim você chegou no portão do trabalho, pois para existir na sociedade é necessário ter dinheiro @se vender#19 @pensar#20
+Narrador @você entra pela porta de serviço, mais um dia, atrasado @continuar#1##dias+1
+Pessoa @ (...) é isso.@aceitar#18
+[CENA ZERO] @esta cena deve ser a ultima do roteiro, também é a cena indice 0 @op1:ir para cena 1#1 @op2: +vida#0##vida+1
