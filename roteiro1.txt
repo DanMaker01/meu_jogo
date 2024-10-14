@@ -10,12 +10,14 @@ Pessoa @será que dá pra atravessar?@olhar a rua#10
 Pessoa @parece que está tranquilo @atravessar#11 @esperar#10
 Pessoa @do nada um carro! está em alta velocidade mas está longe. @correr e atravessar#12 @voltar e esperar#13
 Pessoa @CORREEEE@continuar correndo#15
-Pessoa @pensando bem até que não tava tão rápido. @pensar:dava pra ter atravessado#14
+Pessoa @...pensando bem até que não tava tão rápido. @pensar:dava pra ter atravessado#14
 Narrador @e ficou feliz por estar seguro @verificar se vem carro#10
 Pessoa @vai vai vai @finalizar travessia#16
 Pessoa @ufa, até que fiquei com uma boa distância do carro @se sentir bem#17
 Pessoa @droga, não posso perder tempo me sentindo bem, tenho que trabalhar @Acelerar o passo#18
-Narrador @assim você chegou no portão do trabalho, pois para existir na sociedade é necessário ter dinheiro @se vender#19 @pensar#20
-Narrador @você entra pela porta de serviço, mais um dia, atrasado @continuar#1##dias+1
-Pessoa @ (...) é isso.@aceitar#18
-[CENA ZERO] @esta cena deve ser a ultima do roteiro, também é a cena indice 0 @op1:ir para cena 1#1 @op2: +vida#0##vida+1
+Narrador @assim você chegava na porta do trabalho, você vem aqui todo dia pois para existir é necessário ter dinheiro @vender seu tempo#19 @pensar#18
+Narrador @você se encaminha para a porta do serviço, mais um dia, atrasado @entrar#20
+Pessoa @ (...) é isso.@aceitar#21
+Narrador @por um momento, você sente um dejavu. como se já tivesse vivido essa situação antes. @#22
+Pessoa @... @...#1##dias+1
+[CENA ZERO] @esta cena deve ser a ultima do roteiro, também é a cena indice 0. (opcao#direcao#additem#condicao) @op1:ir para cena 1#1 @op2: +vida#0##vida+1
